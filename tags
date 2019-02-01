@@ -22991,9 +22991,9 @@ freq	includes/SDL2/SDL_audio.h	/^    int freq;                   \/**< DSP frequ
 freq	libraries/libui/SDL2/SDL_audio.h	/^    int freq;                   \/**< DSP frequency -- samples per second *\/$/;"	m	struct:SDL_AudioSpec
 ft_atoi	libraries/libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
 ft_bzero	libraries/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
-ft_create_renderer	srcs/main.c	/^void	ft_create_renderer(t_my_win *s_win)$/;"	f
-ft_create_window	srcs/main.c	/^void	ft_create_window(t_my_win *s_win)$/;"	f
-ft_event_loop	srcs/main.c	/^void	ft_event_loop(t_my_win *s_win)$/;"	f
+ft_create_renderer	srcs/main.c	/^void			ft_create_renderer(t_my_win *s_win)$/;"	f
+ft_create_window	srcs/main.c	/^void			ft_create_window(t_my_win *s_win)$/;"	f
+ft_event_loop	srcs/main.c	/^void			ft_event_loop(t_my_win *s_win)$/;"	f
 ft_isalnum	libraries/libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
 ft_isalpha	libraries/libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
 ft_isascii	libraries/libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
@@ -23009,6 +23009,7 @@ ft_lstdelone	libraries/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, v
 ft_lstiter	libraries/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))$/;"	f
 ft_lstmap	libraries/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
 ft_lstnew	libraries/libft/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
+ft_map_editor	srcs/main.c	/^void			ft_map_editor(t_my_win *s_win)$/;"	f
 ft_memalloc	libraries/libft/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
 ft_memccpy	libraries/libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
 ft_memchr	libraries/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
@@ -23363,7 +23364,7 @@ magnitude	includes/SDL2/SDL_haptic.h	/^    Sint16 magnitude;   \/**< Peak value;
 magnitude	libraries/libui/SDL2/SDL_haptic.h	/^    Sint16 magnitude;   \/**< Peak value; if negative, equivalent to 180 degrees extra phase shift. *\/$/;"	m	struct:SDL_HapticPeriodic
 main	includes/SDL2/SDL_main.h	/^#define main /;"	d
 main	libraries/libui/SDL2/SDL_main.h	/^#define main /;"	d
-main	srcs/main.c	/^int main(int argc, char **argv)$/;"	f
+main	srcs/main.c	/^int				main(int argc, char **argv)$/;"	f
 major	includes/SDL2/SDL_version.h	/^    Uint8 major;        \/**< major version *\/$/;"	m	struct:SDL_version
 major	libraries/libui/SDL2/SDL_version.h	/^    Uint8 major;        \/**< major version *\/$/;"	m	struct:SDL_version
 map	includes/SDL2/SDL_surface.h	/^    struct SDL_BlitMap *map;    \/**< Private *\/$/;"	m	struct:SDL_Surface	typeref:struct:SDL_Surface::SDL_BlitMap
