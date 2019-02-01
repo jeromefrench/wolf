@@ -76,11 +76,9 @@ Bshift	includes/SDL2/SDL_pixels.h	/^    Uint8 Bshift;$/;"	m	struct:SDL_PixelForm
 Bshift	libraries/libui/SDL2/SDL_pixels.h	/^    Uint8 Bshift;$/;"	m	struct:SDL_PixelFormat
 BytesPerPixel	includes/SDL2/SDL_pixels.h	/^    Uint8 BytesPerPixel;$/;"	m	struct:SDL_PixelFormat
 BytesPerPixel	libraries/libui/SDL2/SDL_pixels.h	/^    Uint8 BytesPerPixel;$/;"	m	struct:SDL_PixelFormat
-CC	Makefile	/^CC = gcc -g -v$/;"	m
+CC	Makefile	/^CC = gcc$/;"	m
 CC	libraries/libft/Makefile	/^CC = gcc -c$/;"	m
-CC	libraries/libft/libft/Makefile	/^CC = gcc -c$/;"	m
 CFLAG	libraries/libft/Makefile	/^CFLAG = -Wall -Wextra -Werror$/;"	m
-CFLAG	libraries/libft/libft/Makefile	/^CFLAG = -Wall -Wextra -Werror$/;"	m
 CObjects	Makefile	/^CObjects = $(addprefix $(OBJ_Dir), $(OBJ))$/;"	m
 CRC32_POLY	includes/SDL2/SDL_test_crc32.h	/^ #define CRC32_POLY /;"	d
 CRC32_POLY	libraries/libui/SDL2/SDL_test_crc32.h	/^ #define CRC32_POLY /;"	d
@@ -14045,7 +14043,6 @@ KMOD_RSHIFT	libraries/libui/SDL2/SDL_keycode.h	/^    KMOD_RSHIFT = 0x0002,$/;"	e
 KMOD_SHIFT	includes/SDL2/SDL_keycode.h	/^#define KMOD_SHIFT /;"	d
 KMOD_SHIFT	libraries/libui/SDL2/SDL_keycode.h	/^#define KMOD_SHIFT /;"	d
 LIBFT_H	libraries/libft/libft.h	/^# define LIBFT_H$/;"	d
-LIBFT_H	libraries/libft/libft/libft.h	/^# define LIBFT_H$/;"	d
 LIBRARIES	Makefile	/^LIBRARIES = -L .\/libraries\/libui -lSDL2 -L .\/libraries\/libui -lSDL2_image -framework OpenGL .\/libraries\/libft\/libft.a$/;"	m
 MD5UINT4	includes/SDL2/SDL_test_md5.h	/^  typedef unsigned long int MD5UINT4;$/;"	t
 MD5UINT4	libraries/libui/SDL2/SDL_test_md5.h	/^  typedef unsigned long int MD5UINT4;$/;"	t
@@ -14053,7 +14050,6 @@ M_PI	includes/SDL2/SDL_stdinc.h	/^#define M_PI /;"	d
 M_PI	libraries/libui/SDL2/SDL_stdinc.h	/^#define M_PI /;"	d
 NAME	Makefile	/^NAME = wolf3d$/;"	m
 NAME	libraries/libft/Makefile	/^NAME = libft.a$/;"	m
-NAME	libraries/libft/libft/Makefile	/^NAME = libft.a$/;"	m
 NOMINMAX	includes/SDL2/SDL_opengl.h	/^#define NOMINMAX$/;"	d
 NOMINMAX	libraries/libui/SDL2/SDL_opengl.h	/^#define NOMINMAX$/;"	d
 NO_SDL_VULKAN_TYPEDEFS	includes/SDL2/SDL_vulkan.h	/^#define NO_SDL_VULKAN_TYPEDEFS$/;"	d
@@ -14072,7 +14068,6 @@ NeedFunctionPrototypes	includes/SDL2/SDL_name.h	/^#define NeedFunctionPrototypes
 NeedFunctionPrototypes	libraries/libui/SDL2/SDL_name.h	/^#define NeedFunctionPrototypes /;"	d
 OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	libraries/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
-OBJ	libraries/libft/libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ_Dir	Makefile	/^OBJ_Dir = .\/objs\/$/;"	m
 PFNEGLCLIENTWAITSYNCKHRPROC	includes/SDL2/SDL_egl.h	/^typedef EGLint (EGLAPIENTRYP PFNEGLCLIENTWAITSYNCKHRPROC) (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout);$/;"	t
 PFNEGLCLIENTWAITSYNCKHRPROC	libraries/libui/SDL2/SDL_egl.h	/^typedef EGLint (EGLAPIENTRYP PFNEGLCLIENTWAITSYNCKHRPROC) (EGLDisplay dpy, EGLSyncKHR sync, EGLint flags, EGLTimeKHR timeout);$/;"	t
@@ -22412,9 +22407,8 @@ SDLname_h_	includes/SDL2/SDL_name.h	/^#define SDLname_h_$/;"	d
 SDLname_h_	libraries/libui/SDL2/SDL_name.h	/^#define SDLname_h_$/;"	d
 SIZEOF_VOIDP	includes/SDL2/SDL_config.h	/^#define SIZEOF_VOIDP /;"	d
 SIZEOF_VOIDP	libraries/libui/SDL2/SDL_config.h	/^#define SIZEOF_VOIDP /;"	d
-SRC	Makefile	/^SRC = main.c$/;"	m
+SRC	Makefile	/^SRC = main.c \\$/;"	m
 SRC	libraries/libft/Makefile	/^SRC = .\/ft_atoi.c \\$/;"	m
-SRC	libraries/libft/libft/Makefile	/^SRC = .\/ft_atoi.c \\$/;"	m
 SRC_Dir	Makefile	/^SRC_Dir = .\/srcs\/$/;"	m
 STDC_HEADERS	includes/SDL2/SDL_config.h	/^#define STDC_HEADERS /;"	d
 STDC_HEADERS	libraries/libui/SDL2/SDL_config.h	/^#define STDC_HEADERS /;"	d
@@ -22799,9 +22793,7 @@ connection	libraries/libui/SDL2/SDL_syswm.h	/^            struct MirConnection *
 constant	includes/SDL2/SDL_haptic.h	/^    SDL_HapticConstant constant;    \/**< Constant effect. *\/$/;"	m	union:SDL_HapticEffect
 constant	libraries/libui/SDL2/SDL_haptic.h	/^    SDL_HapticConstant constant;    \/**< Constant effect. *\/$/;"	m	union:SDL_HapticEffect
 content	libraries/libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
-content	libraries/libft/libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
 content_size	libraries/libft/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
-content_size	libraries/libft/libft/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
 crc32_table	includes/SDL2/SDL_test_crc32.h	/^    CrcUint32    crc32_table[256]; \/* CRC table *\/$/;"	m	struct:__anon80
 crc32_table	libraries/libui/SDL2/SDL_test_crc32.h	/^    CrcUint32    crc32_table[256]; \/* CRC table *\/$/;"	m	struct:__anon174
 custom	includes/SDL2/SDL_haptic.h	/^    SDL_HapticCustom custom;        \/**< Custom effect. *\/$/;"	m	union:SDL_HapticEffect
@@ -22934,6 +22926,7 @@ event	includes/SDL2/SDL_events.h	/^    Uint8 event;        \/**< ::SDL_DisplayEv
 event	includes/SDL2/SDL_events.h	/^    Uint8 event;        \/**< ::SDL_WindowEventID *\/$/;"	m	struct:SDL_WindowEvent
 event	includes/SDL2/SDL_syswm.h	/^            DFBEvent event;$/;"	m	struct:SDL_SysWMmsg::__anon61::__anon64
 event	includes/SDL2/SDL_syswm.h	/^            XEvent event;$/;"	m	struct:SDL_SysWMmsg::__anon61::__anon63
+event	includes/wolf3d.h	/^	SDL_Event			event;$/;"	m	struct:s_my_win
 event	libraries/libui/SDL2/SDL_events.h	/^    Uint8 event;        \/**< ::SDL_DisplayEventID *\/$/;"	m	struct:SDL_DisplayEvent
 event	libraries/libui/SDL2/SDL_events.h	/^    Uint8 event;        \/**< ::SDL_WindowEventID *\/$/;"	m	struct:SDL_WindowEvent
 event	libraries/libui/SDL2/SDL_syswm.h	/^            DFBEvent event;$/;"	m	struct:SDL_SysWMmsg::__anon155::__anon158
@@ -22997,138 +22990,76 @@ framebuffer	libraries/libui/SDL2/SDL_syswm.h	/^            GLuint framebuffer; \
 freq	includes/SDL2/SDL_audio.h	/^    int freq;                   \/**< DSP frequency -- samples per second *\/$/;"	m	struct:SDL_AudioSpec
 freq	libraries/libui/SDL2/SDL_audio.h	/^    int freq;                   \/**< DSP frequency -- samples per second *\/$/;"	m	struct:SDL_AudioSpec
 ft_atoi	libraries/libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
-ft_atoi	libraries/libft/libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
 ft_bzero	libraries/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
-ft_bzero	libraries/libft/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_create_renderer	srcs/main.c	/^void	ft_create_renderer(t_my_win *s_win)$/;"	f
+ft_create_window	srcs/main.c	/^void	ft_create_window(t_my_win *s_win)$/;"	f
+ft_event_loop	srcs/main.c	/^void	ft_event_loop(t_my_win *s_win)$/;"	f
 ft_isalnum	libraries/libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
-ft_isalnum	libraries/libft/libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
 ft_isalpha	libraries/libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
-ft_isalpha	libraries/libft/libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
 ft_isascii	libraries/libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
-ft_isascii	libraries/libft/libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
 ft_isdigit	libraries/libft/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
-ft_isdigit	libraries/libft/libft/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
 ft_isprint	libraries/libft/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
-ft_isprint	libraries/libft/libft/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
 ft_itoa	libraries/libft/ft_itoa.c	/^char		*ft_itoa(int n)$/;"	f
-ft_itoa	libraries/libft/libft/ft_itoa.c	/^char		*ft_itoa(int n)$/;"	f
 ft_itoa_first	libraries/libft/ft_itoa.c	/^static void	ft_itoa_first(int *nega, int *n, int *nb, int *i)$/;"	f	file:
-ft_itoa_first	libraries/libft/libft/ft_itoa.c	/^static void	ft_itoa_first(int *nega, int *n, int *nb, int *i)$/;"	f	file:
 ft_itoa_prime	libraries/libft/ft_itoa.c	/^static char	*ft_itoa_prime(int *n, char *str)$/;"	f	file:
-ft_itoa_prime	libraries/libft/libft/ft_itoa.c	/^static char	*ft_itoa_prime(int *n, char *str)$/;"	f	file:
 ft_itoa_third	libraries/libft/ft_itoa.c	/^static void	ft_itoa_third(int *nb, int *i, char *str, int *nega)$/;"	f	file:
-ft_itoa_third	libraries/libft/libft/ft_itoa.c	/^static void	ft_itoa_third(int *nb, int *i, char *str, int *nega)$/;"	f	file:
 ft_lstadd	libraries/libft/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f
-ft_lstadd	libraries/libft/libft/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f
 ft_lstdel	libraries/libft/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))$/;"	f
-ft_lstdel	libraries/libft/libft/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))$/;"	f
 ft_lstdelone	libraries/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))$/;"	f
-ft_lstdelone	libraries/libft/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))$/;"	f
 ft_lstiter	libraries/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))$/;"	f
-ft_lstiter	libraries/libft/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))$/;"	f
 ft_lstmap	libraries/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
-ft_lstmap	libraries/libft/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
 ft_lstnew	libraries/libft/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
-ft_lstnew	libraries/libft/libft/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
 ft_memalloc	libraries/libft/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
-ft_memalloc	libraries/libft/libft/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
 ft_memccpy	libraries/libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
-ft_memccpy	libraries/libft/libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
 ft_memchr	libraries/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
-ft_memchr	libraries/libft/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
 ft_memcmp	libraries/libft/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
-ft_memcmp	libraries/libft/libft/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
 ft_memcpy	libraries/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
-ft_memcpy	libraries/libft/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
 ft_memdel	libraries/libft/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
-ft_memdel	libraries/libft/libft/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
 ft_memmove	libraries/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
-ft_memmove	libraries/libft/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
 ft_memset	libraries/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
-ft_memset	libraries/libft/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
 ft_putchar	libraries/libft/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
-ft_putchar	libraries/libft/libft/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
 ft_putchar_fd	libraries/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
-ft_putchar_fd	libraries/libft/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
 ft_putendl	libraries/libft/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
-ft_putendl	libraries/libft/libft/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
 ft_putendl_fd	libraries/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
-ft_putendl_fd	libraries/libft/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
 ft_putnbr	libraries/libft/ft_putnbr.c	/^void	ft_putnbr(int n)$/;"	f
-ft_putnbr	libraries/libft/libft/ft_putnbr.c	/^void	ft_putnbr(int n)$/;"	f
 ft_putnbr_fd	libraries/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
-ft_putnbr_fd	libraries/libft/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
 ft_putstr	libraries/libft/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
-ft_putstr	libraries/libft/libft/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
 ft_putstr_fd	libraries/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
-ft_putstr_fd	libraries/libft/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
-ft_quit_error	srcs/main.c	/^void	ft_quit_error(char *my_message)$/;"	f
+ft_quit	srcs/file_quit.c	/^void	ft_quit(t_my_win *s_win, int status)$/;"	f
+ft_show_error_and_quit	srcs/file_quit.c	/^void	ft_show_error_and_quit(t_my_win *s_win, const char *my_message)$/;"	f
 ft_split_first	libraries/libft/ft_strsplit.c	/^static void	ft_split_first(char const *s, int *word, char *c)$/;"	f	file:
-ft_split_first	libraries/libft/libft/ft_strsplit.c	/^static void	ft_split_first(char const *s, int *word, char *c)$/;"	f	file:
 ft_str_trim_third	libraries/libft/ft_strsplit.c	/^static int	ft_str_trim_third(int *word, const char *s, char *c, char **str)$/;"	f	file:
-ft_str_trim_third	libraries/libft/libft/ft_strsplit.c	/^static int	ft_str_trim_third(int *word, const char *s, char *c, char **str)$/;"	f	file:
 ft_strcat	libraries/libft/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
-ft_strcat	libraries/libft/libft/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
 ft_strchr	libraries/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
-ft_strchr	libraries/libft/libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
 ft_strclr	libraries/libft/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
-ft_strclr	libraries/libft/libft/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
 ft_strcmp	libraries/libft/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f
-ft_strcmp	libraries/libft/libft/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f
 ft_strcpy	libraries/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
-ft_strcpy	libraries/libft/libft/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
 ft_strdel	libraries/libft/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f
-ft_strdel	libraries/libft/libft/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f
 ft_strdup	libraries/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
-ft_strdup	libraries/libft/libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
 ft_strequ	libraries/libft/ft_strequ.c	/^int		ft_strequ(const char *s1, const char *s2)$/;"	f
-ft_strequ	libraries/libft/libft/ft_strequ.c	/^int		ft_strequ(const char *s1, const char *s2)$/;"	f
 ft_striter	libraries/libft/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f
-ft_striter	libraries/libft/libft/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f
 ft_striteri	libraries/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
-ft_striteri	libraries/libft/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
 ft_strjoin	libraries/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
-ft_strjoin	libraries/libft/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
 ft_strlcat	libraries/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
-ft_strlcat	libraries/libft/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
 ft_strlen	libraries/libft/ft_strlen.c	/^size_t		ft_strlen(const char *s)$/;"	f
-ft_strlen	libraries/libft/libft/ft_strlen.c	/^size_t		ft_strlen(const char *s)$/;"	f
 ft_strmap	libraries/libft/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f
-ft_strmap	libraries/libft/libft/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f
 ft_strmapi	libraries/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
-ft_strmapi	libraries/libft/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
 ft_strncat	libraries/libft/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t n)$/;"	f
-ft_strncat	libraries/libft/libft/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t n)$/;"	f
 ft_strncmp	libraries/libft/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, int n)$/;"	f
-ft_strncmp	libraries/libft/libft/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, int n)$/;"	f
 ft_strncpy	libraries/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
-ft_strncpy	libraries/libft/libft/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
 ft_strnequ	libraries/libft/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
-ft_strnequ	libraries/libft/libft/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
 ft_strnew	libraries/libft/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f
-ft_strnew	libraries/libft/libft/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f
 ft_strnstr	libraries/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
-ft_strnstr	libraries/libft/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
 ft_strrchr	libraries/libft/ft_strrchr.c	/^void	*ft_strrchr(const char *s, int c)$/;"	f
-ft_strrchr	libraries/libft/libft/ft_strrchr.c	/^void	*ft_strrchr(const char *s, int c)$/;"	f
 ft_strsplit	libraries/libft/ft_strsplit.c	/^char		**ft_strsplit(char const *s, char c)$/;"	f
-ft_strsplit	libraries/libft/libft/ft_strsplit.c	/^char		**ft_strsplit(char const *s, char c)$/;"	f
 ft_strstr	libraries/libft/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f
-ft_strstr	libraries/libft/libft/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f
 ft_strsub	libraries/libft/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
-ft_strsub	libraries/libft/libft/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
 ft_strtrim	libraries/libft/ft_strtrim.c	/^char			*ft_strtrim(char const *s)$/;"	f
-ft_strtrim	libraries/libft/libft/ft_strtrim.c	/^char			*ft_strtrim(char const *s)$/;"	f
 ft_strtrim_second	libraries/libft/ft_strsplit.c	/^static void	ft_strtrim_second(const char *s, int *j, char *c, int *letter)$/;"	f	file:
-ft_strtrim_second	libraries/libft/libft/ft_strsplit.c	/^static void	ft_strtrim_second(const char *s, int *j, char *c, int *letter)$/;"	f	file:
 ft_strtrimsecond	libraries/libft/ft_strtrim.c	/^static void		ft_strtrimsecond(int *i, const char *s, char *swap, char *swap2)$/;"	f	file:
-ft_strtrimsecond	libraries/libft/libft/ft_strtrim.c	/^static void		ft_strtrimsecond(int *i, const char *s, char *swap, char *swap2)$/;"	f	file:
 ft_strtrimthird	libraries/libft/ft_strtrim.c	/^static void		ft_strtrimthird(int *i, char *swap, char *swap2)$/;"	f	file:
-ft_strtrimthird	libraries/libft/libft/ft_strtrim.c	/^static void		ft_strtrimthird(int *i, char *swap, char *swap2)$/;"	f	file:
 ft_tolower	libraries/libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
-ft_tolower	libraries/libft/libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
 ft_toupper	libraries/libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
-ft_toupper	libraries/libft/libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
 function	includes/SDL2/SDL_assert.h	/^    const char *function;$/;"	m	struct:SDL_AssertData
 function	libraries/libui/SDL2/SDL_assert.h	/^    const char *function;$/;"	m	struct:SDL_AssertData
 g	includes/SDL2/SDL_messagebox.h	/^    Uint8 r, g, b;$/;"	m	struct:__anon28
@@ -23206,6 +23137,7 @@ hinstance	libraries/libui/SDL2/SDL_syswm.h	/^            HINSTANCE hinstance;   
 hwnd	includes/SDL2/SDL_syswm.h	/^            HWND hwnd;                  \/**< The window for the message *\/$/;"	m	struct:SDL_SysWMmsg::__anon61::__anon62
 hwnd	libraries/libui/SDL2/SDL_syswm.h	/^            HWND hwnd;                  \/**< The window for the message *\/$/;"	m	struct:SDL_SysWMmsg::__anon155::__anon156
 i	includes/SDL2/SDL_test_md5.h	/^    MD5UINT4  i[2];     \/* number of _bits_ handled mod 2^64 *\/$/;"	m	struct:__anon81
+i	includes/wolf3d.h	/^	int					i;$/;"	m	struct:s_my_win
 i	libraries/libui/SDL2/SDL_test_md5.h	/^    MD5UINT4  i[2];     \/* number of _bits_ handled mod 2^64 *\/$/;"	m	struct:__anon175
 iHeight	includes/SDL2/SDL_egl.h	/^    EGLint iHeight;$/;"	m	struct:EGLClientPixmapHI
 iHeight	libraries/libui/SDL2/SDL_egl.h	/^    EGLint iHeight;$/;"	m	struct:EGLClientPixmapHI
@@ -23487,7 +23419,6 @@ needed	libraries/libui/SDL2/SDL_audio.h	/^    int needed;                 \/**< 
 next	includes/SDL2/SDL_assert.h	/^    const struct SDL_AssertData *next;$/;"	m	struct:SDL_AssertData	typeref:struct:SDL_AssertData::SDL_AssertData
 next	includes/SDL2/SDL_pixels.h	/^    struct SDL_PixelFormat *next;$/;"	m	struct:SDL_PixelFormat	typeref:struct:SDL_PixelFormat::SDL_PixelFormat
 next	libraries/libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
-next	libraries/libft/libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
 next	libraries/libui/SDL2/SDL_assert.h	/^    const struct SDL_AssertData *next;$/;"	m	struct:SDL_AssertData	typeref:struct:SDL_AssertData::SDL_AssertData
 next	libraries/libui/SDL2/SDL_pixels.h	/^    struct SDL_PixelFormat *next;$/;"	m	struct:SDL_PixelFormat	typeref:struct:SDL_PixelFormat::SDL_PixelFormat
 numFingers	includes/SDL2/SDL_events.h	/^    Uint16 numFingers;$/;"	m	struct:SDL_MultiGestureEvent
@@ -23638,6 +23569,7 @@ render_flags	includes/SDL2/SDL_test_common.h	/^    Uint32 render_flags;$/;"	m	st
 render_flags	libraries/libui/SDL2/SDL_test_common.h	/^    Uint32 render_flags;$/;"	m	struct:__anon173
 renderdriver	includes/SDL2/SDL_test_common.h	/^    const char *renderdriver;$/;"	m	struct:__anon79
 renderdriver	libraries/libui/SDL2/SDL_test_common.h	/^    const char *renderdriver;$/;"	m	struct:__anon173
+renderer	includes/wolf3d.h	/^	SDL_Renderer		*renderer;$/;"	m	struct:s_my_win
 renderers	includes/SDL2/SDL_test_common.h	/^    SDL_Renderer **renderers;$/;"	m	struct:__anon79
 renderers	libraries/libui/SDL2/SDL_test_common.h	/^    SDL_Renderer **renderers;$/;"	m	struct:__anon173
 repeat	includes/SDL2/SDL_events.h	/^    Uint8 repeat;       \/**< Non-zero if this is a key repeat *\/$/;"	m	struct:SDL_KeyboardEvent
@@ -23649,7 +23581,7 @@ right_coeff	libraries/libui/SDL2/SDL_haptic.h	/^    Sint16 right_coeff[3];  \/**
 right_sat	includes/SDL2/SDL_haptic.h	/^    Uint16 right_sat[3];    \/**< Level when joystick is to the positive side; max 0xFFFF. *\/$/;"	m	struct:SDL_HapticCondition
 right_sat	libraries/libui/SDL2/SDL_haptic.h	/^    Uint16 right_sat[3];    \/**< Level when joystick is to the positive side; max 0xFFFF. *\/$/;"	m	struct:SDL_HapticCondition
 s_list	libraries/libft/libft.h	/^typedef struct		s_list$/;"	s
-s_list	libraries/libft/libft/libft.h	/^typedef struct		s_list$/;"	s
+s_my_win	includes/wolf3d.h	/^typedef struct			s_my_win$/;"	s
 samples	includes/SDL2/SDL_audio.h	/^    Uint16 samples;             \/**< Audio buffer size in sample FRAMES (total samples divided by channel count) *\/$/;"	m	struct:SDL_AudioSpec
 samples	includes/SDL2/SDL_haptic.h	/^    Uint16 samples;         \/**< Amount of samples. *\/$/;"	m	struct:SDL_HapticCustom
 samples	libraries/libui/SDL2/SDL_audio.h	/^    Uint16 samples;             \/**< Audio buffer size in sample FRAMES (total samples divided by channel count) *\/$/;"	m	struct:SDL_AudioSpec
@@ -23729,7 +23661,7 @@ sym	libraries/libui/SDL2/SDL_keyboard.h	/^    SDL_Keycode sym;            \/**< 
 syswm	includes/SDL2/SDL_events.h	/^    SDL_SysWMEvent syswm;           \/**< System dependent window event data *\/$/;"	m	union:SDL_Event
 syswm	libraries/libui/SDL2/SDL_events.h	/^    SDL_SysWMEvent syswm;           \/**< System dependent window event data *\/$/;"	m	union:SDL_Event
 t_list	libraries/libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
-t_list	libraries/libft/libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_my_win	includes/wolf3d.h	/^}						t_my_win;$/;"	t	typeref:struct:s_my_win
 targets	includes/SDL2/SDL_test_common.h	/^    SDL_Texture **targets;$/;"	m	struct:__anon79
 targets	libraries/libui/SDL2/SDL_test_common.h	/^    SDL_Texture **targets;$/;"	m	struct:__anon173
 testCase	includes/SDL2/SDL_test_harness.h	/^    SDLTest_TestCaseFp testCase;$/;"	m	struct:SDLTest_TestCaseReference
@@ -23990,6 +23922,7 @@ window	includes/SDL2/SDL_syswm.h	/^            IInspectable * window;      \/**<
 window	includes/SDL2/SDL_syswm.h	/^            NSWindow __unsafe_unretained *window; \/**< The Cocoa window *\/$/;"	m	struct:SDL_SysWMinfo::__anon68::__anon73
 window	includes/SDL2/SDL_syswm.h	/^            UIWindow __unsafe_unretained *window; \/**< The UIKit window *\/$/;"	m	struct:SDL_SysWMinfo::__anon68::__anon74
 window	includes/SDL2/SDL_syswm.h	/^            Window window;              \/**< The X11 window *\/$/;"	m	struct:SDL_SysWMinfo::__anon68::__anon71
+window	includes/wolf3d.h	/^	SDL_Window			*window;$/;"	m	struct:s_my_win
 window	libraries/libui/SDL2/SDL_events.h	/^    SDL_WindowEvent window;         \/**< Window event data *\/$/;"	m	union:SDL_Event
 window	libraries/libui/SDL2/SDL_messagebox.h	/^    SDL_Window *window;                 \/**< Parent window, can be NULL *\/$/;"	m	struct:__anon125
 window	libraries/libui/SDL2/SDL_syswm.h	/^            ANativeWindow *window;$/;"	m	struct:SDL_SysWMinfo::__anon162::__anon171
