@@ -10,7 +10,15 @@
 # include "../libraries/libft/libft.h"
 # include <errno.h>
 
+typedef struct			s_my_win
+{
+	int					i;
+	SDL_Window			*window;
+	SDL_Renderer		*renderer;
+}						t_my_win;
 
-void	ft_quit_error(char *my_message);
+
+void					ft_quit(t_my_win *s_win, int status);
+void					ft_show_error_and_quit(t_my_win *s_win, const char *my_message);
 
 #endif
