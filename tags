@@ -22991,9 +22991,12 @@ freq	includes/SDL2/SDL_audio.h	/^    int freq;                   \/**< DSP frequ
 freq	libraries/libui/SDL2/SDL_audio.h	/^    int freq;                   \/**< DSP frequency -- samples per second *\/$/;"	m	struct:SDL_AudioSpec
 ft_atoi	libraries/libft/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
 ft_bzero	libraries/libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_clear_window	srcs/main.c	/^void			ft_clear_window(t_my_win *s_win)$/;"	f
 ft_create_renderer	srcs/main.c	/^void			ft_create_renderer(t_my_win *s_win)$/;"	f
 ft_create_window	srcs/main.c	/^void			ft_create_window(t_my_win *s_win)$/;"	f
-ft_event_loop	srcs/main.c	/^void			ft_event_loop(t_my_win *s_win)$/;"	f
+ft_draw_rectangle	srcs/main.c	/^void			ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win)$/;"	f
+ft_event_loop	srcs/main.c	/^void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)$/;"	f
+ft_get_mouse_position	srcs/main.c	/^void			ft_get_mouse_position(void)$/;"	f
 ft_isalnum	libraries/libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
 ft_isalpha	libraries/libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
 ft_isascii	libraries/libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
@@ -23061,6 +23064,7 @@ ft_strtrimsecond	libraries/libft/ft_strtrim.c	/^static void		ft_strtrimsecond(in
 ft_strtrimthird	libraries/libft/ft_strtrim.c	/^static void		ft_strtrimthird(int *i, char *swap, char *swap2)$/;"	f	file:
 ft_tolower	libraries/libft/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
 ft_toupper	libraries/libft/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+ft_update_event	srcs/main.c	/^void			ft_update_event(t_my_input *s_input)$/;"	f
 function	includes/SDL2/SDL_assert.h	/^    const char *function;$/;"	m	struct:SDL_AssertData
 function	libraries/libui/SDL2/SDL_assert.h	/^    const char *function;$/;"	m	struct:SDL_AssertData
 g	includes/SDL2/SDL_messagebox.h	/^    Uint8 r, g, b;$/;"	m	struct:__anon28
@@ -23128,6 +23132,7 @@ hat_mask	libraries/libui/SDL2/SDL_gamecontroller.h	/^            int hat_mask;$/
 hdc	includes/SDL2/SDL_syswm.h	/^            HDC hdc;                    \/**< The window device context *\/$/;"	m	struct:SDL_SysWMinfo::__anon68::__anon69
 hdc	libraries/libui/SDL2/SDL_syswm.h	/^            HDC hdc;                    \/**< The window device context *\/$/;"	m	struct:SDL_SysWMinfo::__anon162::__anon163
 height	includes/SDL2/SDL_test_images.h	/^  int height;$/;"	m	struct:SDLTest_SurfaceImage_s
+height	includes/wolf3d.h	/^	int					height;$/;"	m	struct:s_my_size
 height	libraries/libui/SDL2/SDL_test_images.h	/^  int height;$/;"	m	struct:SDLTest_SurfaceImage_s
 here	includes/SDL2/SDL_rwops.h	/^            Uint8 *here;$/;"	m	struct:SDL_RWops::__anon46::__anon49
 here	libraries/libui/SDL2/SDL_rwops.h	/^            Uint8 *here;$/;"	m	struct:SDL_RWops::__anon140::__anon143
@@ -23187,6 +23192,7 @@ jdevice	libraries/libui/SDL2/SDL_events.h	/^    SDL_JoyDeviceEvent jdevice;     
 jhat	includes/SDL2/SDL_events.h	/^    SDL_JoyHatEvent jhat;           \/**< Joystick hat event data *\/$/;"	m	union:SDL_Event
 jhat	libraries/libui/SDL2/SDL_events.h	/^    SDL_JoyHatEvent jhat;           \/**< Joystick hat event data *\/$/;"	m	union:SDL_Event
 key	includes/SDL2/SDL_events.h	/^    SDL_KeyboardEvent key;          \/**< Keyboard event data *\/$/;"	m	union:SDL_Event
+key	includes/wolf3d.h	/^	SDL_bool			key[SDL_NUM_SCANCODES];$/;"	m	struct:s_my_input
 key	libraries/libui/SDL2/SDL_events.h	/^    SDL_KeyboardEvent key;          \/**< Keyboard event data *\/$/;"	m	union:SDL_Event
 keysym	includes/SDL2/SDL_events.h	/^    SDL_Keysym keysym;  \/**< The key that was pressed or released *\/$/;"	m	struct:SDL_KeyboardEvent
 keysym	libraries/libui/SDL2/SDL_events.h	/^    SDL_Keysym keysym;  \/**< The key that was pressed or released *\/$/;"	m	struct:SDL_KeyboardEvent
@@ -23401,6 +23407,7 @@ mode	includes/SDL2/SDL_shape.h	/^    WindowShapeMode mode;$/;"	m	struct:SDL_Wind
 mode	libraries/libui/SDL2/SDL_shape.h	/^    WindowShapeMode mode;$/;"	m	struct:SDL_WindowShapeMode
 motion	includes/SDL2/SDL_events.h	/^    SDL_MouseMotionEvent motion;    \/**< Mouse motion event data *\/$/;"	m	union:SDL_Event
 motion	libraries/libui/SDL2/SDL_events.h	/^    SDL_MouseMotionEvent motion;    \/**< Mouse motion event data *\/$/;"	m	union:SDL_Event
+mouse	includes/wolf3d.h	/^	SDL_bool			mouse[6];$/;"	m	struct:s_my_input
 msg	includes/SDL2/SDL_events.h	/^    SDL_SysWMmsg *msg;  \/**< driver dependent data, defined in SDL_syswm.h *\/$/;"	m	struct:SDL_SysWMEvent
 msg	includes/SDL2/SDL_syswm.h	/^            UINT msg;                   \/**< The type of message *\/$/;"	m	struct:SDL_SysWMmsg::__anon61::__anon62
 msg	includes/SDL2/SDL_syswm.h	/^    } msg;$/;"	m	struct:SDL_SysWMmsg	typeref:union:SDL_SysWMmsg::__anon61
@@ -23534,6 +23541,7 @@ pixel_data	includes/SDL2/SDL_test_images.h	/^  const char *pixel_data;$/;"	m	str
 pixel_data	libraries/libui/SDL2/SDL_test_images.h	/^  const char *pixel_data;$/;"	m	struct:SDLTest_SurfaceImage_s
 pixels	includes/SDL2/SDL_surface.h	/^    void *pixels;               \/**< Read-write *\/$/;"	m	struct:SDL_Surface
 pixels	libraries/libui/SDL2/SDL_surface.h	/^    void *pixels;               \/**< Read-write *\/$/;"	m	struct:SDL_Surface
+point	includes/wolf3d.h	/^	t_my_point			point;$/;"	m	struct:s_my_rectangle
 position	includes/SDL2/SDL_rwops.h	/^            long position;$/;"	m	struct:SDL_RWops::__anon46::__anon47
 position	libraries/libui/SDL2/SDL_rwops.h	/^            long position;$/;"	m	struct:SDL_RWops::__anon140::__anon141
 pressure	includes/SDL2/SDL_events.h	/^    float pressure;     \/**< Normalized in the range 0...1 *\/$/;"	m	struct:SDL_TouchFingerEvent
@@ -23541,6 +23549,7 @@ pressure	includes/SDL2/SDL_touch.h	/^    float pressure;$/;"	m	struct:SDL_Finger
 pressure	libraries/libui/SDL2/SDL_events.h	/^    float pressure;     \/**< Normalized in the range 0...1 *\/$/;"	m	struct:SDL_TouchFingerEvent
 pressure	libraries/libui/SDL2/SDL_touch.h	/^    float pressure;$/;"	m	struct:SDL_Finger
 quit	includes/SDL2/SDL_events.h	/^    SDL_QuitEvent quit;             \/**< Quit request event data *\/$/;"	m	union:SDL_Event
+quit	includes/wolf3d.h	/^	SDL_bool			quit;$/;"	m	struct:s_my_input
 quit	libraries/libui/SDL2/SDL_events.h	/^    SDL_QuitEvent quit;             \/**< Quit request event data *\/$/;"	m	union:SDL_Event
 r	includes/SDL2/SDL_messagebox.h	/^    Uint8 r, g, b;$/;"	m	struct:__anon28
 r	includes/SDL2/SDL_pixels.h	/^    Uint8 r;$/;"	m	struct:SDL_Color
@@ -23582,6 +23591,10 @@ right_coeff	libraries/libui/SDL2/SDL_haptic.h	/^    Sint16 right_coeff[3];  \/**
 right_sat	includes/SDL2/SDL_haptic.h	/^    Uint16 right_sat[3];    \/**< Level when joystick is to the positive side; max 0xFFFF. *\/$/;"	m	struct:SDL_HapticCondition
 right_sat	libraries/libui/SDL2/SDL_haptic.h	/^    Uint16 right_sat[3];    \/**< Level when joystick is to the positive side; max 0xFFFF. *\/$/;"	m	struct:SDL_HapticCondition
 s_list	libraries/libft/libft.h	/^typedef struct		s_list$/;"	s
+s_my_input	includes/wolf3d.h	/^typedef struct			s_my_input$/;"	s
+s_my_point	includes/wolf3d.h	/^typedef struct			s_my_point$/;"	s
+s_my_rectangle	includes/wolf3d.h	/^typedef struct			s_my_rectangle$/;"	s
+s_my_size	includes/wolf3d.h	/^typedef struct			s_my_size$/;"	s
 s_my_win	includes/wolf3d.h	/^typedef struct			s_my_win$/;"	s
 samples	includes/SDL2/SDL_audio.h	/^    Uint16 samples;             \/**< Audio buffer size in sample FRAMES (total samples divided by channel count) *\/$/;"	m	struct:SDL_AudioSpec
 samples	includes/SDL2/SDL_haptic.h	/^    Uint16 samples;         \/**< Amount of samples. *\/$/;"	m	struct:SDL_HapticCustom
@@ -23602,6 +23615,7 @@ silence	libraries/libui/SDL2/SDL_audio.h	/^    Uint8 silence;              \/**<
 size	includes/SDL2/SDL_audio.h	/^    Uint32 size;                \/**< Audio buffer size in bytes (calculated) *\/$/;"	m	struct:SDL_AudioSpec
 size	includes/SDL2/SDL_rwops.h	/^            long size;$/;"	m	struct:SDL_RWops::__anon46::__anon47
 size	includes/SDL2/SDL_rwops.h	/^    Sint64 (SDLCALL * size) (struct SDL_RWops * context);$/;"	m	struct:SDL_RWops
+size	includes/wolf3d.h	/^	t_my_size			size;$/;"	m	struct:s_my_rectangle
 size	libraries/libui/SDL2/SDL_audio.h	/^    Uint32 size;                \/**< Audio buffer size in bytes (calculated) *\/$/;"	m	struct:SDL_AudioSpec
 size	libraries/libui/SDL2/SDL_rwops.h	/^            long size;$/;"	m	struct:SDL_RWops::__anon140::__anon141
 size	libraries/libui/SDL2/SDL_rwops.h	/^    Sint64 (SDLCALL * size) (struct SDL_RWops * context);$/;"	m	struct:SDL_RWops
@@ -23662,6 +23676,10 @@ sym	libraries/libui/SDL2/SDL_keyboard.h	/^    SDL_Keycode sym;            \/**< 
 syswm	includes/SDL2/SDL_events.h	/^    SDL_SysWMEvent syswm;           \/**< System dependent window event data *\/$/;"	m	union:SDL_Event
 syswm	libraries/libui/SDL2/SDL_events.h	/^    SDL_SysWMEvent syswm;           \/**< System dependent window event data *\/$/;"	m	union:SDL_Event
 t_list	libraries/libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_my_input	includes/wolf3d.h	/^}						t_my_input;$/;"	t	typeref:struct:s_my_input
+t_my_point	includes/wolf3d.h	/^}						t_my_point;$/;"	t	typeref:struct:s_my_point
+t_my_rectangle	includes/wolf3d.h	/^}						t_my_rectangle;$/;"	t	typeref:struct:s_my_rectangle
+t_my_size	includes/wolf3d.h	/^}						t_my_size;$/;"	t	typeref:struct:s_my_size
 t_my_win	includes/wolf3d.h	/^}						t_my_win;$/;"	t	typeref:struct:s_my_win
 targets	includes/SDL2/SDL_test_common.h	/^    SDL_Texture **targets;$/;"	m	struct:__anon79
 targets	libraries/libui/SDL2/SDL_test_common.h	/^    SDL_Texture **targets;$/;"	m	struct:__anon173
@@ -23908,11 +23926,13 @@ which	libraries/libui/SDL2/SDL_events.h	/^    Uint32 which;       \/**< The mous
 which	libraries/libui/SDL2/SDL_events.h	/^    Uint32 which;       \/**< The mouse instance id, or SDL_TOUCH_MOUSEID *\/$/;"	m	struct:SDL_MouseMotionEvent
 which	libraries/libui/SDL2/SDL_events.h	/^    Uint32 which;       \/**< The mouse instance id, or SDL_TOUCH_MOUSEID *\/$/;"	m	struct:SDL_MouseWheelEvent
 width	includes/SDL2/SDL_test_images.h	/^  int width;$/;"	m	struct:SDLTest_SurfaceImage_s
+width	includes/wolf3d.h	/^	int					width;$/;"	m	struct:s_my_size
 width	libraries/libui/SDL2/SDL_test_images.h	/^  int width;$/;"	m	struct:SDLTest_SurfaceImage_s
 win	includes/SDL2/SDL_syswm.h	/^        } win;$/;"	m	union:SDL_SysWMinfo::__anon68	typeref:struct:SDL_SysWMinfo::__anon68::__anon69
 win	includes/SDL2/SDL_syswm.h	/^        } win;$/;"	m	union:SDL_SysWMmsg::__anon61	typeref:struct:SDL_SysWMmsg::__anon61::__anon62
 win	libraries/libui/SDL2/SDL_syswm.h	/^        } win;$/;"	m	union:SDL_SysWMinfo::__anon162	typeref:struct:SDL_SysWMinfo::__anon162::__anon163
 win	libraries/libui/SDL2/SDL_syswm.h	/^        } win;$/;"	m	union:SDL_SysWMmsg::__anon155	typeref:struct:SDL_SysWMmsg::__anon155::__anon156
+win_size	includes/wolf3d.h	/^	t_my_size			win_size;$/;"	m	struct:s_my_win
 window	includes/SDL2/SDL_events.h	/^    SDL_WindowEvent window;         \/**< Window event data *\/$/;"	m	union:SDL_Event
 window	includes/SDL2/SDL_messagebox.h	/^    SDL_Window *window;                 \/**< Parent window, can be NULL *\/$/;"	m	struct:__anon31
 window	includes/SDL2/SDL_syswm.h	/^            ANativeWindow *window;$/;"	m	struct:SDL_SysWMinfo::__anon68::__anon77
@@ -23992,6 +24012,8 @@ x	includes/SDL2/SDL_rect.h	/^    int x, y;$/;"	m	struct:SDL_Rect
 x	includes/SDL2/SDL_rect.h	/^    int x;$/;"	m	struct:SDL_Point
 x	includes/SDL2/SDL_test_random.h	/^    unsigned int x;$/;"	m	struct:__anon82
 x	includes/SDL2/SDL_touch.h	/^    float x;$/;"	m	struct:SDL_Finger
+x	includes/wolf3d.h	/^	int					x;$/;"	m	struct:s_my_input
+x	includes/wolf3d.h	/^	int					x;$/;"	m	struct:s_my_point
 x	libraries/libui/SDL2/SDL_events.h	/^    Sint32 x;           \/**< The amount scrolled horizontally, positive to the right and negative to the left *\/$/;"	m	struct:SDL_MouseWheelEvent
 x	libraries/libui/SDL2/SDL_events.h	/^    Sint32 x;           \/**< X coordinate, relative to window *\/$/;"	m	struct:SDL_MouseButtonEvent
 x	libraries/libui/SDL2/SDL_events.h	/^    Sint32 x;           \/**< X coordinate, relative to window *\/$/;"	m	struct:SDL_MouseMotionEvent
@@ -24008,8 +24030,10 @@ x11	libraries/libui/SDL2/SDL_syswm.h	/^        } x11;$/;"	m	union:SDL_SysWMinfo:
 x11	libraries/libui/SDL2/SDL_syswm.h	/^        } x11;$/;"	m	union:SDL_SysWMmsg::__anon155	typeref:struct:SDL_SysWMmsg::__anon155::__anon157
 xrel	includes/SDL2/SDL_events.h	/^    Sint16 xrel;        \/**< The relative motion in the X direction *\/$/;"	m	struct:SDL_JoyBallEvent
 xrel	includes/SDL2/SDL_events.h	/^    Sint32 xrel;        \/**< The relative motion in the X direction *\/$/;"	m	struct:SDL_MouseMotionEvent
+xrel	includes/wolf3d.h	/^	int					xrel;$/;"	m	struct:s_my_input
 xrel	libraries/libui/SDL2/SDL_events.h	/^    Sint16 xrel;        \/**< The relative motion in the X direction *\/$/;"	m	struct:SDL_JoyBallEvent
 xrel	libraries/libui/SDL2/SDL_events.h	/^    Sint32 xrel;        \/**< The relative motion in the X direction *\/$/;"	m	struct:SDL_MouseMotionEvent
+xwheel	includes/wolf3d.h	/^	int					xwheel;$/;"	m	struct:s_my_input
 y	includes/SDL2/SDL_events.h	/^    Sint32 y;           \/**< The amount scrolled vertically, positive away from the user and negative toward the user *\/$/;"	m	struct:SDL_MouseWheelEvent
 y	includes/SDL2/SDL_events.h	/^    Sint32 y;           \/**< Y coordinate, relative to window *\/$/;"	m	struct:SDL_MouseButtonEvent
 y	includes/SDL2/SDL_events.h	/^    Sint32 y;           \/**< Y coordinate, relative to window *\/$/;"	m	struct:SDL_MouseMotionEvent
@@ -24019,6 +24043,8 @@ y	includes/SDL2/SDL_events.h	/^    float y;$/;"	m	struct:SDL_MultiGestureEvent
 y	includes/SDL2/SDL_rect.h	/^    int x, y;$/;"	m	struct:SDL_Rect
 y	includes/SDL2/SDL_rect.h	/^    int y;$/;"	m	struct:SDL_Point
 y	includes/SDL2/SDL_touch.h	/^    float y;$/;"	m	struct:SDL_Finger
+y	includes/wolf3d.h	/^	int					y;$/;"	m	struct:s_my_input
+y	includes/wolf3d.h	/^	int					y;$/;"	m	struct:s_my_point
 y	libraries/libui/SDL2/SDL_events.h	/^    Sint32 y;           \/**< The amount scrolled vertically, positive away from the user and negative toward the user *\/$/;"	m	struct:SDL_MouseWheelEvent
 y	libraries/libui/SDL2/SDL_events.h	/^    Sint32 y;           \/**< Y coordinate, relative to window *\/$/;"	m	struct:SDL_MouseButtonEvent
 y	libraries/libui/SDL2/SDL_events.h	/^    Sint32 y;           \/**< Y coordinate, relative to window *\/$/;"	m	struct:SDL_MouseMotionEvent
@@ -24030,5 +24056,7 @@ y	libraries/libui/SDL2/SDL_rect.h	/^    int y;$/;"	m	struct:SDL_Point
 y	libraries/libui/SDL2/SDL_touch.h	/^    float y;$/;"	m	struct:SDL_Finger
 yrel	includes/SDL2/SDL_events.h	/^    Sint16 yrel;        \/**< The relative motion in the Y direction *\/$/;"	m	struct:SDL_JoyBallEvent
 yrel	includes/SDL2/SDL_events.h	/^    Sint32 yrel;        \/**< The relative motion in the Y direction *\/$/;"	m	struct:SDL_MouseMotionEvent
+yrel	includes/wolf3d.h	/^	int					yrel;$/;"	m	struct:s_my_input
 yrel	libraries/libui/SDL2/SDL_events.h	/^    Sint16 yrel;        \/**< The relative motion in the Y direction *\/$/;"	m	struct:SDL_JoyBallEvent
 yrel	libraries/libui/SDL2/SDL_events.h	/^    Sint32 yrel;        \/**< The relative motion in the Y direction *\/$/;"	m	struct:SDL_MouseMotionEvent
+ywheel	includes/wolf3d.h	/^	int					ywheel;$/;"	m	struct:s_my_input
