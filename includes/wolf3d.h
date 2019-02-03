@@ -9,6 +9,7 @@
 # include <stdio.h>
 # include "../libraries/libft/libft.h"
 # include <errno.h>
+# include <SDL_ttf.h>
 
 
 typedef struct			s_my_point
@@ -38,6 +39,7 @@ typedef struct			s_my_win
 	SDL_Event			event;
 	t_my_size			win_size;
 	t_my_point			mouse_position;
+	int					**map;
 }						t_my_win;
 
 typedef struct			s_my_input
@@ -51,11 +53,14 @@ typedef struct			s_my_input
 	int					xwheel;
 	int					ywheel;
 	int					mouse;
+	int					mouse_clic;
 }						t_my_input;
 
 
 void					ft_quit(t_my_win *s_win, int status);
 void					ft_show_error_and_quit(t_my_win *s_win, const char *my_message);
 void					ft_get_mouse_position(t_my_win *s_win);
+void					ft_draw_map(t_my_win *s_win);
+void					ft_display_menu(t_my_win *s_win);
 
 #endif

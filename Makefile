@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/01 16:51:43 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/03 16:24:45 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ OBJ_Dir = ./objs/
 CSources = $(addprefix $(SRC_Dir), $(SRC))
 CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
 FLAGS = -Wall -Wextra -Werror
-CC = gcc
-LIBRARIES = -L ./libraries/libui -lSDL2 -L ./libraries/libui -lSDL2_image -framework OpenGL ./libraries/libft/libft.a
+CC = gcc -v
+LIBRARIES = -L ./libraries/libui -lSDL2 -L ./libraries/libui -lSDL2_image -framework OpenGL -L ./libraries/libft  -lft  -L /Users/jchardin/.brew/Cellar/sdl_ttf/2.0.11_1/lib -lSDL_ttf
 INCLUDES  = -I ./includes
 
 $(NAME):clear $(CObjects)

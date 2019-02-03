@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:22:40 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/03 11:27:20 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/03 14:52:08 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ void			ft_create_window(t_my_win *s_win)
 	if (s_win->window == NULL)
 		ft_show_error_and_quit(s_win, SDL_GetError());
 	SDL_RaiseWindow(s_win->window); //met la fenetre au premier plan
+
+
+if(TTF_Init() == -1)
+{
+    fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n", TTF_GetError());
+    exit(EXIT_FAILURE);
+}
+
+
+
+
 }
 
 void			ft_create_renderer(t_my_win *s_win)
@@ -59,8 +70,10 @@ void			ft_get_mouse_position(t_my_win *s_win)
 	SDL_PumpEvents();
 	SDL_GetMouseState(&x, &y);
 	if (x != 0 && y != 0)
-	s_win->mouse_position.x = x;
+		s_win->mouse_position.x = x;
 	s_win->mouse_position.y = y;
+	if (x != 0 && y != 0)
+		printf("x=%d, y=%d\n", x, y);
 }
 
 void			ft_update_event(t_my_input *s_input)
@@ -76,6 +89,8 @@ void			ft_update_event(t_my_input *s_input)
 			s_input->key[event.key.keysym.scancode] = SDL_FALSE;
 		else if (event.type == SDL_MOUSEMOTION)
 			s_input->mouse = 1;
+		else if (event.type == SDL_MOUSEBUTTONDOWN)
+			s_input->mouse_clic = 1;
 	}
 }
 
@@ -96,22 +111,13 @@ void			ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win)
 		}
 		y++;
 	}
-	SDL_RenderPresent(s_win->renderer);
 }
 
 void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)
 {
-	t_my_rectangle		s_rectangle;
 	while(!s_input->quit)
 	{
 		ft_update_event(s_input);
-		if(s_input->key[SDL_SCANCODE_A])
-		{
-			printf("appui sur A\n");
-			ft_clear_window(s_win);
-			ft_draw_rectangle(s_rectangle, s_win);
-			s_input->key[SDL_SCANCODE_A] = SDL_FALSE;
-		}
 		if(s_input->key[SDL_SCANCODE_C])
 		{
 			printf("appui sur C\n");
@@ -122,19 +128,81 @@ void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)
 		{
 			ft_quit(s_win, SUCESS);
 		}
+		if (s_input->mouse_clic)
+		{
+			ft_get_mouse_position(s_win);
+			s_win->map[s_win->mouse_position.y / 20] [s_win->mouse_position.x / 20] = 1;
+			ft_clear_window(s_win);
+			ft_draw_map(s_win);
+			SDL_RenderPresent(s_win->renderer);
+			s_input->mouse_clic = 0;
+		}
 		if (s_input->mouse)
 		{
+			t_my_rectangle		s_rectangle;
+
 			ft_get_mouse_position(s_win);
 			s_rectangle.point.x = s_win->mouse_position.x;
 			s_rectangle.point.y = s_win->mouse_position.y;
-			s_rectangle.size.height = 50;
-			s_rectangle.size.width = 50;
+			s_rectangle.size.height = 20;
+			s_rectangle.size.width = 20;
 			ft_clear_window(s_win);
+			ft_draw_map(s_win);
 			ft_draw_rectangle(s_rectangle, s_win);
+			SDL_RenderPresent(s_win->renderer);
 			s_input->mouse = 0;
 		}
 		SDL_Delay(20);
 	}
+}
+
+void		ft_draw_map(t_my_win *s_win)
+{
+	int		x;
+	int		y;
+	t_my_rectangle		s_rectangle;
+
+	y = 0;
+	while (y < s_win->win_size.height / 20)
+	{
+		x = 0;
+		while (x < s_win->win_size.width / 20)
+		{
+			if (s_win->map[y][x] == 1)
+			{
+				s_rectangle.point.x = x * 20;
+				s_rectangle.point.y = y * 20;
+				s_rectangle.size.height = 20;
+				s_rectangle.size.width = 20;
+				ft_draw_rectangle(s_rectangle, s_win);
+			}
+			x++;
+		}
+		y++;
+	}
+
+}
+
+int				**ft_init_map(t_my_win *s_win)
+{
+	int		**map;
+	int		y;
+	int		x;
+
+	map = (int**)malloc(sizeof(int*) * (s_win->win_size.height / 20));
+	y = 0;
+	while (y < s_win->win_size.height / 20)
+	{
+		x = 0;
+		map[y] = (int*)malloc(sizeof(int) * (s_win->win_size.width / 20));
+		while (x < s_win->win_size.width / 20)
+		{
+			map[y][x] = 0;
+			x++;
+		}
+		y++;
+	}
+	return (map);
 }
 
 void			ft_map_editor(t_my_win *s_win)
@@ -144,7 +212,16 @@ void			ft_map_editor(t_my_win *s_win)
 	ft_create_window(s_win);
 	ft_create_renderer(s_win);
 	printf("hello\n");
+	s_win->map = ft_init_map(s_win);
 	ft_event_loop(&s_input, s_win);
+}
+
+void			ft_display_menu(t_my_win *s_win)
+{
+	ft_create_window(s_win);
+	ft_create_renderer(s_win);
+
+
 }
 
 int				main(int argc, char **argv)
@@ -152,7 +229,7 @@ int				main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	t_my_win	s_win;
-
+	ft_display_menu(&s_win);
 	ft_map_editor(&s_win);
 	return (SUCESS);
 }
