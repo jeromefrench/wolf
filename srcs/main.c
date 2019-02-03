@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:22:40 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/03 18:50:11 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/03 19:07:34 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,31 +219,30 @@ void			ft_map_editor(t_my_win *s_win)
 
 void			ft_display_menu(t_my_win *s_win)
 {
-	(void)s_win;
-	
-int quit = 0;
+	ft_create_window(s_win);
+	ft_create_renderer(s_win);
+	int quit = 0;
     SDL_Event event;
 
-    SDL_Init(SDL_INIT_VIDEO);
     TTF_Init();
 
-    SDL_Window * window = SDL_CreateWindow("SDL_ttf in SDL2",
-        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640,
-        480, 0);
-    SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
+			ft_clear_window(s_win);
     TTF_Font * font = TTF_OpenFont("/Users/jchardin/wolf/films.icedeart.ttf", 25);
 if(!font) {
     printf("TTF_OpenFont: %s\n", TTF_GetError());
 }
-    SDL_Color color = { 255, 255, 255, 0 };
+    SDL_Color color = {255, 255, 255, 0};
     SDL_Surface * surface = TTF_RenderText_Solid(font,
         "Welcome to Gigi Labs", color);
-    SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Texture * texture = SDL_CreateTextureFromSurface(s_win->renderer, surface);
 
     int texW = 0;
     int texH = 0;
     SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-    SDL_Rect dstrect = { 0, 0, texW, texH };
+    SDL_Rect dstrect = { 20, 20, texW, texH };
+        SDL_RenderCopy(s_win->renderer, texture, NULL, &dstrect);
+        SDL_RenderPresent(s_win->renderer);
+		SDL_Delay(3000);
 
     while (!quit)
     {
@@ -256,15 +255,13 @@ if(!font) {
                 break;
         }
 
-        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-        SDL_RenderPresent(renderer);
     }
 
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(surface);
     TTF_CloseFont(font);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(s_win->renderer);
+    SDL_DestroyWindow(s_win->window);
     TTF_Quit();
     SDL_Quit();
 }
