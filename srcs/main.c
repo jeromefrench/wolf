@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:22:40 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/02 15:09:49 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/03 11:27:20 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			ft_clear_window(t_my_win *s_win)
 	int		x;
 	int		y;
 
-	SDL_SetRenderDrawColor(s_win->renderer, 0, 0, 0, 0);
+	SDL_SetRenderDrawColor(s_win->renderer, 255, 0, 0, 0);
 	y = 0;
 	while (y < s_win->win_size.height)
 	{
@@ -29,9 +29,7 @@ void			ft_clear_window(t_my_win *s_win)
 		}
 		y++;
 	}
-	SDL_RenderPresent(s_win->renderer);
 }
-
 
 void			ft_create_window(t_my_win *s_win)
 {
@@ -50,9 +48,10 @@ void			ft_create_renderer(t_my_win *s_win)
 	s_win->renderer = SDL_CreateRenderer(s_win->window, -1, SDL_RENDERER_ACCELERATED);
 	if (s_win->renderer == NULL)
 		ft_show_error_and_quit(s_win, SDL_GetError());
+	//display sdl_RendererIn
 }
 
-void			ft_get_mouse_position(void)
+void			ft_get_mouse_position(t_my_win *s_win)
 {
 	int		x;
 	int		y;
@@ -60,7 +59,8 @@ void			ft_get_mouse_position(void)
 	SDL_PumpEvents();
 	SDL_GetMouseState(&x, &y);
 	if (x != 0 && y != 0)
-	printf("mmouse x=%d, y=%d\n", x, y);
+	s_win->mouse_position.x = x;
+	s_win->mouse_position.y = y;
 }
 
 void			ft_update_event(t_my_input *s_input)
@@ -74,6 +74,8 @@ void			ft_update_event(t_my_input *s_input)
 			s_input->key[event.key.keysym.scancode] = SDL_TRUE;
 		else if (event.type == SDL_KEYUP)
 			s_input->key[event.key.keysym.scancode] = SDL_FALSE;
+		else if (event.type == SDL_MOUSEMOTION)
+			s_input->mouse = 1;
 	}
 }
 
@@ -100,16 +102,13 @@ void			ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win)
 void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)
 {
 	t_my_rectangle		s_rectangle;
-	s_rectangle.point.x = 11;
-	s_rectangle.point.y = 11;
-	s_rectangle.size.height = 50;
-	s_rectangle.size.width = 50;
 	while(!s_input->quit)
 	{
 		ft_update_event(s_input);
 		if(s_input->key[SDL_SCANCODE_A])
 		{
 			printf("appui sur A\n");
+			ft_clear_window(s_win);
 			ft_draw_rectangle(s_rectangle, s_win);
 			s_input->key[SDL_SCANCODE_A] = SDL_FALSE;
 		}
@@ -119,26 +118,33 @@ void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)
 			ft_clear_window(s_win);
 			s_input->key[SDL_SCANCODE_C] = SDL_FALSE;
 		}
+		if (s_input->key[SDL_SCANCODE_ESCAPE])
+		{
+			ft_quit(s_win, SUCESS);
+		}
+		if (s_input->mouse)
+		{
+			ft_get_mouse_position(s_win);
+			s_rectangle.point.x = s_win->mouse_position.x;
+			s_rectangle.point.y = s_win->mouse_position.y;
+			s_rectangle.size.height = 50;
+			s_rectangle.size.width = 50;
+			ft_clear_window(s_win);
+			ft_draw_rectangle(s_rectangle, s_win);
+			s_input->mouse = 0;
+		}
 		SDL_Delay(20);
 	}
 }
 
 void			ft_map_editor(t_my_win *s_win)
 {
+	t_my_input		s_input;
+
 	ft_create_window(s_win);
 	ft_create_renderer(s_win);
-	SDL_SetRenderDrawColor(s_win->renderer, 255, 255, 255, 0);
 	printf("hello\n");
-	SDL_RenderDrawPoint(s_win->renderer, 5, 5);
-	SDL_RenderPresent(s_win->renderer);
-	ft_clear_window(s_win);
-
-
-	t_my_input		s_input;
 	ft_event_loop(&s_input, s_win);
-
-
-	//ft_event_loop(s_win);
 }
 
 int				main(int argc, char **argv)

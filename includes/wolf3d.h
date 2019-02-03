@@ -37,6 +37,7 @@ typedef struct			s_my_win
 	SDL_Renderer		*renderer;
 	SDL_Event			event;
 	t_my_size			win_size;
+	t_my_point			mouse_position;
 }						t_my_win;
 
 typedef struct			s_my_input
@@ -49,12 +50,12 @@ typedef struct			s_my_input
 	int					yrel;
 	int					xwheel;
 	int					ywheel;
-	SDL_bool			mouse[6];
+	int					mouse;
 }						t_my_input;
 
 
 void					ft_quit(t_my_win *s_win, int status);
 void					ft_show_error_and_quit(t_my_win *s_win, const char *my_message);
-void					ft_get_mouse_position(void);
+void					ft_get_mouse_position(t_my_win *s_win);
 
 #endif

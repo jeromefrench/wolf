@@ -22996,7 +22996,7 @@ ft_create_renderer	srcs/main.c	/^void			ft_create_renderer(t_my_win *s_win)$/;"	
 ft_create_window	srcs/main.c	/^void			ft_create_window(t_my_win *s_win)$/;"	f
 ft_draw_rectangle	srcs/main.c	/^void			ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win)$/;"	f
 ft_event_loop	srcs/main.c	/^void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)$/;"	f
-ft_get_mouse_position	srcs/main.c	/^void			ft_get_mouse_position(void)$/;"	f
+ft_get_mouse_position	srcs/main.c	/^void			ft_get_mouse_position(t_my_win *s_win)$/;"	f
 ft_isalnum	libraries/libft/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
 ft_isalpha	libraries/libft/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
 ft_isascii	libraries/libft/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
@@ -23407,7 +23407,8 @@ mode	includes/SDL2/SDL_shape.h	/^    WindowShapeMode mode;$/;"	m	struct:SDL_Wind
 mode	libraries/libui/SDL2/SDL_shape.h	/^    WindowShapeMode mode;$/;"	m	struct:SDL_WindowShapeMode
 motion	includes/SDL2/SDL_events.h	/^    SDL_MouseMotionEvent motion;    \/**< Mouse motion event data *\/$/;"	m	union:SDL_Event
 motion	libraries/libui/SDL2/SDL_events.h	/^    SDL_MouseMotionEvent motion;    \/**< Mouse motion event data *\/$/;"	m	union:SDL_Event
-mouse	includes/wolf3d.h	/^	SDL_bool			mouse[6];$/;"	m	struct:s_my_input
+mouse	includes/wolf3d.h	/^	int					mouse;$/;"	m	struct:s_my_input
+mouse_position	includes/wolf3d.h	/^	t_my_point			mouse_position;$/;"	m	struct:s_my_win
 msg	includes/SDL2/SDL_events.h	/^    SDL_SysWMmsg *msg;  \/**< driver dependent data, defined in SDL_syswm.h *\/$/;"	m	struct:SDL_SysWMEvent
 msg	includes/SDL2/SDL_syswm.h	/^            UINT msg;                   \/**< The type of message *\/$/;"	m	struct:SDL_SysWMmsg::__anon61::__anon62
 msg	includes/SDL2/SDL_syswm.h	/^    } msg;$/;"	m	struct:SDL_SysWMmsg	typeref:union:SDL_SysWMmsg::__anon61
