@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 16:50:48 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/03 10:39:11 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/03 17:04:31 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_quit(t_my_win *s_win, int status)
 		SDL_DestroyRenderer(s_win->renderer);
 	if (s_win->window != NULL)
 		SDL_DestroyWindow(s_win->window);
+	TTF_Quit();
 	SDL_Quit();
 	exit(status);
 }
