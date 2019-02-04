@@ -3,6 +3,12 @@
 
 # define FAILURE 0
 # define SUCESS 1
+# define TRUE 1
+# define FALSE 0
+
+
+
+
 
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_image.h"
@@ -94,5 +100,10 @@ void					ft_load_bmp(t_my_win *s_win);
 void					ft_put_text(t_my_win *s_win, char *str, int place);
 void					ft_map_editor(t_my_win *s_win);
 void					ft_get_mouse_position(t_my_win *s_win);
+void					ft_move_the_arrow_down(t_my_win *s_win);
+void					ft_launch_map(t_my_win *s_win);
+void					ft_move_the_arrow_up(t_my_win *s_win);
+void					ft_launch_map_editor(t_my_win *s_win);
+void					ft_launch_map(t_my_win *s_win);
 
 #endif

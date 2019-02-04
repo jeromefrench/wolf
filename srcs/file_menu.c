@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/04 19:02:08 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:48:35 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,61 +17,45 @@ void			ft_display_menu(t_my_win *s_win)
 	s_win->menu.arrow_h = 120;
 	ft_create_window(s_win);
 	ft_create_renderer(s_win);
+	ft_draw_menu(s_win);
 	ft_event_loop_menu(s_win);
+}
+
+void			ft_init_event_menu(t_my_win *s_win)
+{
+	s_win->menu.input.quit = FALSE;
+	s_win->menu.input.key[SDL_SCANCODE_DOWN] = FALSE;
+	s_win->menu.input.key[SDL_SCANCODE_UP] = FALSE;
+	s_win->menu.input.key[SDL_SCANCODE_RETURN] = FALSE;
+	s_win->menu.input.mouse = 0;
+	s_win->menu.input.mouse_clic = 0;
 }
 
 void			ft_event_loop_menu(t_my_win *s_win)
 {
-	s_win->menu.input.key[SDL_SCANCODE_ESCAPE] = 0;
-	ft_draw_menu(s_win);
+	ft_init_event_menu(s_win);
 	while (!s_win->menu.input.quit)
 	{
 		ft_update_event(s_win);
 		if (s_win->menu.input.key[SDL_SCANCODE_ESCAPE])
 			ft_quit(s_win, SUCESS);
 		else if (s_win->menu.input.key[SDL_SCANCODE_DOWN] && s_win->menu.arrow_h <= 120)
-		{
-			s_win->menu.arrow_h += 80;
-			s_win->menu.input.key[SDL_SCANCODE_DOWN] = 0;
-			ft_draw_menu(s_win);
-		}
+			ft_move_the_arrow_down(s_win);
 		else if (s_win->menu.input.key[SDL_SCANCODE_UP] && s_win->menu.arrow_h >= 200)
-		{
-			s_win->menu.arrow_h -= 80;
-			s_win->menu.input.key[SDL_SCANCODE_UP] = 0;
-			ft_draw_menu(s_win);
-		}
+			ft_move_the_arrow_up(s_win);
 		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] && s_win->menu.arrow_h == 120)
-		{
-			if (s_win->renderer != NULL)
-				SDL_DestroyRenderer(s_win->renderer);
-			if (s_win->window != NULL)
-				SDL_DestroyWindow(s_win->window);
-			TTF_Quit();
-			s_win->menu.input.quit = 1;
-			ft_map_editor(s_win);
-		}
+			ft_launch_map_editor(s_win);
 		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] && s_win->menu.arrow_h == 200)
-		{
-		}
+			ft_launch_map(s_win);
 		SDL_Delay(3);
 	}
 }
 
-void			ft_draw_menu(t_my_win *s_win)
-{
-	ft_clear_window(s_win);
-	ft_put_text(s_win, "Map Editor", 120);
-	ft_put_text(s_win, "Load Map", 200);
-	ft_load_bmp(s_win);
-	SDL_RenderPresent(s_win->renderer);
-}
-
 void			ft_put_text(t_my_win *s_win, char *str, int place)
 {
-	SDL_Color		color;
 	int				text_w;
 	int				text_h;
+	SDL_Color		color;
 	SDL_Surface		*surface;
 	SDL_Texture		*texture;
 	SDL_Rect		dstrect;
