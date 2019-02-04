@@ -6,14 +6,18 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/03 18:57:51 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/04 13:49:08 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
 SRC = main.c \
-      file_quit.c
+file_quit.c \
+file_window.c \
+file_renderer.c \
+file_menu.c \
+file_map_editor.c
 
 
 OBJ = $(SRC:.c=.o)

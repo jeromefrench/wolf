@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/04 16:28:52 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:41:09 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ void			ft_event_loop_menu(t_my_input *s_input, t_my_win *s_win)
 			s_win->menu.arrow_h -= 80;
 			s_input->key[SDL_SCANCODE_UP] = 0;
 			ft_draw_menu(s_win);
+		}
+		else if (s_input->key[SDL_SCANCODE_RETURN] && s_win->menu.arrow_h == 120)
+		{
+			if (s_win->renderer != NULL)
+				SDL_DestroyRenderer(s_win->renderer);
+			if (s_win->window != NULL)
+				SDL_DestroyWindow(s_win->window);
+			TTF_Quit();
+			s_input->quit = 1;
+			ft_map_editor(s_win);
+		}
+		else if (s_input->key[SDL_SCANCODE_RETURN] && s_win->menu.arrow_h == 200)
+		{
 		}
 		SDL_Delay(3);
 	}

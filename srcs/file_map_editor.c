@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/04 16:35:02 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:40:41 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)
 {
 	t_my_rectangle		s_rectangle;
 
+	s_input->key[SDL_SCANCODE_C] = SDL_FALSE;
+	s_input->quit = SDL_FALSE;
+	s_input->key[SDL_SCANCODE_ESCAPE] = 0;
 	while (!s_input->quit)
 	{
 		ft_update_event(s_input);
@@ -47,10 +50,12 @@ void			ft_event_loop(t_my_input *s_input, t_my_win *s_win)
 		}
 		if (s_input->key[SDL_SCANCODE_ESCAPE])
 		{
+			printf("appui sur escape\n");
 			ft_quit(s_win, SUCESS);
 		}
 		if (s_input->mouse_clic)
 		{
+			printf("mouse clic\n");
 			ft_get_mouse_position(s_win);
 			s_win->map[s_win->mouse_position.y / 20][s_win->mouse_position.x / 20] = 1;
 			ft_clear_window(s_win);

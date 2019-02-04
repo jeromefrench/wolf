@@ -76,5 +76,6 @@ int						**ft_init_map(t_my_win *s_win);
 void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win);
 void					ft_load_bmp(t_my_win *s_win); 
 void					ft_put_text(t_my_win *s_win, char *str, int place);
+void					ft_map_editor(t_my_win *s_win);
 
 #endif
