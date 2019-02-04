@@ -6,10 +6,9 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 16:50:48 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/03 17:04:31 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/04 16:40:05 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "wolf3d.h"
 
@@ -33,5 +32,9 @@ void	ft_quit(t_my_win *s_win, int status)
 	exit(status);
 }
 
-
-
+/*
+** SDL_DestroyTexture(texture);
+** SDL_FreeSurface(surface);
+** TTF_CloseFont(font);
+** SDL_DestroyRenderer(s_win->renderer);
+*/
