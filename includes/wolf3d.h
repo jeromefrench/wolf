@@ -60,7 +60,6 @@ typedef struct			s_my_win
 	t_my_menu			menu;
 
 
-
 	int					i;
 	SDL_Window			*window;
 	SDL_Renderer		*renderer;
