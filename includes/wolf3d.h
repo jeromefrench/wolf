@@ -29,10 +29,6 @@ typedef struct			s_my_rectangle
 	t_my_size			size;
 }						t_my_rectangle;
 
-typedef struct			s_my_menu
-{
-	int					arrow_h;
-}						t_my_menu;
 
 typedef struct			s_my_input
 {
@@ -48,8 +44,23 @@ typedef struct			s_my_input
 	int					mouse_clic;
 }						t_my_input;
 
+typedef struct			s_my_menu
+{
+	t_my_input			input;
+
+
+	int					arrow_h;
+	
+}						t_my_menu;
+
+
+
 typedef struct			s_my_win
 {
+	t_my_menu			menu;
+
+
+
 	int					i;
 	SDL_Window			*window;
 	SDL_Renderer		*renderer;
@@ -57,7 +68,6 @@ typedef struct			s_my_win
 	t_my_size			win_size;
 	t_my_point			mouse_position;
 	int					**map;
-	t_my_menu			menu;
 }						t_my_win;
 
 void					ft_quit(t_my_win *s_win, int status);
@@ -77,5 +87,6 @@ void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win);
 void					ft_load_bmp(t_my_win *s_win); 
 void					ft_put_text(t_my_win *s_win, char *str, int place);
 void					ft_map_editor(t_my_win *s_win);
+void					ft_get_mouse_position(t_my_win *s_win);
 
 #endif
