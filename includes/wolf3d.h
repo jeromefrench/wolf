@@ -44,20 +44,27 @@ typedef struct			s_my_input
 	int					mouse_clic;
 }						t_my_input;
 
+
+
+
+
+
 typedef struct			s_my_menu
 {
 	t_my_input			input;
-
-
 	int					arrow_h;
-	
 }						t_my_menu;
 
+typedef struct			s_my_editor
+{
+	t_my_input			input;
+}						t_my_editor;
 
 
 typedef struct			s_my_win
 {
 	t_my_menu			menu;
+	t_my_editor			editor;
 
 
 	int					i;
@@ -75,12 +82,12 @@ void					ft_get_mouse_position(t_my_win *s_win);
 void					ft_draw_map(t_my_win *s_win);
 void					ft_display_menu(t_my_win *s_win);
 void					ft_draw_menu(t_my_win *s_win);
-void					ft_event_loop_menu(t_my_input *s_input, t_my_win *s_win);
+void					ft_event_loop_menu(t_my_win *s_win);
 void					ft_create_window(t_my_win *s_win);
 void					ft_clear_window(t_my_win *s_win);
 void					ft_create_renderer(t_my_win *s_win);
-void					ft_update_event(t_my_input *s_input);
-void					ft_event_loop(t_my_input *s_input, t_my_win *s_win);
+void					ft_update_event(t_my_win *s_win);
+void					ft_event_loop(t_my_win *s_win);
 int						**ft_init_map(t_my_win *s_win);
 void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win);
 void					ft_load_bmp(t_my_win *s_win); 
