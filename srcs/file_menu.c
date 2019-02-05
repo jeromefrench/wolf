@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/05 13:17:59 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/05 13:55:51 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void			ft_put_text(t_my_win *s_win, char *str, int place)
 	text.text_w = 0;
 	text.text_h = 0;
 	TTF_Init();
-	text.font = TTF_OpenFont("/Users/jchardin/wolf/films.icedeart.ttf", 35);
+	text.font = TTF_OpenFont("./media/films.icedeart.ttf", 35);
 	if (!text.font)
 		printf("TTF_OpenFont: %s\n", TTF_GetError());
 	text.surface = TTF_RenderText_Solid(text.font, str, text.color);
@@ -101,7 +101,7 @@ void			ft_load_bmp(t_my_win *s_win)
 	bmp.text_h = 0;
 	bmp.surface = NULL;
 	bmp.texture = NULL;
-	bmp.surface = SDL_LoadBMP("/Users/jchardin/wolf/untitled.bmp");
+	bmp.surface = SDL_LoadBMP("./media/untitled.bmp");
 	bmp.texture = SDL_CreateTextureFromSurface(s_win->renderer, bmp.surface);
 	SDL_FreeSurface(bmp.surface);
 	SDL_QueryTexture(bmp.texture, NULL, NULL, &(bmp.text_w), &(bmp.text_h));
