@@ -40,7 +40,7 @@ void			ft_square_follow_pointer(t_my_win *s_win)
 	ft_draw_map(s_win);
 	ft_draw_rectangle(s_rectangle, s_win);
 	SDL_RenderPresent(s_win->renderer);
-	s_win->editor.input.mouse_move = 0;
+	s_win->editor.input.mouse_move = 1;
 }
 
 void			ft_draw_map(t_my_win *s_win)
