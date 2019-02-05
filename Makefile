@@ -3,44 +3,44 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
+#    By: lpelissi <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/05 12:56:00 by jchardin         ###   ########.fr        #
+#    Created: 2019/01/29 11:46:21 by lpelissi          #+#    #+#              #
+#    Updated: 2019/02/05 14:53:18 by lpelissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
 SRC = main.c \
-file_quit.c \
-file_window.c \
-file_renderer.c \
-file_menu.c \
-file_map_editor.c \
-file_draw_rectangle.c \
-file_mouse_position.c \
-file_ft_menu.c \
-file_ft_editor.c
+	  file_quit.c \
+	  file_window.c \
+	  file_renderer.c \
+	  file_menu.c \
+	  file_map_editor.c \
+	  file_draw_rectangle.c \
+	  file_mouse_position.c \
+	  file_ft_menu.c \
+	  file_ft_editor.c
 
 OBJ = $(SRC:.c=.o)
-SRC_Dir = ./srcs/
-OBJ_Dir = ./objs/
-CSources = $(addprefix $(SRC_Dir), $(SRC))
-CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
-FLAGS = -Wall -Wextra -Werror
-CC = gcc -g
-LIBRARIES = -L ./libraries/libui -lSDL2 -L ./libraries/libui -lSDL2_image -framework OpenGL -L ./libraries/libft  -lft  -L /Users/jchardin/.brew/Cellar/sdl2_ttf/2.0.14/lib -lSDL2_ttf
-INCLUDES  = -I ./includes
+	SRC_Dir = ./srcs/
+	OBJ_Dir = ./objs/
+	CSources = $(addprefix $(SRC_Dir), $(SRC))
+	CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
+	FLAGS = -Wall -Wextra -Werror
+	CC = gcc -g  
+	LIBRARIES = -L /Users/lpelissi/.brew/Cellar/sdl2/2.0.9/lib/ -lSDL2  -framework OpenGL -L ./libraries/libft  -lft  -L /Users/lpelissi/.brew/Cellar/sdl2_ttf/2.0.14/lib -lSDL2_ttf
+	INCLUDES  = -I ./includes
 
 $(NAME):clear $(CObjects)
-	make -C ./libraries/libft
+	make -C ./libraries/libft 
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) -o $(NAME)
-	ctags -R .
+	#ctags -R .
 
 $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 	mkdir $(OBJ_Dir) 2> /dev/null || true
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@ 
 
 
 clean:
