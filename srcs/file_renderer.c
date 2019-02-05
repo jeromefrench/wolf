@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:37:14 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/04 13:38:09 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/05 11:43:39 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void			ft_create_renderer(t_my_win *s_win)
 {
-	s_win->renderer = SDL_CreateRenderer(s_win->window, -1, SDL_RENDERER_ACCELERATED);
+	s_win->renderer = SDL_CreateRenderer(s_win->window, -1,
+SDL_RENDERER_ACCELERATED);
 	if (s_win->renderer == NULL)
 		ft_show_error_and_quit(s_win, SDL_GetError());
 }
