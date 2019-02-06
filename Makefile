@@ -30,7 +30,7 @@ OBJ = $(SRC:.c=.o)
 	CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
 	FLAGS = -Wall -Wextra -Werror
 	CC = gcc -g  
-	LIBRARIES =   -framework OpenGL -L ./libraries/libft  -lft  -L ./libraries/SDL2_ttf/2.0.14/lib -lSDL2_ttf
+	LIBRARIES = -framework OpenGL -L ./libraries/libft  -lft -L ./libraries/sdl2/lib -lSDL2 -L ./libraries/SDL2_ttf/2.0.14/lib -lSDL2_ttf
 	INCLUDES  = -I ./includes -I ./libraries/sdl2_ttf/2.0.14/include/SDL2 -I ./libraries/sdl2/include/SDL2
 $(NAME):clear $(CObjects)
 	make -C ./libraries/libft 
@@ -44,7 +44,7 @@ $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 
 clean:
 	make fclean -C ./libraries/libft
-	/bin/rm -rf $(OBJ_Dir)
+	/bin/rm -rf $(OBJ_Di
 
 fclean:clean
 	/bin/rm -rf $(NAME)
