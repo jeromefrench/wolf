@@ -118,5 +118,8 @@ void		            ft_save_the_map(t_my_win *s_win);
 //fonctions de la map
 void					ft_draw_map(t_my_win *s_win);
 void					ft_launch_map(t_my_win *s_win);
+void					ft_free_the_map(t_my_win *s_win);
+void					ft_read_the_map(t_my_win *s_win);
+int						ft_my_atoi(char c);
 
 #endif

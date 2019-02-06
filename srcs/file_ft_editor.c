@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 12:44:08 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/06 10:28:20 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/06 13:00:30 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,9 @@ void			ft_save_the_map(t_my_win *s_win)
 	int		y;
 	int		x;
 
-	printf("hello\n");
 	s_win->fd = open("mapwolf", O_RDWR);
 	if (s_win->fd == -1)
-	{
 		ft_putstr(strerror(errno));
-	}
 	y = 0;
 	while (y < s_win->win_size.height / 20)
 	{
@@ -95,4 +92,19 @@ void			ft_save_the_map(t_my_win *s_win)
 		y++;
 	}
 	close(s_win->fd);
+	ft_free_the_map(s_win);
+	ft_display_menu(s_win);
+}
+
+void			ft_free_the_map(t_my_win *s_win)
+{
+	int		y;
+
+	y = 0;
+	while (y < s_win->win_size.height / 20)
+	{
+		free(s_win->map[y]);
+		y++;
+	}
+	free(s_win->map);
 }
