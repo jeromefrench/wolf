@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/05 12:56:00 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/06 14:52:14 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ file_map_editor.c \
 file_draw_rectangle.c \
 file_mouse_position.c \
 file_ft_menu.c \
-file_ft_editor.c
+file_ft_editor.c \
+file_load_the_map.c \
+file_move_square.c
+
 
 OBJ = $(SRC:.c=.o)
 SRC_Dir = ./srcs/

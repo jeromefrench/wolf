@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/05 13:55:51 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:12:46 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void			ft_init_event_menu(t_my_win *s_win)
 	s_win->menu.input.key[SDL_SCANCODE_DOWN] = FALSE;
 	s_win->menu.input.key[SDL_SCANCODE_UP] = FALSE;
 	s_win->menu.input.key[SDL_SCANCODE_RETURN] = FALSE;
+	s_win->menu.input.key[SDL_SCANCODE_ESCAPE] = FALSE;
 	s_win->menu.input.mouse_move = 0;
 	s_win->menu.input.mouse_clic = 0;
 }

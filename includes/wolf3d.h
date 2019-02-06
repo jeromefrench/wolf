@@ -6,6 +6,12 @@
 # define TRUE 1
 # define FALSE 0
 
+
+# define UP 0
+# define DOWN 1
+# define RIGHT 2
+# define LEFT 3
+
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_image.h"
 # include <stdio.h>
@@ -58,6 +64,12 @@ typedef struct			s_my_put_smth
 	TTF_Font			*font;
 }						t_my_put_smth;
 
+typedef struct			s_my_game
+{
+	t_my_input			input;
+	t_my_point			square_pos;
+	t_my_rectangle		rect;
+}						t_my_game;
 
 typedef struct			s_my_menu
 {
@@ -73,6 +85,7 @@ typedef struct			s_my_editor
 typedef struct			s_my_win
 {
 	t_my_menu			menu;
+	t_my_game			game;
 	t_my_editor			editor;
 	SDL_Window			*window;
 	SDL_Renderer		*renderer;
@@ -121,5 +134,17 @@ void					ft_launch_map(t_my_win *s_win);
 void					ft_free_the_map(t_my_win *s_win);
 void					ft_read_the_map(t_my_win *s_win);
 int						ft_my_atoi(char c);
+
+//fonctions map gameplay
+void					ft_event_loop_map(t_my_win *s_win);
+void					ft_move_square(int move, t_my_win *s_win);
+void					ft_init_square_pos(t_my_win *s_win);
+
+
+
+
+
+
+
 
 #endif
