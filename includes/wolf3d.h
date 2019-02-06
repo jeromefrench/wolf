@@ -12,6 +12,7 @@
 # include "../libraries/libft/libft.h"
 # include <errno.h>
 # include <SDL_ttf.h>
+# include <fcntl.h>
 
 typedef struct			s_my_point
 {
@@ -78,6 +79,7 @@ typedef struct			s_my_win
 	SDL_Event			event;
 	t_my_size			win_size;
 	int					**map;
+    int                 fd;
 	t_my_point			mouse_position;
 }						t_my_win;
 
@@ -111,6 +113,7 @@ void					ft_update_event_editor(t_my_win *s_win);
 void					ft_square_follow_pointer(t_my_win *s_win);
 void					ft_quit_map_editor(t_my_win *s_win);
 int						**ft_init_map(t_my_win *s_win);
+void		            ft_save_the_map(t_my_win *s_win);
 
 //fonctions de la map
 void					ft_draw_map(t_my_win *s_win);
