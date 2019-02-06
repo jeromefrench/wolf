@@ -30,8 +30,8 @@ OBJ = $(SRC:.c=.o)
 	CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
 	FLAGS = -Wall -Wextra -Werror
 	CC = gcc -g  
-	LIBRARIES = -L ./libraries/sdl2/lib -lSDL2  -framework OpenGL -L ./libraries/libft  -lft  -L ./libraries/SDL2_ttf/2.0.14/lib -lSDL2_ttf
-	INCLUDES  = -I ./includes -I ./libraries/sdl2_ttf/2.0.14/include/SDL2
+	LIBRARIES =   -framework OpenGL -L ./libraries/libft  -lft  -L ./libraries/SDL2_ttf/2.0.14/lib -lSDL2_ttf
+	INCLUDES  = -I ./includes -I ./libraries/sdl2_ttf/2.0.14/include/SDL2 -I ./libraries/sdl2/include/SDL2
 $(NAME):clear $(CObjects)
 	make -C ./libraries/libft 
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) $(sdl2-config --cflags) -o $(NAME) 
