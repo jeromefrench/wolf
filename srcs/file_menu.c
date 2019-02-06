@@ -57,7 +57,7 @@ void			ft_event_loop_menu(t_my_win *s_win)
 s_win->menu.arrow_h <= 120)
 			ft_move_the_arrow_down(s_win);
 		else if (s_win->menu.input.key[SDL_SCANCODE_UP] &&
-s_win->menu.arrow_h >= 200)
+s_win->menu.arrow_h >= 280)
 			ft_move_the_arrow_up(s_win);
 		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] &&
 s_win->menu.arrow_h == 120)
@@ -65,6 +65,9 @@ s_win->menu.arrow_h == 120)
 		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] &&
 s_win->menu.arrow_h == 200)
 			ft_launch_map(s_win);
+		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] &&
+s_win->menu.arrow_h == 280)
+			ft_launch_play(s_win);
 		SDL_Delay(3);
 	}
 }

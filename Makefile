@@ -21,7 +21,8 @@ SRC = main.c \
 	  file_draw_rectangle.c \
 	  file_mouse_position.c \
 	  file_ft_menu.c \
-	  file_ft_editor.c
+	  file_ft_editor.c \
+	  file_play_editor.c 
 
 OBJ = $(SRC:.c=.o)
 	SRC_Dir = ./srcs/
@@ -32,6 +33,7 @@ OBJ = $(SRC:.c=.o)
 	CC = gcc -g  
 	LIBRARIES = -framework OpenGL -L ./libraries/libft  -lft -L ./libraries/sdl2/lib -lSDL2 -L ./libraries/SDL2_ttf/2.0.14/lib -lSDL2_ttf
 	INCLUDES  = -I ./includes -I ./libraries/sdl2_ttf/2.0.14/include/SDL2 -I ./libraries/sdl2/include/SDL2
+
 $(NAME):clear $(CObjects)
 	make -C ./libraries/libft 
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) $(sdl2-config --cflags) -o $(NAME) 
@@ -44,7 +46,7 @@ $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 
 clean:
 	make fclean -C ./libraries/libft
-	/bin/rm -rf $(OBJ_Di
+	/bin/rm -rf $(OBJ_Dir)
 
 fclean:clean
 	/bin/rm -rf $(NAME)

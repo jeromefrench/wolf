@@ -3,8 +3,8 @@
 
 # define FAILURE 0
 # define SUCESS 1
-# define TRUE 1
 # define FALSE 0
+# define TRUE 1
 
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_image.h"
@@ -115,5 +115,9 @@ int						**ft_init_map(t_my_win *s_win);
 //fonctions de la map
 void					ft_draw_map(t_my_win *s_win);
 void					ft_launch_map(t_my_win *s_win);
+
+//fonctions du play
+void					ft_play(t_my_win *s_win);
+void					ft_launch_play(t_my_win *s_win);
 
 #endif
