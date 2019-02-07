@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:28:32 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/06 15:01:34 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/07 14:51:26 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,18 @@ void			ft_move_square(int move, t_my_win *s_win)
 	s_win->game.rect.size.width = 10;
 	ft_clear_window(s_win);
 	ft_draw_rectangle(s_win->game.rect, s_win);
+
+	ft_ray_tracing(s_win, move);
+
+	ft_draw_map(s_win);
+	SDL_RenderPresent(s_win->renderer);
+
+
+
 	s_win->game.input.key[SDL_SCANCODE_W] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_S] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_A] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_D] = FALSE;
-	ft_draw_map(s_win);
-	SDL_RenderPresent(s_win->renderer);
+	s_win->game.input.key[SDL_SCANCODE_LEFT] = FALSE;
+	s_win->game.input.key[SDL_SCANCODE_RIGHT] = FALSE;
 }

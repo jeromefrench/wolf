@@ -6,6 +6,10 @@
 # define TRUE 1
 # define FALSE 0
 
+# define TRIGO 10
+# define ANTITRIGO 11
+# define NOTHING 99
+
 
 # define UP 0
 # define DOWN 1
@@ -19,6 +23,7 @@
 # include <errno.h>
 # include <SDL_ttf.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct			s_my_point
 {
@@ -37,6 +42,32 @@ typedef struct			s_my_rectangle
 	t_my_point			point;
 	t_my_size			size;
 }						t_my_rectangle;
+
+typedef struct				s_xyz_point
+{
+	double					a;
+	double					b;
+}							t_xyz_point;
+
+typedef struct				s_myputtheline
+{
+	int						above;
+	t_xyz_point				un;
+	t_xyz_point				deux;
+	int						ex;
+	int						ey;
+	int						dx;
+	int						dy;
+	int						d_x;
+	int						d_y;
+	int						i;
+	int						j;
+	int						x_incr;
+	int						y_incr;
+	float					ab;
+	float					le_z1;
+	float					le_z2;
+}							t_myputtheline;
 
 
 typedef struct			s_my_input
@@ -69,6 +100,7 @@ typedef struct			s_my_game
 	t_my_input			input;
 	t_my_point			square_pos;
 	t_my_rectangle		rect;
+	double				ray_angle;
 }						t_my_game;
 
 typedef struct			s_my_menu
@@ -142,9 +174,17 @@ void					ft_init_square_pos(t_my_win *s_win);
 
 
 
+void			ft_put_the_line_third(t_my_win *s_win, t_myputtheline *s_line);
 
 
+void			ft_case_one(t_my_win *s_win, t_myputtheline *s_line);
+void			ft_case_two(t_my_win *s_win, t_myputtheline *s_line);
+void			ft_case_three(t_my_win *s_win, t_myputtheline *s_line);
+void			ft_case_four(t_my_win *s_win, t_myputtheline *s_line);
+void			ft_case_five(t_my_win *s_win, t_myputtheline *s_line);
 
 
+void			ft_ray_tracing(t_my_win *s_win, int angle);
+t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle);
 
 #endif

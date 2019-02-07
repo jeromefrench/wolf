@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 12:44:08 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/06 13:00:30 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/07 10:04:18 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void			ft_quit_map_editor(t_my_win *s_win)
 
 void			ft_put_square_on_map(t_my_win *s_win)
 {
-	printf("put square on map\n");
 	ft_get_mouse_position(s_win);
 	s_win->map[s_win->mouse_position.y / 20][s_win->mouse_position.x / 20] = 1;
 	ft_clear_window(s_win);
