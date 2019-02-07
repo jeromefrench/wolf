@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
+/*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 16:51:57 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/30 10:30:39 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/13 14:45:29 by lpelissi          #+#    #+#             */
+/*   Updated: 2018/11/13 14:55:05 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	if (ap != 0)
+	if (ap && *ap)
 	{
-		free(*ap);
+		free((char*)*ap);
 		*ap = NULL;
 	}
 }

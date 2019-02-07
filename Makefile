@@ -13,16 +13,17 @@
 NAME = wolf3d
 
 SRC = main.c \
-	  file_quit.c \
-	  file_window.c \
-	  file_renderer.c \
-	  file_menu.c \
-	  file_map_editor.c \
-	  file_draw_rectangle.c \
-	  file_mouse_position.c \
-	  file_ft_menu.c \
-	  file_ft_editor.c \
-	  file_play_editor.c 
+file_quit.c \
+file_window.c \
+file_renderer.c \
+file_menu.c \
+file_map_editor.c \
+file_draw_rectangle.c \
+file_mouse_position.c \
+file_ft_menu.c \
+file_ft_editor.c \
+file_load_the_map.c \
+file_move_square.c
 
 OBJ = $(SRC:.c=.o)
 	SRC_Dir = ./srcs/
@@ -31,8 +32,20 @@ OBJ = $(SRC:.c=.o)
 	CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
 	FLAGS = -Wall -Wextra -Werror
 	CC = gcc -g  
-	LIBRARIES = -framework OpenGL -L ./libraries/libft  -lft -L ./libraries/sdl2/lib -lSDL2 -L ./libraries/SDL2_ttf/2.0.14/lib -lSDL2_ttf
-	INCLUDES  = -I ./includes -I ./libraries/sdl2_ttf/2.0.14/include/SDL2 -I ./libraries/sdl2/include/SDL2
+	
+	LIBRARIES = -framework OpenGL \
+				-L ./libraries/libft -lft \
+				-L ./libraries/sdl2/2.0.9/lib -lSDL2\
+				-L ./libraries/sdl2_ttf/2.0.14/lib -lSDL2_ttf\
+				-L ./libraries/sdl2_image/2.0.4/lib -lSDL2_image\
+				-L ./libraries/sdl2_mixer/2.0.4/lib -lSDL2_mixer\
+				
+	
+	INCLUDES  = -I ./includes \
+				-I ./libraries/sdl2/2.0.9/include/SDL2 \
+				-I ./libraries/sdl2_ttf/2.0.14/include/SDL2 \
+				-I ./libraries/sdl2_image/2.0.4/include/SDL2 \
+				-I ./libraries/sdl2_mixer/2.0.4/include/SDL2 \
 
 $(NAME):clear $(CObjects)
 	make -C ./libraries/libft 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
+/*   By: lpelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 12:34:27 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/01 10:54:12 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/12 15:32:58 by lpelissi          #+#    #+#             */
+/*   Updated: 2018/11/20 11:37:52 by lpelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
+	int		n;
 	int		i;
-	int		j;
-	int		length;
+	size_t	p;
+	size_t	len;
 
+	n = 0;
 	i = 0;
-	j = 0;
-	length = ft_strlen(dst);
-	while (dst[i] != '\0')
-		i++;
-	if (size > 0)
+	p = 0;
+	while (src[n] != '\0')
+		n++;
+	while (dst[p])
 	{
-		while (src[j] != '\0' && i < (int)(size - 1))
-		{
-			dst[i] = src[j];
-			i++;
-			j++;
-		}
-		dst[i] = '\0';
+		if (p >= size)
+			return (size + n);
+		p++;
 	}
-	if (i >= (int)size)
-		return (ft_strlen(src) + size);
-	else
-		return (length + ft_strlen(src));
+	if (p >= size)
+		return (size + n);
+	len = (unsigned int)(n + p);
+	while (p < (size - 1) && src[i])
+		dst[p++] = src[i++];
+	dst[p] = '\0';
+	return (len);
 }

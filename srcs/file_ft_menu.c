@@ -37,28 +37,11 @@ void			ft_launch_map_editor(t_my_win *s_win)
 	ft_map_editor(s_win);
 }
 
-void			ft_launch_map(t_my_win *s_win)
-{
-	(void)s_win;
-}
-
-void			ft_launch_play(t_my_win *s_win)
-{
-	if (s_win->renderer != NULL)
-		SDL_DestroyRenderer(s_win->renderer);
-	if (s_win->window != NULL)
-		SDL_DestroyWindow(s_win->window);
-	TTF_Quit();
-	s_win->menu.input.quit = 1;
-	ft_play(s_win);
-}
-
 void			ft_draw_menu(t_my_win *s_win)
 {
 	ft_clear_window(s_win);
 	ft_put_text(s_win, "Map Editor", 120);
 	ft_put_text(s_win, "Load Map", 200);
-	ft_put_text(s_win, "Play", 280);
 	ft_load_bmp(s_win);
 	SDL_RenderPresent(s_win->renderer);
 }

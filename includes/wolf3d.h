@@ -6,12 +6,19 @@
 # define FALSE 0
 # define TRUE 1
 
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_image.h"
+# define UP 0
+# define DOWN 1
+# define RIGHT 2
+# define LEFT 3
+
+# include "../libraries/sdl2/2.0.9/include/SDL2/SDL.h" 
+# include "../libraries/sdl2_ttf/2.0.14/include/SDL2/SDL_ttf.h"
+# include "../libraries/sdl2_image/2.0.4/include/SDL2/SDL_image.h"
+# include "../libraries/sdl2_mixer/2.0.4/include/SDL2/SDL_mixer.h"
+# include "../libraries/libft/includes/libft.h"
 # include <stdio.h>
-# include "../libraries/libft/libft.h"
 # include <errno.h>
-# include <SDL_ttf.h>
+# include <fcntl.h>
 
 typedef struct			s_my_point
 {
@@ -57,6 +64,12 @@ typedef struct			s_my_put_smth
 	TTF_Font			*font;
 }						t_my_put_smth;
 
+typedef struct			s_my_game
+{
+	t_my_input			input;
+	t_my_point			square_pos;
+	t_my_rectangle		rect;
+}						t_my_game;
 
 typedef struct			s_my_menu
 {
@@ -72,12 +85,14 @@ typedef struct			s_my_editor
 typedef struct			s_my_win
 {
 	t_my_menu			menu;
+	t_my_game			game;
 	t_my_editor			editor;
 	SDL_Window			*window;
 	SDL_Renderer		*renderer;
 	SDL_Event			event;
 	t_my_size			win_size;
 	int					**map;
+    int                 fd;
 	t_my_point			mouse_position;
 }						t_my_win;
 
@@ -111,10 +126,19 @@ void					ft_update_event_editor(t_my_win *s_win);
 void					ft_square_follow_pointer(t_my_win *s_win);
 void					ft_quit_map_editor(t_my_win *s_win);
 int						**ft_init_map(t_my_win *s_win);
+void		            ft_save_the_map(t_my_win *s_win);
 
 //fonctions de la map
 void					ft_draw_map(t_my_win *s_win);
 void					ft_launch_map(t_my_win *s_win);
+void					ft_free_the_map(t_my_win *s_win);
+void					ft_read_the_map(t_my_win *s_win);
+int						ft_my_atoi(char c);
+
+//fonctions map gameplay
+void					ft_event_loop_map(t_my_win *s_win);
+void					ft_move_square(int move, t_my_win *s_win);
+void					ft_init_square_pos(t_my_win *s_win);
 
 //fonctions du play
 void					ft_play(t_my_win *s_win);
