@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/07 15:30:23 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/07 16:44:35 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void			ft_launch_map(t_my_win *s_win)
 void			ft_ray_tracing(t_my_win *s_win, int angle)
 {
 	t_myputtheline	s_line;
+	double			angle_r;
+
+	double			angle_ouverture;
+	double			angle_calcul_r;
+	double			distance;
+	angle_ouverture = 50;
 
 	if(angle == TRIGO)
 		s_win->game.ray_angle += 5;
@@ -38,25 +44,41 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 	s_line.un.a = s_win->game.square_pos.x;
 	s_line.un.b = s_win->game.square_pos.y;
 
-//	s_line.deux.a = s_win->game.square_pos.x + (cos(3.14 * 65 / 180) * 100);
-//	s_line.deux.b = s_win->game.square_pos.y + (sin(3.14 * 65 / 180) * 100);
-//	s_line.deux = ft_turn_vector(s_line.deux, s_win->game.ray_angle);
-//	ft_put_the_line_third(s_win, &s_line);
-//
-//	s_line.deux.a = s_win->game.square_pos.x - (cos(3.14 * 65 / 180) * 100);
-//	s_line.deux.b = s_win->game.square_pos.y + (sin(3.14 * 65 / 180) * 100);
-//	s_line.deux = ft_turn_vector(s_line.deux, s_win->game.ray_angle);
-//	ft_put_the_line_third(s_win, &s_line);
-	angle = s_win->game.ray_angle * 3.14 / 180;
 
-s_line.deux.a = (100 * cos(s_win->game.ray_angle * 3.14 / 180)) + (100  * -sin(s_win->game.ray_angle * 3.14 / 180)) + s_win->game.square_pos.x;
-s_line.deux.b = (100 * sin(s_win->game.ray_angle * 3.14 / 180)) + (100 *   cos(s_win->game.ray_angle * 3.14 / 180)) + s_win->game.square_pos.y;
+	distance = 100;
+	double	x = 0;
+	double	y = distance;
 
-//	s_line.deux.a = s_win->game.square_pos.x ;
-//	s_line.deux.b = s_win->game.square_pos.y + 100;
-	//s_line.deux = ft_turn_vector(s_line.deux, s_win->game.ray_angle);
+	//rayon droit
+	angle_r = s_win->game.ray_angle * 3.14 / 180;
+	//rotation
+	s_line.deux.a = (x * cos(angle_r)) + (y * -sin(angle_r));
+	s_line.deux.b = (x * sin(angle_r)) + (y *  cos(angle_r));
+	//translation
+	s_line.deux.a += s_win->game.square_pos.x;
+	s_line.deux.b += s_win->game.square_pos.y;
 	ft_put_the_line_third(s_win, &s_line);
 
+
+	//demi cercle
+	double angle_calcul;
+	angle_calcul = (180 - angle_ouverture) / 2;
+	int i = 0;
+	while(i < (angle_ouverture * 2))
+	{
+		angle_calcul = (180 - angle_ouverture + i) / 2;
+		angle_calcul_r = angle_calcul * 3.14 / 180;
+		x = cos(angle_calcul_r) * distance;
+		y = sin(angle_calcul_r) * distance;
+		//rotation
+		s_line.deux.a = (x * cos(angle_r)) + (y * -sin(angle_r));
+		s_line.deux.b = (x * sin(angle_r)) + (y *  cos(angle_r));
+		//translation
+		s_line.deux.a += s_win->game.square_pos.x;
+		s_line.deux.b += s_win->game.square_pos.y;
+		ft_put_the_line_third(s_win, &s_line);
+		i++;
+	}
 }
 
 
