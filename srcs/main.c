@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:22:40 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/06 10:32:24 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 11:22:11 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int				main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	ft_display_menu(&s_win);
+
 	return (SUCESS);
 }

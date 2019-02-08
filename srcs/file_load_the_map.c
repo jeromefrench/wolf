@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/07 16:44:35 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 11:24:18 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 	else if (angle == ANTITRIGO)
 		s_win->game.ray_angle -= 5;
 
-	s_line.un.a = s_win->game.square_pos.x;
-	s_line.un.b = s_win->game.square_pos.y;
+	s_line.un.a = s_win->game.player_pos.x;
+	s_line.un.b = s_win->game.player_pos.y;
 
 
 	distance = 100;
@@ -55,8 +55,10 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 	s_line.deux.a = (x * cos(angle_r)) + (y * -sin(angle_r));
 	s_line.deux.b = (x * sin(angle_r)) + (y *  cos(angle_r));
 	//translation
-	s_line.deux.a += s_win->game.square_pos.x;
-	s_line.deux.b += s_win->game.square_pos.y;
+	s_line.deux.a += s_win->game.player_pos.x;
+	s_line.deux.b += s_win->game.player_pos.y;
+
+	SDL_SetRenderDrawColor(s_win->renderer, 0, 0, 0, 0);
 	ft_put_the_line_third(s_win, &s_line);
 
 
@@ -74,14 +76,12 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 		s_line.deux.a = (x * cos(angle_r)) + (y * -sin(angle_r));
 		s_line.deux.b = (x * sin(angle_r)) + (y *  cos(angle_r));
 		//translation
-		s_line.deux.a += s_win->game.square_pos.x;
-		s_line.deux.b += s_win->game.square_pos.y;
+		s_line.deux.a += s_win->game.player_pos.x;
+		s_line.deux.b += s_win->game.player_pos.y;
 		ft_put_the_line_third(s_win, &s_line);
 		i++;
 	}
 }
-
-
 
 
 t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)
@@ -91,7 +91,6 @@ t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)
 	vector.b = (vector.a * -sin(angle)) + (vector.b * cos(angle));
 	return (vector);
 }
-
 
 
 void			ft_init_event_map(t_my_win *s_win)
@@ -119,7 +118,7 @@ void			ft_update_event_map(t_my_win *s_win)
 			s_win->game.input.mouse_move = 1;
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
 			s_win->game.input.mouse_clic = 1;
-		SDL_Delay(2);
+		SDL_Delay(1);
 	}
 }
 
@@ -164,8 +163,10 @@ void			ft_read_the_map(t_my_win *s_win)
 		while (x < s_win->win_size.width / 20)
 		{
 			s_win->map[y][x] = ft_my_atoi(line[x]);
+			printf("%d ", s_win->map[y][x]);
 			x++;
 		}
+		printf("\n");
 		y++;
 	}
 	close(s_win->fd);

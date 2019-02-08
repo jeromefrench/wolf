@@ -98,7 +98,7 @@ typedef struct			s_my_put_smth
 typedef struct			s_my_game
 {
 	t_my_input			input;
-	t_my_point			square_pos;
+	t_my_point			player_pos;
 	t_my_rectangle		rect;
 	double				ray_angle;
 }						t_my_game;
@@ -186,5 +186,6 @@ void			ft_case_five(t_my_win *s_win, t_myputtheline *s_line);
 
 void			ft_ray_tracing(t_my_win *s_win, int angle);
 t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle);
+void			ft_draw_player(t_my_win *s_win);
 
 #endif
