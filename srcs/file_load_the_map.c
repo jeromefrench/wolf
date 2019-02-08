@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 14:25:50 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 15:06:07 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 	s_line.un.b = s_win->game.player_pos.y;
 
 
-	distance = 10;
+	distance = 1;
 	double	x = 0;
 	double	y = distance;
 
@@ -65,16 +65,20 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 	//demi cercle
 	double angle_calcul;
 	angle_calcul = (180 - angle_ouverture) / 2;
-	int i = 0;
+	double i = 0;
 	int colision;
+
+//calcul de i pour avoir un rayon par pixel
+double step  = (angle_ouverture * 2) / s_win->win_size.width;
+int j = 0;
+
 	while(i < (angle_ouverture * 2))
 	{
 
-		distance = 10;
+		distance = 1;
 		colision = 0;
 		while (colision != 1)
 		{
-
 			angle_calcul = (180 - angle_ouverture + i) / 2;
 			angle_calcul_r = angle_calcul * 3.14 / 180;
 			x = cos(angle_calcul_r) * distance;
@@ -86,35 +90,31 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 			//s_line.deux.a += s_win->game.player_pos.x;
 			//s_line.deux.b += s_win->game.player_pos.y;
 
-
 			if ( s_win->map[(int)((s_line.deux.b + s_win->game.player_pos.y) / 20)]
 					[(int)((s_line.deux.a + s_win->game.player_pos.x) / 20)]
 					== 1)
-			{
 				colision = 1;
-			}
 			else
-			{
 				distance  += 1;
-			}
-
 
 			//limite de la carte
 			if (s_line.deux.a + s_win->game.player_pos.x  > (s_win->win_size.width - 1)
 					||
-				s_line.deux.a + s_win->game.player_pos.x  < 0 )
+					s_line.deux.a + s_win->game.player_pos.x  < 0 )
 				colision = 1;
 			if (s_line.deux.b + s_win->game.player_pos.y  > (s_win->win_size.height - 1)
 					||
 					s_line.deux.b + s_win->game.player_pos.y  < 0 )
 				colision = 1;
 		}
-
-			s_line.deux.a += s_win->game.player_pos.x;
-			s_line.deux.b += s_win->game.player_pos.y;
+		s_line.deux.a += s_win->game.player_pos.x;
+		s_line.deux.b += s_win->game.player_pos.y;
 
 		ft_put_the_line_third(s_win, &s_line);
-		i++;
+		i += step;
+
+		j++;
+		printf("Le j =%d\n", j);
 	}
 }
 

@@ -126,6 +126,7 @@ typedef struct			s_my_win
 	int					**map;
     int                 fd;
 	t_my_point			mouse_position;
+	double					colision[641];
 }						t_my_win;
 
 
