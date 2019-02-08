@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:28:32 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 11:34:28 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 14:20:06 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,18 @@ void			ft_move_square(int move, t_my_win *s_win)
 	int test = (int)s_win->game.ray_angle % (int)360.00;
 	printf("the angle =%d\n", (test));
 
+	x = 0;
+	y = 0;
 	if(move == DOWN)
-	{
-		x = 0;
 		y = -10;
-	}
-
 	else if(move == UP)
-	{
-		x = 0;
 		y = 10;
-	}
 	else if(move == LEFT)
-	{
 		x = -10;
-		y = 0;
-	}
 	else if(move == RIGHT)
-	{
 		x = 10;
-		y = 0;
-	}
-	else
-	{
-		x = 0;
-		y = 0;
-	}
 
 	angle_r = s_win->game.ray_angle * 3.14 / 180;
-//int a;
-//int	b;
-//printf("La positon du joueur =%d\n",a = (int)((s_win->game.player_pos.x + (x * cos(angle_r)) + (y * -sin(angle_r)) ) / 20));
-//printf("La positon du joueur =%d\n",b = (int)((s_win->game.player_pos.y + (x * sin(angle_r)) + (y *  cos(angle_r)) ) / 20));
-//printf("La map =%d\n", s_win->map[b][a]);
 
 	if (
 	s_win->map 	[(int)((s_win->game.player_pos.y + (x * sin(angle_r)) + (y *  cos(angle_r)) ) / 20)]
