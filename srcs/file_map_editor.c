@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/06 10:35:36 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:07:19 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void			ft_map_editor(t_my_win *s_win)
 	s_win->map = ft_init_map(s_win);
 	ft_clear_window(s_win);
 	ft_draw_map(s_win);
-	SDL_RenderPresent(s_win->renderer);
+	SDL_RenderPresent(s_win->renderer[0]);
 	ft_event_loop_editor(s_win);
 }
 

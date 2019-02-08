@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 16:50:48 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/04 16:40:05 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:05:06 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_show_error_and_quit(t_my_win *s_win, const char *my_message)
 
 void	ft_quit(t_my_win *s_win, int status)
 {
-	if (s_win->renderer != NULL)
-		SDL_DestroyRenderer(s_win->renderer);
-	if (s_win->window != NULL)
-		SDL_DestroyWindow(s_win->window);
+	if (s_win->renderer[0] != NULL)
+		SDL_DestroyRenderer(s_win->renderer[0]);
+	if (s_win->window[0] != NULL)
+		SDL_DestroyWindow(s_win->window[0]);
 	TTF_Quit();
 	SDL_Quit();
 	exit(status);

@@ -10,7 +10,6 @@
 # define ANTITRIGO 11
 # define NOTHING 99
 
-
 # define UP 0
 # define DOWN 1
 # define RIGHT 2
@@ -119,8 +118,8 @@ typedef struct			s_my_win
 	t_my_menu			menu;
 	t_my_game			game;
 	t_my_editor			editor;
-	SDL_Window			*window;
-	SDL_Renderer		*renderer;
+	SDL_Window			*window[2];
+	SDL_Renderer		*renderer[2];
 	SDL_Event			event;
 	t_my_size			win_size;
 	int					**map;
@@ -128,7 +127,6 @@ typedef struct			s_my_win
 	t_my_point			mouse_position;
 	double					colision[641];
 }						t_my_win;
-
 
 //fonctions de la fenetre
 void					ft_create_renderer(t_my_win *s_win);

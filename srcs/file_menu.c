@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/06 14:12:46 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:07:11 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void			ft_put_text(t_my_win *s_win, char *str, int place)
 	if (!text.font)
 		printf("TTF_OpenFont: %s\n", TTF_GetError());
 	text.surface = TTF_RenderText_Solid(text.font, str, text.color);
-	text.texture = SDL_CreateTextureFromSurface(s_win->renderer, text.surface);
+	text.texture = SDL_CreateTextureFromSurface(s_win->renderer[0], text.surface);
 	SDL_QueryTexture(text.texture, NULL, NULL, &(text.text_w), &(text.text_h));
 	text.dstrect.x = 250;
 	text.dstrect.y = place;
 	text.dstrect.w = text.text_w;
 	text.dstrect.h = text.text_h;
-	SDL_RenderCopy(s_win->renderer, text.texture, NULL, &(text.dstrect));
+	SDL_RenderCopy(s_win->renderer[0], text.texture, NULL, &(text.dstrect));
 }
 
 void			ft_load_bmp(t_my_win *s_win)
@@ -103,12 +103,12 @@ void			ft_load_bmp(t_my_win *s_win)
 	bmp.surface = NULL;
 	bmp.texture = NULL;
 	bmp.surface = SDL_LoadBMP("./media/untitled.bmp");
-	bmp.texture = SDL_CreateTextureFromSurface(s_win->renderer, bmp.surface);
+	bmp.texture = SDL_CreateTextureFromSurface(s_win->renderer[0], bmp.surface);
 	SDL_FreeSurface(bmp.surface);
 	SDL_QueryTexture(bmp.texture, NULL, NULL, &(bmp.text_w), &(bmp.text_h));
 	bmp.dstrect.x = 200;
 	bmp.dstrect.y = s_win->menu.arrow_h;
 	bmp.dstrect.w = bmp.text_w;
 	bmp.dstrect.h = bmp.text_h;
-	SDL_RenderCopy(s_win->renderer, bmp.texture, NULL, &(bmp.dstrect));
+	SDL_RenderCopy(s_win->renderer[0], bmp.texture, NULL, &(bmp.dstrect));
 }
