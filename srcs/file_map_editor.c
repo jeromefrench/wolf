@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:07:19 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:35:40 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			ft_init_event_editor(t_my_win *s_win)
 
 void			ft_event_loop_editor(t_my_win *s_win)
 {
+	s_win->index = 0;
 	ft_init_event_editor(s_win);
 	while (!s_win->editor.input.quit)
 	{
@@ -49,7 +50,7 @@ void			ft_event_loop_editor(t_my_win *s_win)
 		if (s_win->editor.input.key[SDL_SCANCODE_ESCAPE])
 			ft_quit_map_editor(s_win);
 		else if (s_win->editor.input.mouse_clic)
-			ft_put_square_on_map(s_win);
+			ft_put_square_on_map(s_win, s_win->index);
 		else if (s_win->editor.input.mouse_move)
 			ft_square_follow_pointer(s_win);
 		else if (s_win->editor.input.key[SDL_SCANCODE_S])
@@ -60,12 +61,13 @@ void			ft_event_loop_editor(t_my_win *s_win)
 
 void			ft_map_editor(t_my_win *s_win)
 {
-	ft_create_window(s_win);
-	ft_create_renderer(s_win);
+	s_win->index = 0;
+	ft_create_window(s_win, s_win->index);
+	ft_create_renderer(s_win, s_win->index);
 	s_win->map = ft_init_map(s_win);
-	ft_clear_window(s_win);
+	ft_clear_window(s_win, s_win->index);
 	ft_draw_map(s_win);
-	SDL_RenderPresent(s_win->renderer[0]);
+	SDL_RenderPresent(s_win->renderer[s_win->index]);
 	ft_event_loop_editor(s_win);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:03:46 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:25:09 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 void			ft_launch_map(t_my_win *s_win)
 {
-	ft_create_window(s_win);
-	ft_create_renderer(s_win);
-	ft_clear_window(s_win);
+	s_win->index = 0;
+	ft_create_window(s_win, s_win->index);
+	ft_create_renderer(s_win, s_win->index);
+	ft_clear_window(s_win, s_win->index);
 	s_win->map = ft_init_map(s_win);
 	ft_read_the_map(s_win);
 	ft_draw_map(s_win);
 	ft_init_square_pos(s_win);
 	s_win->game.ray_angle = 0;
-	SDL_RenderPresent(s_win->renderer[0]);
+	SDL_RenderPresent(s_win->renderer[s_win->index]);
 	ft_event_loop_map(s_win);
 }
 
 void			ft_ray_tracing(t_my_win *s_win, int angle)
 {
+	s_win->index = 0;
 	t_myputtheline	s_line;
 	double			angle_r;
 
@@ -58,7 +60,7 @@ void			ft_ray_tracing(t_my_win *s_win, int angle)
 	s_line.deux.a += s_win->game.player_pos.x;
 	s_line.deux.b += s_win->game.player_pos.y;
 
-	SDL_SetRenderDrawColor(s_win->renderer[0], 0, 0, 0, 0);
+	SDL_SetRenderDrawColor(s_win->renderer[s_win->index], 0, 0, 0, 0);
 	ft_put_the_line_third(s_win, &s_line);
 
 

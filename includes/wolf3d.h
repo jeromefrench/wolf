@@ -125,17 +125,18 @@ typedef struct			s_my_win
 	int					**map;
     int                 fd;
 	t_my_point			mouse_position;
-	double					colision[641];
+	double				colision[641];
+	int					index;
 }						t_my_win;
 
 //fonctions de la fenetre
-void					ft_create_renderer(t_my_win *s_win);
-void					ft_create_window(t_my_win *s_win);
-void					ft_clear_window(t_my_win *s_win);
+void					ft_create_renderer(t_my_win *s_win, int index);
+void					ft_create_window(t_my_win *s_win, int index);
+void					ft_clear_window(t_my_win *s_win, int index);
 void					ft_get_mouse_position(t_my_win *s_win);
 void					ft_put_text(t_my_win *s_win, char *str, int place);
-void					ft_load_bmp(t_my_win *s_win); 
-void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win);
+void					ft_load_bmp(t_my_win *s_win, int index); 
+void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win, int index);
 
 //gestion des erreurs
 void					ft_quit(t_my_win *s_win, int status);
@@ -151,7 +152,7 @@ void					ft_event_loop_menu(t_my_win *s_win);
 //fonctions de l'editeur
 void					ft_launch_map_editor(t_my_win *s_win);
 void					ft_map_editor(t_my_win *s_win);
-void					ft_put_square_on_map(t_my_win *s_win);
+void					ft_put_square_on_map(t_my_win *s_win, int index);
 void					ft_event_loop_editor(t_my_win *s_win);
 void					ft_update_event_editor(t_my_win *s_win);
 void					ft_square_follow_pointer(t_my_win *s_win);
@@ -172,10 +173,8 @@ void					ft_move_square(int move, t_my_win *s_win);
 void					ft_init_square_pos(t_my_win *s_win);
 
 
-
+//bresename
 void			ft_put_the_line_third(t_my_win *s_win, t_myputtheline *s_line);
-
-
 void			ft_case_one(t_my_win *s_win, t_myputtheline *s_line);
 void			ft_case_two(t_my_win *s_win, t_myputtheline *s_line);
 void			ft_case_three(t_my_win *s_win, t_myputtheline *s_line);

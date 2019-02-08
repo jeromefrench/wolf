@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:07:11 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:27:22 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void			ft_display_menu(t_my_win *s_win)
 {
+	s_win->index = 0;
 	s_win->menu.arrow_h = 120;
-	ft_create_window(s_win);
-	ft_create_renderer(s_win);
+	ft_create_window(s_win, s_win->index);
+	ft_create_renderer(s_win, s_win->index);
 	ft_draw_menu(s_win);
 	ft_event_loop_menu(s_win);
 }
@@ -94,7 +95,7 @@ void			ft_put_text(t_my_win *s_win, char *str, int place)
 	SDL_RenderCopy(s_win->renderer[0], text.texture, NULL, &(text.dstrect));
 }
 
-void			ft_load_bmp(t_my_win *s_win)
+void			ft_load_bmp(t_my_win *s_win, int index)
 {
 	t_my_put_smth		bmp;
 
@@ -103,12 +104,12 @@ void			ft_load_bmp(t_my_win *s_win)
 	bmp.surface = NULL;
 	bmp.texture = NULL;
 	bmp.surface = SDL_LoadBMP("./media/untitled.bmp");
-	bmp.texture = SDL_CreateTextureFromSurface(s_win->renderer[0], bmp.surface);
+	bmp.texture = SDL_CreateTextureFromSurface(s_win->renderer[index], bmp.surface);
 	SDL_FreeSurface(bmp.surface);
 	SDL_QueryTexture(bmp.texture, NULL, NULL, &(bmp.text_w), &(bmp.text_h));
 	bmp.dstrect.x = 200;
 	bmp.dstrect.y = s_win->menu.arrow_h;
 	bmp.dstrect.w = bmp.text_w;
 	bmp.dstrect.h = bmp.text_h;
-	SDL_RenderCopy(s_win->renderer[0], bmp.texture, NULL, &(bmp.dstrect));
+	SDL_RenderCopy(s_win->renderer[index], bmp.texture, NULL, &(bmp.dstrect));
 }
