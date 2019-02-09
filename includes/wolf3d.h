@@ -197,4 +197,15 @@ t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle);
 void			ft_draw_player(t_my_win *s_win);
 void			ft_ray_casting(t_my_win *s_win, int angle);
 
+
+
+void	ft_draw_map_2d(t_my_win *s_win);
+
+
+
+
+
+
+
+
 #endif

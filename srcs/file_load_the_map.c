@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 12:23:56 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 16:09:08 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ void			ft_launch_map(t_my_win *s_win)
 	ft_init_square_pos(s_win);
 	s_win->game.ray_angle = 0;
 	SDL_RenderPresent(s_win->renderer[s_win->index]);
+
+
+	s_win->index = 1;
+	ft_create_window(s_win, s_win->index);
+	ft_create_renderer(s_win, s_win->index);
+
+
 	ft_event_loop_map(s_win);
 }
 
@@ -67,9 +74,12 @@ void			ft_update_event_map(t_my_win *s_win)
 
 void			ft_event_loop_map(t_my_win *s_win)
 {
+	int	change;
+
 	ft_init_event_map(s_win);
 	while (!s_win->game.input.quit)
 	{
+		change = 1;
 		ft_update_event_map(s_win);
 		if (s_win->game.input.key[SDL_SCANCODE_ESCAPE])
 			ft_display_menu(s_win);
@@ -85,5 +95,11 @@ void			ft_event_loop_map(t_my_win *s_win)
 			ft_move_square(TRIGO, s_win);
 		else if (s_win->game.input.key[SDL_SCANCODE_RIGHT])
 			ft_move_square(ANTITRIGO, s_win);
+		else
+			change = 0;
+		if (change == 1)
+		{
+			ft_draw_map_2d(s_win);
+		}
 	}
 }
