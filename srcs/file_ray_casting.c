@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:09:13 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 15:03:19 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 15:36:19 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int				ft_test_colision(t_my_win *s_win, t_myputtheline s_line)
 int				ft_init_angle(int move)
 {
 	int		angle;
+
 	if (move == TRIGO)
 		angle = 5;
 	else if (move == ANTITRIGO)
@@ -59,66 +60,57 @@ int				ft_init_angle(int move)
 	return (angle);
 }
 
+void			ft_init_ray_casting(t_my_win *s_win, int move,
+t_my_ray_casting *s_ray, t_myputtheline *s_line)
+{
+	s_win->index = 0;
+	s_ray->angle_ouverture = 50;
+	s_ray->distance = 1;
+	s_ray->x = 0;
+	s_ray->y = s_ray->distance;
+	s_line->un.a = s_win->game.player_pos.x;
+	s_line->un.b = s_win->game.player_pos.y;
+	s_win->game.ray_angle += ft_init_angle(move);
+	s_ray->ray_angle = s_win->game.ray_angle * 3.14 / 180;
+	s_ray->angle_calcul = (180 - s_ray->angle_ouverture) / 2;
+	s_ray->step = (s_ray->angle_ouverture * 2) / s_win->win_size.width;
+}
+
+void			ft_ray_casting_calcul(t_my_ray_casting *s_ray,
+t_myputtheline *s_line)
+{
+	s_ray->angle_calcul = (180 - s_ray->angle_ouverture + s_ray->i) / 2;
+	s_ray->angle_calcul = s_ray->angle_calcul * 3.14 / 180;
+	s_ray->x = cos(s_ray->angle_calcul) * s_ray->distance;
+	s_ray->y = sin(s_ray->angle_calcul) * s_ray->distance;
+	s_line->deux.a = (s_ray->x * cos(s_ray->ray_angle)) +
+(s_ray->y * -sin(s_ray->ray_angle));
+	s_line->deux.b = (s_ray->x * sin(s_ray->ray_angle)) +
+(s_ray->y * cos(s_ray->ray_angle));
+}
+
 void			ft_ray_casting(t_my_win *s_win, int move)
 {
-	double			distance;
-	double			x;
-	double			y;
-	t_myputtheline	s_line;
-	int				colision;
-	double			step;
-	double			i;
+	t_my_ray_casting	s_ray;
+	t_myputtheline		s_line;
 
-	double			angle_ouverture;
-	double			ray_angle;
-	double			angle_calcul;
-
-
-
-	s_win->index = 0;
-	angle_ouverture = 50;
-	distance = 1;
-	x = 0;
-	y = distance;
-
-
-	s_line.un.a = s_win->game.player_pos.x;
-	s_line.un.b = s_win->game.player_pos.y;
-
-
-	s_win->game.ray_angle += ft_init_angle(move);
-	ray_angle = s_win->game.ray_angle * 3.14 / 180;
-	
-
-	angle_calcul = (180 - angle_ouverture) / 2;
-	step = (angle_ouverture * 2) / s_win->win_size.width;
-
-	i = 0;
-	while (i < (angle_ouverture * 2))
+	ft_init_ray_casting(s_win, move, &s_ray, &s_line);
+	s_ray.i = 0;
+	while (s_ray.i < (s_ray.angle_ouverture * 2))
 	{
-		distance = 1;
-		colision = 0;
-		while (colision != 1)
+		s_ray.distance = 1;
+		s_ray.colision = 0;
+		while (s_ray.colision != 1)
 		{
-			angle_calcul = (180 - angle_ouverture + i) / 2;
-			angle_calcul = angle_calcul * 3.14 / 180;
-
-
-			x = cos(angle_calcul) * distance;
-			y = sin(angle_calcul) * distance;
-
-
-			s_line.deux.a = (x * cos(ray_angle)) + (y * -sin(ray_angle));
-			s_line.deux.b = (x * sin(ray_angle)) + (y * cos(ray_angle));
-
-			colision = ft_test_colision(s_win, s_line);
-			if (colision == 0)
-				distance += 1;
+			ft_ray_casting_calcul(&s_ray, &s_line);
+			s_ray.colision = ft_test_colision(s_win, s_line);
+			if (s_ray.colision == 0)
+				s_ray.distance += 1;
 		}
 		s_line.deux.a += s_win->game.player_pos.x;
 		s_line.deux.b += s_win->game.player_pos.y;
 		SDL_SetRenderDrawColor(s_win->renderer[s_win->index], 0, 0, 0, 0);
 		ft_put_the_line_third(s_win, &s_line);
-		i += step;
+		s_ray.i += s_ray.step;
 	}
 }

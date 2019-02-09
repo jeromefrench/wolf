@@ -24,6 +24,19 @@
 # include <fcntl.h>
 # include <math.h>
 
+typedef struct			s_my_ray_casting
+{
+	double				distance;
+	double				x;
+	double				y;
+	int					colision;
+	double				step;
+	double				i;
+	double				angle_ouverture;
+	double				ray_angle;
+	double				angle_calcul;
+}						t_my_ray_casting;
+
 typedef struct			s_my_point
 {
 	int					x;
