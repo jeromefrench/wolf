@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:28:32 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 11:50:14 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 12:19:23 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			ft_move_square(int move, t_my_win *s_win)
 	ft_test_move_square_colision(s_win, move);
 	ft_clear_window(s_win, s_win->index);
 	ft_draw_player(s_win);
-	ft_ray_tracing(s_win, move);
+	ft_ray_casting(s_win, move);
 	ft_draw_map(s_win);
 	SDL_RenderPresent(s_win->renderer[s_win->index]);
 	s_win->game.input.key[SDL_SCANCODE_W] = FALSE;

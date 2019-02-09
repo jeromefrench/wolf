@@ -172,7 +172,6 @@ void					ft_event_loop_map(t_my_win *s_win);
 void					ft_move_square(int move, t_my_win *s_win);
 void					ft_init_square_pos(t_my_win *s_win);
 
-
 //bresename
 void			ft_put_the_line_third(t_my_win *s_win, t_myputtheline *s_line);
 void			ft_case_one(t_my_win *s_win, t_myputtheline *s_line);
@@ -181,9 +180,8 @@ void			ft_case_three(t_my_win *s_win, t_myputtheline *s_line);
 void			ft_case_four(t_my_win *s_win, t_myputtheline *s_line);
 void			ft_case_five(t_my_win *s_win, t_myputtheline *s_line);
 
-
-void			ft_ray_tracing(t_my_win *s_win, int angle);
 t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle);
 void			ft_draw_player(t_my_win *s_win);
+void			ft_ray_casting(t_my_win *s_win, int angle);
 
 #endif
