@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/09 12:10:49 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/09 12:25:01 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ file_move_square.c \
 file_bresename.c \
 file_line_case.c \
 file_ft_editor_seconde.c \
-file_ray_casting.c
+file_ray_casting.c \
+file_read_map.c
 
 OBJ = $(SRC:.c=.o)
 SRC_Dir = ./srcs/
