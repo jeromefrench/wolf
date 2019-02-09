@@ -6,13 +6,14 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 17:45:17 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:18:50 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 11:12:48 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win, int index)
+void	ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win,
+int index)
 {
 	int			x;
 	int			y;

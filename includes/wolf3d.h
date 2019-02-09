@@ -134,8 +134,8 @@ void					ft_create_renderer(t_my_win *s_win, int index);
 void					ft_create_window(t_my_win *s_win, int index);
 void					ft_clear_window(t_my_win *s_win, int index);
 void					ft_get_mouse_position(t_my_win *s_win);
-void					ft_put_text(t_my_win *s_win, char *str, int place);
-void					ft_load_bmp(t_my_win *s_win, int index); 
+void					ft_put_text(t_my_win *s_win, char *str, int place, int index);
+void					ft_load_bmp(t_my_win *s_win, int index);
 void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win, int index);
 
 //gestion des erreurs

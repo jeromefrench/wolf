@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 19:06:56 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:32:40 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 11:17:08 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,28 @@ void			ft_draw_menu(t_my_win *s_win)
 {
 	s_win->index = 0;
 	ft_clear_window(s_win, s_win->index);
-	ft_put_text(s_win, "Map Editor", 120);
-	ft_put_text(s_win, "Load Map", 200);
+	ft_put_text(s_win, "Map Editor", 120, s_win->index);
+	ft_put_text(s_win, "Load Map", 200, s_win->index);
 	ft_load_bmp(s_win, s_win->index);
 	SDL_RenderPresent(s_win->renderer[s_win->index]);
+}
+
+void			ft_load_bmp(t_my_win *s_win, int index)
+{
+	t_my_put_smth		bmp;
+
+	bmp.text_w = 0;
+	bmp.text_h = 0;
+	bmp.surface = NULL;
+	bmp.texture = NULL;
+	bmp.surface = SDL_LoadBMP("./media/untitled.bmp");
+	bmp.texture = SDL_CreateTextureFromSurface(s_win->renderer[index],
+bmp.surface);
+	SDL_FreeSurface(bmp.surface);
+	SDL_QueryTexture(bmp.texture, NULL, NULL, &(bmp.text_w), &(bmp.text_h));
+	bmp.dstrect.x = 200;
+	bmp.dstrect.y = s_win->menu.arrow_h;
+	bmp.dstrect.w = bmp.text_w;
+	bmp.dstrect.h = bmp.text_h;
+	SDL_RenderCopy(s_win->renderer[index], bmp.texture, NULL, &(bmp.dstrect));
 }

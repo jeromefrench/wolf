@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 12:44:08 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:21:09 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 11:15:44 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ void			ft_square_follow_pointer(t_my_win *s_win)
 	ft_clear_window(s_win, s_win->index);
 	ft_draw_map(s_win);
 	ft_draw_rectangle(s_rectangle, s_win, s_win->index);
-	ft_put_text(s_win, "press S to save", 450);
+	ft_put_text(s_win, "press S to save", 450, s_win->index);
 	SDL_RenderPresent(s_win->renderer[s_win->index]);
 	s_win->editor.input.mouse_move = 0;
 }
 
 void			ft_draw_map(t_my_win *s_win)
 {
-	s_win->index = 0;
 	int					x;
 	int					y;
 	t_my_rectangle		s_rectangle;
 
+	s_win->index = 0;
 	y = 0;
 	while (y < s_win->win_size.height / 20)
 	{
@@ -70,31 +70,6 @@ void			ft_draw_map(t_my_win *s_win)
 		}
 		y++;
 	}
-}
-
-void			ft_save_the_map(t_my_win *s_win)
-{
-	int		y;
-	int		x;
-
-	s_win->fd = open("mapwolf", O_RDWR);
-	if (s_win->fd == -1)
-		ft_putstr(strerror(errno));
-	y = 0;
-	while (y < s_win->win_size.height / 20)
-	{
-		x = 0;
-		while (x < s_win->win_size.width / 20)
-		{
-			write(s_win->fd, ft_itoa(s_win->map[y][x]), 1);
-			x++;
-		}
-		write(s_win->fd, "\n", 1);
-		y++;
-	}
-	close(s_win->fd);
-	ft_free_the_map(s_win);
-	ft_display_menu(s_win);
 }
 
 void			ft_free_the_map(t_my_win *s_win)

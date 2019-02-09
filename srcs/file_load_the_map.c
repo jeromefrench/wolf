@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:25:09 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/09 11:10:14 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,54 +29,38 @@ void			ft_launch_map(t_my_win *s_win)
 
 void			ft_ray_tracing(t_my_win *s_win, int angle)
 {
-	s_win->index = 0;
 	t_myputtheline	s_line;
 	double			angle_r;
-
 	double			angle_ouverture;
 	double			angle_calcul_r;
 	double			distance;
-	angle_ouverture = 50;
+	double			x;
+	double			y;
+	double			angle_calcul;
+	double			i;
+	int				colision;
+	int				j;
+	double			step;
 
-	if(angle == TRIGO)
+	angle_ouverture = 50;
+	s_win->index = 0;
+	if (angle == TRIGO)
 		s_win->game.ray_angle += 5;
 	else if (angle == ANTITRIGO)
 		s_win->game.ray_angle -= 5;
-
 	s_line.un.a = s_win->game.player_pos.x;
 	s_line.un.b = s_win->game.player_pos.y;
-
-
 	distance = 1;
-	double	x = 0;
-	double	y = distance;
-
-	//rayon droit
+	x = 0;
+	y = distance;
 	angle_r = s_win->game.ray_angle * 3.14 / 180;
-	//rotation
-	s_line.deux.a = (x * cos(angle_r)) + (y * -sin(angle_r));
-	s_line.deux.b = (x * sin(angle_r)) + (y *  cos(angle_r));
-	//translation
-	s_line.deux.a += s_win->game.player_pos.x;
-	s_line.deux.b += s_win->game.player_pos.y;
-
 	SDL_SetRenderDrawColor(s_win->renderer[s_win->index], 0, 0, 0, 0);
-	ft_put_the_line_third(s_win, &s_line);
-
-
-	//demi cercle
-	double angle_calcul;
 	angle_calcul = (180 - angle_ouverture) / 2;
-	double i = 0;
-	int colision;
-
-//calcul de i pour avoir un rayon par pixel
-double step  = (angle_ouverture * 2) / s_win->win_size.width;
-int j = 0;
-
-	while(i < (angle_ouverture * 2))
+	i = 0;
+	step = (angle_ouverture * 2) / s_win->win_size.width;
+	j = 0;
+	while (i < (angle_ouverture * 2))
 	{
-
 		distance = 1;
 		colision = 0;
 		while (colision != 1)
@@ -85,38 +69,22 @@ int j = 0;
 			angle_calcul_r = angle_calcul * 3.14 / 180;
 			x = cos(angle_calcul_r) * distance;
 			y = sin(angle_calcul_r) * distance;
-			//rotation
 			s_line.deux.a = (x * cos(angle_r)) + (y * -sin(angle_r));
-			s_line.deux.b = (x * sin(angle_r)) + (y *  cos(angle_r));
-			//translation
-			//s_line.deux.a += s_win->game.player_pos.x;
-			//s_line.deux.b += s_win->game.player_pos.y;
-
-			if ( s_win->map[(int)((s_line.deux.b + s_win->game.player_pos.y) / 20)]
-					[(int)((s_line.deux.a + s_win->game.player_pos.x) / 20)]
-					== 1)
+			s_line.deux.b = (x * sin(angle_r)) + (y * cos(angle_r));
+			if (s_win->map[(int)((s_line.deux.b + s_win->game.player_pos.y) / 20)][(int)((s_line.deux.a + s_win->game.player_pos.x) / 20)] == 1)
 				colision = 1;
 			else
-				distance  += 1;
-
-			//limite de la carte
-			if (s_line.deux.a + s_win->game.player_pos.x  > (s_win->win_size.width - 1)
-					||
-					s_line.deux.a + s_win->game.player_pos.x  < 0 )
+				distance += 1;
+			if (s_line.deux.a + s_win->game.player_pos.x > (s_win->win_size.width - 1) || s_line.deux.a + s_win->game.player_pos.x < 0)
 				colision = 1;
-			if (s_line.deux.b + s_win->game.player_pos.y  > (s_win->win_size.height - 1)
-					||
-					s_line.deux.b + s_win->game.player_pos.y  < 0 )
+			if (s_line.deux.b + s_win->game.player_pos.y > (s_win->win_size.height - 1) || s_line.deux.b + s_win->game.player_pos.y < 0)
 				colision = 1;
 		}
 		s_line.deux.a += s_win->game.player_pos.x;
 		s_line.deux.b += s_win->game.player_pos.y;
-
 		ft_put_the_line_third(s_win, &s_line);
 		i += step;
-
 		j++;
-		printf("Le j =%d\n", j);
 	}
 }
 
@@ -142,7 +110,8 @@ void			ft_init_event_map(t_my_win *s_win)
 
 void			ft_update_event_map(t_my_win *s_win)
 {
-	SDL_Event event;
+	SDL_Event		event;
+
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
@@ -159,24 +128,23 @@ void			ft_update_event_map(t_my_win *s_win)
 
 void			ft_event_loop_map(t_my_win *s_win)
 {
-
 	ft_init_event_map(s_win);
 	while (!s_win->game.input.quit)
 	{
 		ft_update_event_map(s_win);
 		if (s_win->game.input.key[SDL_SCANCODE_ESCAPE])
 			ft_display_menu(s_win);
-		else if(s_win->game.input.key[SDL_SCANCODE_W])
+		else if (s_win->game.input.key[SDL_SCANCODE_W])
 			ft_move_square(UP, s_win);
-		else if(s_win->game.input.key[SDL_SCANCODE_S])
+		else if (s_win->game.input.key[SDL_SCANCODE_S])
 			ft_move_square(DOWN, s_win);
-		else if(s_win->game.input.key[SDL_SCANCODE_A])
+		else if (s_win->game.input.key[SDL_SCANCODE_A])
 			ft_move_square(LEFT, s_win);
-		else if(s_win->game.input.key[SDL_SCANCODE_D])
+		else if (s_win->game.input.key[SDL_SCANCODE_D])
 			ft_move_square(RIGHT, s_win);
-		else if(s_win->game.input.key[SDL_SCANCODE_LEFT])
+		else if (s_win->game.input.key[SDL_SCANCODE_LEFT])
 			ft_move_square(TRIGO, s_win);
-		else if(s_win->game.input.key[SDL_SCANCODE_RIGHT])
+		else if (s_win->game.input.key[SDL_SCANCODE_RIGHT])
 			ft_move_square(ANTITRIGO, s_win);
 	}
 }
