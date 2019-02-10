@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:28:32 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 12:19:23 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 10:51:04 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void			ft_move_square(int move, t_my_win *s_win)
 	s_win->game.input.key[SDL_SCANCODE_D] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_LEFT] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_RIGHT] = FALSE;
+	ft_draw_map_2d(s_win);
 }
 
 void			ft_draw_player(t_my_win *s_win)

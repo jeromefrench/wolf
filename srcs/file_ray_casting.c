@@ -6,59 +6,11 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:09:13 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 16:35:45 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 11:03:59 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-int				ft_ray_out_of_screen(t_my_win *s_win, t_myputtheline s_line)
-{
-	int		colision;
-
-	colision = 0;
-	if (s_line.deux.a + s_win->game.player_pos.x > (s_win->win_size.width -
-1) || s_line.deux.a + s_win->game.player_pos.x < 0)
-		colision = 1;
-	if (s_line.deux.b + s_win->game.player_pos.y > (s_win->win_size.height -
-1) || s_line.deux.b + s_win->game.player_pos.y < 0)
-		colision = 1;
-	return (colision);
-}
-
-int				ft_test_ray_colision(t_my_win *s_win, t_myputtheline s_line)
-{
-	int		colision;
-
-	if (s_win->map[(int)((s_line.deux.b + s_win->game.player_pos.y) / 20)]
-[(int)((s_line.deux.a + s_win->game.player_pos.x) / 20)] == 1)
-		colision = 1;
-	else
-		colision = 0;
-	return (colision);
-}
-
-int				ft_test_colision(t_my_win *s_win, t_myputtheline s_line)
-{
-	if (ft_test_ray_colision(s_win, s_line))
-		return (1);
-	if (ft_ray_out_of_screen(s_win, s_line))
-		return (1);
-	return (0);
-}
-
-int				ft_init_angle(int move)
-{
-	int		angle;
-
-	if (move == TRIGO)
-		angle = 5;
-	else if (move == ANTITRIGO)
-		angle = -5;
-	else
-		angle = 0;
-	return (angle);
-}
 
 void			ft_init_ray_casting(t_my_win *s_win, int move,
 t_my_ray_casting *s_ray, t_myputtheline *s_line)
@@ -93,11 +45,10 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 {
 	t_my_ray_casting	s_ray;
 	t_myputtheline		s_line;
-	int					j;
 
 	ft_init_ray_casting(s_win, move, &s_ray, &s_line);
 	s_ray.i = 0;
-	j = 0;
+	s_ray.j = 0;
 	while (s_ray.i < (s_ray.angle_ouverture * 2))
 	{
 		s_ray.distance = 1;
@@ -105,14 +56,14 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 		while (s_ray.colision != 1)
 		{
 			ft_ray_casting_calcul(&s_ray, &s_line);
-			s_ray.colision = ft_test_colision(s_win, s_line);
-			if (s_ray.colision == 0)
+			if ((s_ray.colision = ft_test_colision(s_win, s_line)) == 0)
 				s_ray.distance += 1;
 		}
 		s_line.deux.a += s_win->game.player_pos.x;
 		s_line.deux.b += s_win->game.player_pos.y;
-		s_win->colision[j] = s_ray.distance;
-		j++;
+		s_win->colision[s_ray.j] = s_ray.distance *
+cos((M_PI / 2) - s_ray.angle_calcul + 0.002);
+		s_ray.j++;
 		SDL_SetRenderDrawColor(s_win->renderer[s_win->index], 0, 0, 0, 0);
 		ft_put_the_line_third(s_win, &s_line);
 		s_ray.i += s_ray.step;

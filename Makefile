@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/10 09:04:07 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/10 10:57:19 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ file_line_case.c \
 file_ft_editor_seconde.c \
 file_ray_casting.c \
 file_read_map.c \
-file_map_2d.c
+file_map_2d.c \
+file_ft_ray_casting.c
 
 OBJ = $(SRC:.c=.o)
 SRC_Dir = ./srcs/
@@ -61,7 +62,7 @@ re:fclean $(NAME)
 
 norme:clear
 	@echo "La norme\n";
-	norminette $(SRC_Dir) $(OBJ_Dir)
+	norminette $(SRC_Dir)
 
 exe:
 	./$(NAME)
