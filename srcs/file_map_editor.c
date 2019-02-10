@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 15:11:16 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 16:32:41 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,17 @@ void			ft_event_loop_editor(t_my_win *s_win)
 	{
 		ft_update_event_editor(s_win);
 		if (s_win->editor.input.key[SDL_SCANCODE_ESCAPE])
-			ft_quit_map_editor(s_win);
+			s_win->editor.input.quit = 1;
 		else if (s_win->editor.input.mouse_clic)
 			ft_put_square_on_map(s_win, s_win->win_index);
 		else if (s_win->editor.input.mouse_move)
 			ft_square_follow_pointer(s_win);
 		else if (s_win->editor.input.key[SDL_SCANCODE_S])
 			ft_save_the_map(s_win);
-		SDL_Delay(20);
 	}
+	s_win->win_index = map_editor;
+	ft_quit_window(s_win, s_win->win_index);
+	ft_display_menu(s_win);
 }
 
 void			ft_map_editor(t_my_win *s_win)

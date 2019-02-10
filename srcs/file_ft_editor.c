@@ -6,16 +6,11 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 12:44:08 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 15:12:12 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 16:29:37 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-void			ft_quit_map_editor(t_my_win *s_win)
-{
-	ft_quit(s_win, SUCESS);
-}
 
 void			ft_put_square_on_map(t_my_win *s_win, int index)
 {
