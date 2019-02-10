@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 16:32:41 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 17:35:00 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void			ft_event_loop_editor(t_my_win *s_win)
 	while (!s_win->editor.input.quit)
 	{
 		ft_update_event_editor(s_win);
-		if (s_win->editor.input.key[SDL_SCANCODE_ESCAPE])
+		if (s_win->editor.input.quit)
+			ft_quit(s_win, SUCESS);
+		else if (s_win->editor.input.key[SDL_SCANCODE_ESCAPE])
 			s_win->editor.input.quit = 1;
 		else if (s_win->editor.input.mouse_clic)
 			ft_put_square_on_map(s_win, s_win->win_index);

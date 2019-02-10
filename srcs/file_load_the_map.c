@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 16:23:24 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 18:43:12 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)
 
 void			ft_init_event_map(t_my_win *s_win)
 {
-	s_win->game.input.key[SDL_SCANCODE_ESCAPE] = FALSE;
 	s_win->game.input.quit = FALSE;
+	s_win->game.input.key[SDL_SCANCODE_ESCAPE] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_W] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_S] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_A] = FALSE;
@@ -72,14 +72,14 @@ void			ft_update_event_map(t_my_win *s_win)
 
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT)
-			s_win->game.input.quit = SDL_TRUE;
+		if (event.window.event == SDL_WINDOWEVENT_CLOSE)
+			s_win->game.input.quit = TRUE;
 		else if (event.type == SDL_KEYDOWN)
-			s_win->game.input.key[event.key.keysym.scancode] = SDL_TRUE;
+			s_win->game.input.key[event.key.keysym.scancode] = TRUE;
 		else if (event.type == SDL_MOUSEMOTION)
-			s_win->game.input.mouse_move = 1;
+			s_win->game.input.mouse_move = TRUE;
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
-			s_win->game.input.mouse_clic = 1;
+			s_win->game.input.mouse_clic = TRUE;
 		SDL_Delay(1);
 	}
 }
@@ -90,8 +90,10 @@ void			ft_event_loop_map(t_my_win *s_win)
 	while (!s_win->game.input.quit)
 	{
 		ft_update_event_map(s_win);
-		if (s_win->game.input.key[SDL_SCANCODE_ESCAPE])
-			s_win->game.input.quit = 1;
+		if (s_win->game.input.quit)
+			ft_quit(s_win, SUCESS);
+		else if (s_win->game.input.key[SDL_SCANCODE_ESCAPE])
+			s_win->game.input.quit = TRUE;
 		else if (s_win->game.input.key[SDL_SCANCODE_W])
 			ft_move_square(UP, s_win);
 		else if (s_win->game.input.key[SDL_SCANCODE_S])

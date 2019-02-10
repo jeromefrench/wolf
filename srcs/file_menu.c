@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 15:44:55 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 17:25:57 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ void			ft_event_loop_menu(t_my_win *s_win)
 	while (!s_win->menu.input.quit)
 	{
 		ft_update_event_menu(s_win);
-		if (s_win->menu.input.key[SDL_SCANCODE_ESCAPE])
+		if (s_win->menu.input.quit)
+			printf("the =%d\n", s_win->menu.input.quit);
+		if (s_win->menu.input.quit)
+			ft_quit(s_win, SUCESS);
+		else if (s_win->menu.input.key[SDL_SCANCODE_ESCAPE])
 			ft_quit(s_win, SUCESS);
 		else if (s_win->menu.input.key[SDL_SCANCODE_DOWN] &&
 s_win->menu.arrow_h <= 120)
