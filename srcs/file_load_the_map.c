@@ -6,33 +6,49 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 10:52:24 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 16:23:24 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			ft_launch_map(t_my_win *s_win)
+void			ft_launch_map_2d(t_my_win *s_win)
 {
-	s_win->index = 0;
-	ft_create_window(s_win, s_win->index);
-	ft_create_renderer(s_win, s_win->index);
-	ft_clear_window(s_win, s_win->index);
+	s_win->win_index = map_2d;
 	s_win->map = ft_init_map(s_win);
 	ft_read_the_map(s_win);
-	ft_draw_map(s_win);
+	ft_create_window(s_win, s_win->win_index);
+	ft_create_renderer(s_win, s_win->win_index);
+	ft_clear_window(s_win, s_win->win_index);
+	ft_draw_map(s_win, s_win->win_index);
 	ft_init_square_pos(s_win);
+	SDL_RenderPresent(s_win->renderer[s_win->win_index]);
+}
+
+void			ft_launch_map_3d(t_my_win *s_win)
+{
+	s_win->win_index = map_3d;
 	s_win->game.ray_angle = 0;
-	SDL_RenderPresent(s_win->renderer[s_win->index]);
-	s_win->index = 1;
-	ft_create_window(s_win, s_win->index);
-	ft_create_renderer(s_win, s_win->index);
+	ft_create_window(s_win, s_win->win_index);
+	ft_create_renderer(s_win, s_win->win_index);
+	ft_clear_window(s_win, s_win->win_index);
+	ft_ray_casting(s_win, NOTHING);
+	ft_draw_map_3d(s_win);
+}
+
+void			ft_launch_map(t_my_win *s_win)
+{
+	s_win->win_index = menu;
+	ft_quit_window(s_win, s_win->win_index);
+	s_win->menu.input.quit = 1;
+	ft_launch_map_2d(s_win);
+	ft_launch_map_3d(s_win);
 	ft_event_loop_map(s_win);
 }
 
 t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)
 {
-	angle = angle * 3.14 / 180;
+	angle = angle * M_PI / 180;
 	vector.a = (vector.a * cos(angle)) + (vector.b * sin(angle));
 	vector.b = (vector.a * -sin(angle)) + (vector.b * cos(angle));
 	return (vector);
@@ -70,15 +86,12 @@ void			ft_update_event_map(t_my_win *s_win)
 
 void			ft_event_loop_map(t_my_win *s_win)
 {
-	int	change;
-
 	ft_init_event_map(s_win);
 	while (!s_win->game.input.quit)
 	{
-		change = 1;
 		ft_update_event_map(s_win);
 		if (s_win->game.input.key[SDL_SCANCODE_ESCAPE])
-			ft_display_menu(s_win);
+			s_win->game.input.quit = 1;
 		else if (s_win->game.input.key[SDL_SCANCODE_W])
 			ft_move_square(UP, s_win);
 		else if (s_win->game.input.key[SDL_SCANCODE_S])
@@ -92,4 +105,7 @@ void			ft_event_loop_map(t_my_win *s_win)
 		else if (s_win->game.input.key[SDL_SCANCODE_RIGHT])
 			ft_move_square(ANTITRIGO, s_win);
 	}
+	ft_quit_window(s_win, s_win->win_index = map_3d);
+	ft_quit_window(s_win, s_win->win_index = map_2d);
+	ft_display_menu(s_win);
 }

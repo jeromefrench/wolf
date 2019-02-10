@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 11:17:12 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 15:44:55 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void			ft_display_menu(t_my_win *s_win)
 {
-	s_win->index = 0;
+	s_win->win_index = menu;
 	s_win->menu.arrow_h = 120;
-	ft_create_window(s_win, s_win->index);
-	ft_create_renderer(s_win, s_win->index);
+	ft_create_window(s_win, s_win->win_index);
+	ft_create_renderer(s_win, s_win->win_index);
 	ft_draw_menu(s_win);
 	ft_event_loop_menu(s_win);
 }
@@ -67,7 +67,6 @@ s_win->menu.arrow_h == 120)
 		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] &&
 s_win->menu.arrow_h == 200)
 			ft_launch_map(s_win);
-		SDL_Delay(3);
 	}
 }
 

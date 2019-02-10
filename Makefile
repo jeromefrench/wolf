@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/10 10:57:19 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/10 13:44:02 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ file_ray_casting.c \
 file_read_map.c \
 file_map_2d.c \
 file_ft_ray_casting.c
+
 
 OBJ = $(SRC:.c=.o)
 SRC_Dir = ./srcs/
@@ -72,3 +73,7 @@ clear:
 
 line:clear
 	find ./srcs -name '*.c' | xargs wc -l
+
+tag:
+	ctags -R .
+

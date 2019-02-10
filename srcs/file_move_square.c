@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:28:32 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 10:51:04 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 15:18:39 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void			ft_init_square_pos(t_my_win *s_win)
 {
-	s_win->index = 0;
+	s_win->win_index = map_2d;
 	s_win->game.player_pos.x = 10;
 	s_win->game.player_pos.y = 10;
 	s_win->game.rect.point.x = s_win->game.player_pos.x;
 	s_win->game.rect.point.y = s_win->game.player_pos.y;
 	s_win->game.rect.size.height = 10;
 	s_win->game.rect.size.width = 10;
-	ft_draw_rectangle(s_win->game.rect, s_win, s_win->index);
+	ft_draw_rectangle(s_win->game.rect, s_win, s_win->win_index);
 }
 
 void			ft_test_move_square_colision(t_my_win *s_win, int move)
@@ -55,20 +55,20 @@ void			ft_test_move_square_colision(t_my_win *s_win, int move)
 
 void			ft_move_square(int move, t_my_win *s_win)
 {
-	s_win->index = 0;
+	s_win->win_index = map_2d;
 	ft_test_move_square_colision(s_win, move);
-	ft_clear_window(s_win, s_win->index);
+	ft_clear_window(s_win, s_win->win_index);
 	ft_draw_player(s_win);
 	ft_ray_casting(s_win, move);
-	ft_draw_map(s_win);
-	SDL_RenderPresent(s_win->renderer[s_win->index]);
+	ft_draw_map(s_win, s_win->win_index);
+	SDL_RenderPresent(s_win->renderer[s_win->win_index]);
 	s_win->game.input.key[SDL_SCANCODE_W] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_S] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_A] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_D] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_LEFT] = FALSE;
 	s_win->game.input.key[SDL_SCANCODE_RIGHT] = FALSE;
-	ft_draw_map_2d(s_win);
+	ft_draw_map_3d(s_win);
 }
 
 void			ft_draw_player(t_my_win *s_win)
@@ -77,18 +77,18 @@ void			ft_draw_player(t_my_win *s_win)
 	int				x;
 	int				y;
 
-	s_win->index = 0;
+	s_win->win_index = map_2d;
 	s_rectangle.point = s_win->game.player_pos;
 	s_rectangle.size.width = 10;
 	s_rectangle.size.height = 10;
-	SDL_SetRenderDrawColor(s_win->renderer[s_win->index], 0, 255, 255, 0);
+	SDL_SetRenderDrawColor(s_win->renderer[s_win->win_index], 0, 255, 255, 0);
 	y = s_rectangle.point.y - (s_rectangle.size.height / 2);
 	while (y < (s_rectangle.point.y + (s_rectangle.size.height / 2)))
 	{
 		x = s_rectangle.point.x - (s_rectangle.size.height / 2);
 		while (x < s_rectangle.point.x + (s_rectangle.size.height / 2))
 		{
-			SDL_RenderDrawPoint(s_win->renderer[s_win->index], x, y);
+			SDL_RenderDrawPoint(s_win->renderer[s_win->win_index], x, y);
 			x++;
 		}
 		y++;

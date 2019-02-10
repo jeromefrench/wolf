@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 19:06:56 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/09 11:17:08 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 15:53:45 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,20 @@ void			ft_move_the_arrow_up(t_my_win *s_win)
 
 void			ft_launch_map_editor(t_my_win *s_win)
 {
-	s_win->index = 0;
-	if (s_win->renderer[s_win->index] != NULL)
-		SDL_DestroyRenderer(s_win->renderer[s_win->index]);
-	if (s_win->window[s_win->index] != NULL)
-		SDL_DestroyWindow(s_win->window[s_win->index]);
-	TTF_Quit();
+	s_win->win_index = menu;
+	ft_quit_window(s_win, s_win->win_index);
 	s_win->menu.input.quit = 1;
 	ft_map_editor(s_win);
 }
 
 void			ft_draw_menu(t_my_win *s_win)
 {
-	s_win->index = 0;
-	ft_clear_window(s_win, s_win->index);
-	ft_put_text(s_win, "Map Editor", 120, s_win->index);
-	ft_put_text(s_win, "Load Map", 200, s_win->index);
-	ft_load_bmp(s_win, s_win->index);
-	SDL_RenderPresent(s_win->renderer[s_win->index]);
+	s_win->win_index = menu;
+	ft_clear_window(s_win, s_win->win_index);
+	ft_put_text(s_win, "Map Editor", 120, s_win->win_index);
+	ft_put_text(s_win, "Load Map", 200, s_win->win_index);
+	ft_load_bmp(s_win, s_win->win_index);
+	SDL_RenderPresent(s_win->renderer[s_win->win_index]);
 }
 
 void			ft_load_bmp(t_my_win *s_win, int index)

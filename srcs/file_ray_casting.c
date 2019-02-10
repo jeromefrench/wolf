@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:09:13 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 11:03:59 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/10 14:20:47 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			ft_init_ray_casting(t_my_win *s_win, int move,
 t_my_ray_casting *s_ray, t_myputtheline *s_line)
 {
-	s_win->index = 0;
+	s_win->win_index = map_3d;
 	s_ray->angle_ouverture = 50;
 	s_ray->distance = 1;
 	s_ray->x = 0;
@@ -64,7 +64,7 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 		s_win->colision[s_ray.j] = s_ray.distance *
 cos((M_PI / 2) - s_ray.angle_calcul + 0.002);
 		s_ray.j++;
-		SDL_SetRenderDrawColor(s_win->renderer[s_win->index], 0, 0, 0, 0);
+		SDL_SetRenderDrawColor(s_win->renderer[s_win->win_index], 0, 0, 0, 0);
 		ft_put_the_line_third(s_win, &s_line);
 		s_ray.i += s_ray.step;
 	}

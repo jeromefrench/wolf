@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
+/*   Updated: 2019/02/10 15:52:50 by jchardin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
@@ -23,6 +35,14 @@
 # include <SDL_ttf.h>
 # include <fcntl.h>
 # include <math.h>
+
+typedef enum			e_window
+{
+	menu,
+	map_editor,
+	map_2d,
+	map_3d
+}						t_my_window;
 
 typedef struct			s_my_ray_casting
 {
@@ -56,31 +76,31 @@ typedef struct			s_my_rectangle
 	t_my_size			size;
 }						t_my_rectangle;
 
-typedef struct				s_xyz_point
+typedef struct			s_xyz_point
 {
-	double					a;
-	double					b;
-}							t_xyz_point;
+	double				a;
+	double				b;
+}						t_xyz_point;
 
-typedef struct				s_myputtheline
+typedef struct			s_myputtheline
 {
-	int						above;
-	t_xyz_point				un;
-	t_xyz_point				deux;
-	int						ex;
-	int						ey;
-	int						dx;
-	int						dy;
-	int						d_x;
-	int						d_y;
-	int						i;
-	int						j;
-	int						x_incr;
-	int						y_incr;
-	float					ab;
-	float					le_z1;
-	float					le_z2;
-}							t_myputtheline;
+	int					above;
+	t_xyz_point			un;
+	t_xyz_point			deux;
+	int					ex;
+	int					ey;
+	int					dx;
+	int					dy;
+	int					d_x;
+	int					d_y;
+	int					i;
+	int					j;
+	int					x_incr;
+	int					y_incr;
+	float				ab;
+	float				le_z1;
+	float				le_z2;
+}						t_myputtheline;
 
 
 typedef struct			s_my_input
@@ -140,7 +160,7 @@ typedef struct			s_my_win
     int                 fd;
 	t_my_point			mouse_position;
 	double				colision[641];
-	int					index;
+	t_my_window			win_index;
 }						t_my_win;
 
 //fonctions de la fenetre
@@ -155,6 +175,7 @@ void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win, int inde
 //gestion des erreurs
 void					ft_quit(t_my_win *s_win, int status);
 void					ft_show_error_and_quit(t_my_win *s_win, const char *my_message);
+void					ft_quit_window(t_my_win *s_win, int index);
 
 //fonctions du menu
 void					ft_move_the_arrow_up(t_my_win *s_win);
@@ -175,7 +196,7 @@ int						**ft_init_map(t_my_win *s_win);
 void		            ft_save_the_map(t_my_win *s_win);
 
 //fonctions de la map
-void					ft_draw_map(t_my_win *s_win);
+void					ft_draw_map(t_my_win *s_win, int index);
 void					ft_launch_map(t_my_win *s_win);
 void					ft_free_the_map(t_my_win *s_win);
 void					ft_read_the_map(t_my_win *s_win);
@@ -198,14 +219,10 @@ t_xyz_point				ft_turn_vector(t_xyz_point vector, double angle);
 void					ft_draw_player(t_my_win *s_win);
 void					ft_ray_casting(t_my_win *s_win, int angle);
 
-void					ft_draw_map_2d(t_my_win *s_win);
+void					ft_draw_map_3d(t_my_win *s_win);
 
 //ray casting
-int				ft_test_colision(t_my_win *s_win, t_myputtheline s_line);
-int				ft_init_angle(int move);
-
-
-
-
+int						ft_test_colision(t_my_win *s_win, t_myputtheline s_line);
+int						ft_init_angle(int move);
 
 #endif
