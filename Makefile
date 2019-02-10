@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/10 13:44:02 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/10 18:48:41 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ file_read_map.c \
 file_map_2d.c \
 file_ft_ray_casting.c
 
-
 OBJ = $(SRC:.c=.o)
 SRC_Dir = ./srcs/
 OBJ_Dir = ./objs/
@@ -49,7 +48,7 @@ $(NAME):clear $(CObjects)
 	ctags -R .
 
 $(OBJ_Dir)%.o:$(SRC_Dir)%.c
-	mkdir $(OBJ_Dir) 2> /dev/null || true
+	@mkdir $(OBJ_Dir) 2> /dev/null || true
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
@@ -76,4 +75,3 @@ line:clear
 
 tag:
 	ctags -R .
-
