@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/09 16:10:22 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/10 08:23:54 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 	mkdir $(OBJ_Dir) 2> /dev/null || true
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
-
 clean:
 	make fclean -C ./libraries/libft
 	/bin/rm -rf $(OBJ_Dir)
@@ -60,7 +59,7 @@ fclean:clean
 
 re:fclean $(NAME)
 
-me:
+me:clear
 	norminette $(SRC_Dir) $(OBJ_Dir)
 
 exe:
@@ -69,3 +68,8 @@ exe:
 clear:
 	clear
 
+norme:clear
+	norminette ./srcs/*.c
+
+line:clear
+	find ./srcs -name '*.c' | xargs wc -l
