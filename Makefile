@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/10 08:23:54 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/10 09:04:07 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ LIBRARIES = -L ./libraries/libui -lSDL2 -L ./libraries/libui -lSDL2_image -frame
 INCLUDES  = -I ./includes
 
 $(NAME):clear $(CObjects)
-	make -C ./libraries/libft
+	@make -C ./libraries/libft
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) -o $(NAME)
 	ctags -R .
 
@@ -59,7 +59,8 @@ fclean:clean
 
 re:fclean $(NAME)
 
-me:clear
+norme:clear
+	@echo "La norme\n";
 	norminette $(SRC_Dir) $(OBJ_Dir)
 
 exe:
@@ -67,9 +68,6 @@ exe:
 
 clear:
 	clear
-
-norme:clear
-	norminette ./srcs/*.c
 
 line:clear
 	find ./srcs -name '*.c' | xargs wc -l
