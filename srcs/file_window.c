@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:22:43 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/08 16:13:12 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/11 11:05:18 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,9 @@ void			ft_create_window(t_my_win *s_win, int index)
 	s_win->window[index] = SDL_CreateWindow("Wolf", SDL_WINDOWPOS_CENTERED,
 SDL_WINDOWPOS_CENTERED, s_win->win_size.width, s_win->win_size.height,
 SDL_WINDOW_SHOWN);
-	if (s_win->window[0] == NULL)
-		ft_show_error_and_quit(s_win, SDL_GetError());
+	if (s_win->window[index] == NULL)
+		ft_show_error_and_quit(s_win, "error in create window\n");
 	SDL_RaiseWindow(s_win->window[index]);
 	if (TTF_Init() == -1)
-	{
-		fprintf(stderr, "Erreur d'initialisation de TTF_Init : %s\n",
-TTF_GetError());
-		exit(EXIT_FAILURE);
-	}
+		ft_show_error_and_quit(s_win, "error in init ttf\n");
 }
