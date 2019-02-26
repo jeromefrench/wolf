@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/26 15:13:26 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/26 15:29:40 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ LIBRARIES = -L ./libraries/sdl/SDL2-2.0.9/lib -lSDL2 \
 
 INCLUDES  = -I ./includes
 
+all: sdl_lib $(NAME)
+
 $(NAME):clear $(CObjects)
 	@make -C ./libraries/libft
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) -o $(NAME)
@@ -56,25 +58,27 @@ $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 	@mkdir $(OBJ_Dir) 2> /dev/null || true
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
+sdl_lib:sdl sdl_image freetype sdl_ttf
+
 sdl:
-	./configure --prefix==pwd
-	make
-	make install
+	#./configure --prefix==pwd
+	make -C ./libraries/sdl/SDL2-2.0.9/
+	make -C ./libraries/sdl/SDL2-2.0.9/ install
 
 sdl_image:
-	./configure CPPFLAGS="-I/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/include" LDFLAGS="-L/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/lib" --prefix=/Users/jchardin/wolf/libraries/sdl_image/SDL2_image-2.0.4
-	make
-	make install
+	#./configure CPPFLAGS="-I/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/include" LDFLAGS="-L/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/lib" --prefix=/Users/jchardin/wolf/libraries/sdl_image/SDL2_image-2.0.4
+	make -C ./libraries/sdl_image/SDL2_image-2.0.4/
+	make -C ./libraries/sdl_image/SDL2_image-2.0.4/ install
 
 freetype:
-	./configure --prefix=/Users/jchardin/wolf/libraries/freetype/freetype2
-	make
-	make install
+	#./configure --prefix=/Users/jchardin/wolf/libraries/freetype/freetype2
+	make -C libraries/freetype/freetype-2.8.1/
+	make -C libraries/freetype/freetype-2.8.1/ install
 
 sdl_ttf:
-	./configure --prefix=./configure --prefix=/Users/jchardin/wolf/libraries/sdl_ttf/SDL2_ttf-2.0.15 --with-sdl-prefix=/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9
-	make
-	make install
+	#./configure --prefix=./configure --prefix=/Users/jchardin/wolf/libraries/sdl_ttf/SDL2_ttf-2.0.15 --with-sdl-prefix=/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9
+	make -C libraries/sdl_ttf/SDL2_ttf-2.0.15/
+	make -C libraries/sdl_ttf/SDL2_ttf-2.0.15/ install
 
 clean:
 	make fclean -C ./libraries/libft
