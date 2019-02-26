@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/26 14:45:40 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/26 15:13:26 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,6 @@ sdl:
 	./configure --prefix==pwd
 	make
 	make install
-	mkdir lib
 
 sdl_image:
 	./configure CPPFLAGS="-I/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/include" LDFLAGS="-L/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/lib" --prefix=/Users/jchardin/wolf/libraries/sdl_image/SDL2_image-2.0.4
