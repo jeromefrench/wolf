@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 10:56:24 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 10:56:50 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/02/11 12:55:10 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				ft_test_ray_colision(t_my_win *s_win, t_myputtheline s_line)
 
 	if (s_win->map[(int)((s_line.deux.b + s_win->game.player_pos.y) / 20)]
 [(int)((s_line.deux.a + s_win->game.player_pos.x) / 20)] == 1)
-		colision = 1;
+		colision = TRUE;
 	else
 		colision = 0;
 	return (colision);
