@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/26 15:29:40 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/27 15:45:04 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,15 +39,16 @@ CSources = $(addprefix $(SRC_Dir), $(SRC))
 CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
 FLAGS = -Wall -Wextra -Werror
 CC = gcc -g
-LIBRARIES = -L ./libraries/sdl/SDL2-2.0.9/lib -lSDL2 \
-			-L ./libraries/sdl_image/SDL2_image-2.0.4/lib -lSDL2_image -framework OpenGL \
+
+
+LIBRARIES = -L ./libraries/sdl2/sdl2/lib -lSDL2 \
+			-L ./libraries/sdl2_image/sdl2_image/lib -lSDL2_image -framework OpenGL \
 			-L ./libraries/libft -lft  \
-			-L ./libraries/sdl_ttf/SDL2_ttf-2.0.15/lib -lSDL2_ttf
+			-L ./libraries/sdl2_ttf/sdl2_ttf/lib -lSDL2_ttf
 
 
 INCLUDES  = -I ./includes
 
-all: sdl_lib $(NAME)
 
 $(NAME):clear $(CObjects)
 	@make -C ./libraries/libft
@@ -58,27 +59,44 @@ $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 	@mkdir $(OBJ_Dir) 2> /dev/null || true
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
-sdl_lib:sdl sdl_image freetype sdl_ttf
+sdl: sdl2 sdl2_image freetype sdl2_ttf
 
-sdl:
-	#./configure --prefix==pwd
-	make -C ./libraries/sdl/SDL2-2.0.9/
-	make -C ./libraries/sdl/SDL2-2.0.9/ install
+sdl2:
+	@mkdir ./libraries 2> /dev/null || true
+	mkdir ./libraries/sdl2 2> /dev/null || true
+	tar xzf ./source_lib/SDL2-2.0.9.tar.gz -C ./libraries/sdl2/
+	mv ./libraries/sdl2/SDL2-2.0.9 ./libraries/sdl2/sdl2
+	cd  ./libraries/sdl2/sdl2 ; ./configure --prefix=$(shell pwd)/libraries/sdl2/sdl2
+	make -C ./libraries/sdl2/sdl2
+	make -C ./libraries/sdl2/sdl2 install
 
-sdl_image:
-	#./configure CPPFLAGS="-I/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/include" LDFLAGS="-L/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9/lib" --prefix=/Users/jchardin/wolf/libraries/sdl_image/SDL2_image-2.0.4
-	make -C ./libraries/sdl_image/SDL2_image-2.0.4/
-	make -C ./libraries/sdl_image/SDL2_image-2.0.4/ install
+
+sdl2_image:
+	@mkdir ./libraries 2> /dev/null || true
+	mkdir ./libraries/sdl2_image 2> /dev/null || true
+	tar xzf ./source_lib/SDL2_image-2.0.4.tar.gz -C ./libraries/sdl2_image/
+	mv ./libraries/sdl2_image/SDL2_image-2.0.4 ./libraries/sdl2_image/sdl2_image
+	cd ./libraries/sdl2_image/sdl2_image/ ; ./configure --prefix=$(shell pwd)/libraries/sdl2_image/sdl2_image --with-sdl-prefix=$(shell pwd)/libraries/sdl2/sdl2
+	make -C ./libraries/sdl2_image/sdl2_image
+	make -C ./libraries/sdl2_image/sdl2_image install
 
 freetype:
-	#./configure --prefix=/Users/jchardin/wolf/libraries/freetype/freetype2
-	make -C libraries/freetype/freetype-2.8.1/
-	make -C libraries/freetype/freetype-2.8.1/ install
+	@mkdir ./libraries 2> /dev/null || true
+	mkdir ./libraries/freetype 2> /dev/null || true
+	tar xzf ./source_lib/freetype-2.4.11.tar.gz -C ./libraries/freetype/
+	mv ./libraries/freetype/freetype-2.4.11 ./libraries/freetype/freetype
+	cd ./libraries/freetype/freetype ; ./configure --prefix=/Users/jchardin/wolf/libraries/freetype/freetype
+	make -C ./libraries/freetype/freetype/
+	make -C ./libraries/freetype/freetype/ install
 
-sdl_ttf:
-	#./configure --prefix=./configure --prefix=/Users/jchardin/wolf/libraries/sdl_ttf/SDL2_ttf-2.0.15 --with-sdl-prefix=/Users/jchardin/wolf/libraries/sdl/SDL2-2.0.9
-	make -C libraries/sdl_ttf/SDL2_ttf-2.0.15/
-	make -C libraries/sdl_ttf/SDL2_ttf-2.0.15/ install
+sdl2_ttf:
+	@mkdir ./libraries 2> /dev/null || true
+	mkdir ./libraries/sdl2_ttf 2> /dev/null || true
+	tar xzf ./source_lib/SDL2_ttf-2.0.15.tar.gz -C ./libraries/sdl2_ttf
+	mv ./libraries/sdl2_ttf/SDL2_ttf-2.0.15/ ./libraries/sdl2_ttf/sdl2_ttf
+	cd ./libraries/sdl2_ttf/sdl2_ttf ;  ./configure --prefix=$(shell pwd)/libraries/sdl2_ttf/sdl2_ttf --with-sdl-prefix=$(shell pwd)/libraries/sdl2/sdl2
+	make -C libraries/sdl2_ttf/sdl2_ttf/
+	make -C libraries/sdl2_ttf/sdl2_ttf/ install
 
 clean:
 	make fclean -C ./libraries/libft
@@ -104,3 +122,7 @@ line:clear
 
 tag:
 	ctags -R .
+
+
+
+
