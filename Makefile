@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/27 15:47:12 by jchardin         ###   ########.fr        #
+#    Updated: 2019/02/27 17:47:34 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,7 @@ OBJ_Dir = ./objs/
 CSources = $(addprefix $(SRC_Dir), $(SRC))
 CObjects = $(addprefix $(OBJ_Dir), $(OBJ))
 FLAGS = -Wall -Wextra -Werror
-CC = gcc -g
-
+CC = gcc
 
 LIBRARIES = -L ./libraries/sdl2/sdl2/lib -lSDL2 \
 			-L ./libraries/sdl2_image/sdl2_image/lib -lSDL2_image -framework OpenGL \
@@ -51,15 +50,26 @@ INCLUDES  = -I ./includes
 
 
 $(NAME):clear $(CObjects)
-	@make -C ./libraries/libft
-	$(CC) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) -o $(NAME)
-	ctags -R .
+	#@make -C ./libraries/libft
+	$(CC) $(DEBUG) $(FLAGS) $(INCLUDES) $(LIBRARIES) $(CObjects) -o $(NAME)
+	ctags -R ./srcs/
 
 $(OBJ_Dir)%.o:$(SRC_Dir)%.c
 	@mkdir $(OBJ_Dir) 2> /dev/null || true
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(DEBUG) $(FLAGS) $(INCLUDES) -c $< -o $@
 
-sdl: sdl2 sdl2_image freetype sdl2_ttf
+
+lib: libft sdl2 sdl2_image freetype sdl2_ttf
+
+
+debug: DEBUG = -g
+debug: $(NAME)
+
+
+libft:
+	@mkdir ./libraries 2> /dev/null || true
+	cp -r ./source_lib/libft ./libraries/
+	make -C ./libraries/libft
 
 sdl2:
 	@mkdir ./libraries 2> /dev/null || true
@@ -99,7 +109,7 @@ sdl2_ttf:
 	make -C libraries/sdl2_ttf/sdl2_ttf/ install
 
 clean:
-	make fclean -C ./libraries/libft
+	#make fclean -C ./libraries/libft
 	/bin/rm -rf $(OBJ_Dir)
 
 fclean:clean
@@ -124,5 +134,5 @@ tag:
 	ctags -R .
 
 
-
+.PHONY: tag
 
