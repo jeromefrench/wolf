@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:09:13 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 12:12:53 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 13:04:50 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_my_ray_casting *s_ray, t_myputtheline *s_line)
 	s_win->win_index = map_3d;
 	s_ray->angle_ouverture = 50;
 	s_ray->x = 0;  //       comprend pas
-	s_ray->y = s_ray->distance;  //       comprend pas
+	s_ray->y = 0;  //       comprend pas
 	s_line->un.a = s_win->game.player_pos.x;
 	s_line->un.b = s_win->game.player_pos.y;
 	s_win->game.ray_angle += ft_init_angle(move);
@@ -30,11 +30,13 @@ t_my_ray_casting *s_ray, t_myputtheline *s_line)
 void			ft_ray_casting_calcul(t_my_ray_casting *s_ray, t_my_win *s_win)
 {
 	s_ray->angle_calcul = (180 - s_ray->angle_ouverture + s_ray->angle_ouverture_variable) / 2;
-	s_ray->angle_calcul = s_ray->angle_calcul * M_PI / 180;
-	s_ray->x = cos(s_ray->angle_calcul) * s_ray->distance;
-	s_ray->y = sin(s_ray->angle_calcul) * s_ray->distance;
+	s_ray->angle_calcul_rad = s_ray->angle_calcul * M_PI / 180;
+	s_ray->x = cos(s_ray->angle_calcul_rad) * s_ray->distance;
+	s_ray->y = sin(s_ray->angle_calcul_rad) * s_ray->distance;
 	s_ray->colision.x  = (s_ray->x * cos(s_win->game.ray_angle_rad)) + (s_ray->y * -sin(s_win->game.ray_angle_rad));
 	s_ray->colision.y  = (s_ray->x * sin(s_win->game.ray_angle_rad)) + (s_ray->y * cos(s_win->game.ray_angle_rad));
+	s_win->game.colision.x = s_win->game.player_pos.x + s_ray->colision.x;
+	s_win->game.colision.y = s_win->game.player_pos.y + s_ray->colision.y;
 }
 
 void			ft_ray_casting(t_my_win *s_win, int move)
@@ -52,15 +54,15 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 		while (s_ray.colision_detected == FALSE)
 		{
 			ft_ray_casting_calcul(&s_ray, s_win);
-			if ((s_ray.colision_detected = ft_test_colision(s_win, &s_ray)) == FALSE)
+			if ((s_ray.colision_detected = ft_test_colision(s_win)) == FALSE)
 				s_ray.distance += 1;
 		}
-		s_line.deux.a = s_win->game.player_pos.x + s_ray.colision.x;
-		s_line.deux.b = s_win->game.player_pos.y + s_ray.colision.y;
-		//s_win->colision[s_ray.cmp] = s_ray.distance * cos((M_PI / 2) - s_ray.angle_calcul + 0.002);
-		s_win->colision[s_ray.cmp] = s_ray.distance * cos((M_PI / 2) - s_ray.angle_calcul + 0.002);
+		s_win->colision[s_ray.cmp] = s_ray.distance * cos((M_PI / 2) - s_ray.angle_calcul_rad + 0.002);
 		s_ray.cmp++;
 		SDL_SetRenderDrawColor(s_win->renderer[s_win->win_index], 0, 0, 0, 0);
+		//s_line.deux = s_win->game.colision;
+		s_line.deux.a = s_win->game.colision.x;
+		s_line.deux.b = s_win->game.colision.y;
 		ft_put_the_line_third(s_win, &s_line);
 		s_ray.angle_ouverture_variable += s_ray.step;
 	}

@@ -47,14 +47,12 @@ ft_quit	./srcs/file_quit.c	/^void			ft_quit(t_my_win *s_win, int status)$/;"	f
 ft_quit_window	./srcs/file_quit.c	/^void			ft_quit_window(t_my_win *s_win, int index)$/;"	f
 ft_ray_casting	./srcs/file_ray_casting.c	/^void			ft_ray_casting(t_my_win *s_win, int move)$/;"	f
 ft_ray_casting_calcul	./srcs/file_ray_casting.c	/^void			ft_ray_casting_calcul(t_my_ray_casting *s_ray, t_my_win *s_win)$/;"	f
-ft_ray_out_of_screen	./srcs/file_ft_ray_casting.c	/^int				ft_ray_out_of_screen(t_my_win *s_win, t_my_ray_casting *s_ray)$/;"	f
 ft_read_the_map	./srcs/file_read_map.c	/^void			ft_read_the_map(t_my_win *s_win)$/;"	f
 ft_save_the_map	./srcs/file_ft_editor_seconde.c	/^void			ft_save_the_map(t_my_win *s_win)$/;"	f
 ft_show_error_and_quit	./srcs/file_quit.c	/^void			ft_show_error_and_quit(t_my_win *s_win, const char *my_message)$/;"	f
 ft_square_follow_pointer	./srcs/file_ft_editor.c	/^void			ft_square_follow_pointer(t_my_win *s_win)$/;"	f
-ft_test_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_colision(t_my_win *s_win, t_my_ray_casting *s_ray)$/;"	f
+ft_test_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_colision(t_my_win *s_win)$/;"	f
 ft_test_move_square_colision	./srcs/file_move_square.c	/^void			ft_test_move_square_colision(t_my_win *s_win, int move)$/;"	f
-ft_test_ray_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_ray_colision(t_my_win *s_win, t_my_ray_casting *s_ray)$/;"	f
 ft_turn_vector	./srcs/file_load_the_map.c	/^t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)$/;"	f
 ft_update_event_editor	./srcs/file_map_editor.c	/^void			ft_update_event_editor(t_my_win *s_win)$/;"	f
 ft_update_event_map	./srcs/file_load_the_map.c	/^void			ft_update_event_map(t_my_win *s_win)$/;"	f

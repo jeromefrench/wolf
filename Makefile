@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/03/02 10:24:42 by jchardin         ###   ########.fr        #
+#    Updated: 2019/03/02 12:26:02 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ lib: libft sdl2 sdl2_image freetype sdl2_ttf
 
 
 debug: DEBUG = -g
+debug: fclean
 debug: $(NAME)
 
 

@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 12:13:43 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 12:56:30 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct			s_my_ray_casting
 	double				angle_ouverture_variable;
 	double				angle_ouverture;
 	double				angle_calcul;
+	double				angle_calcul_rad;
 	int					cmp;
 	t_my_point_d		colision;
 }						t_my_ray_casting;
@@ -141,6 +142,7 @@ typedef struct			s_my_game
 	t_my_rectangle		rect;
 	double				ray_angle;
 	double				ray_angle_rad;
+	t_my_point_d		colision;
 }						t_my_game;
 
 typedef struct			s_my_menu
@@ -244,7 +246,7 @@ void					ft_draw_map_3d(t_my_win *s_win);
 /*
 **ray casting
 */
-int				ft_test_colision(t_my_win *s_win, t_my_ray_casting *s_ray);
+int						ft_test_colision(t_my_win *s_win);
 int						ft_init_angle(int move);
 
 #endif

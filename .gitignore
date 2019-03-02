@@ -4,5 +4,8 @@ objs/
 .Makefile.swp
 wolf.dSYM
 .DS_Store
-./libraries/
+*.swp
+libraries/
+
+
 
