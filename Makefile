@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/02/27 17:47:34 by jchardin         ###   ########.fr        #
+#    Updated: 2019/03/02 10:24:42 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ file_line_case.c \
 file_ft_editor_seconde.c \
 file_ray_casting.c \
 file_read_map.c \
-file_map_2d.c \
+file_map_3d.c \
 file_ft_ray_casting.c
 
 OBJ = $(SRC:.c=.o)
@@ -95,7 +95,7 @@ freetype:
 	mkdir ./libraries/freetype 2> /dev/null || true
 	tar xzf ./source_lib/freetype-2.4.11.tar.gz -C ./libraries/freetype/
 	mv ./libraries/freetype/freetype-2.4.11 ./libraries/freetype/freetype
-	cd ./libraries/freetype/freetype ; ./configure --prefix=/Users/jchardin/wolf/libraries/freetype/freetype
+	cd ./libraries/freetype/freetype ; ./configure --prefix=$(shell pwd)/libraries/freetype/freetype
 	make -C ./libraries/freetype/freetype/
 	make -C ./libraries/freetype/freetype/ install
 

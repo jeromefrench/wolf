@@ -14,7 +14,7 @@ ft_create_renderer	./srcs/file_renderer.c	/^void			ft_create_renderer(t_my_win *
 ft_create_window	./srcs/file_window.c	/^void			ft_create_window(t_my_win *s_win, int index)$/;"	f
 ft_display_menu	./srcs/file_menu.c	/^void			ft_display_menu(t_my_win *s_win)$/;"	f
 ft_draw_map	./srcs/file_ft_editor.c	/^void			ft_draw_map(t_my_win *s_win, int index)$/;"	f
-ft_draw_map_3d	./srcs/file_map_2d.c	/^void	ft_draw_map_3d(t_my_win *s_win)$/;"	f
+ft_draw_map_3d	./srcs/file_map_3d.c	/^void	ft_draw_map_3d(t_my_win *s_win)$/;"	f
 ft_draw_menu	./srcs/file_ft_menu.c	/^void			ft_draw_menu(t_my_win *s_win)$/;"	f
 ft_draw_player	./srcs/file_move_square.c	/^void			ft_draw_player(t_my_win *s_win)$/;"	f
 ft_draw_rectangle	./srcs/file_draw_rectangle.c	/^void	ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win,$/;"	f
@@ -46,15 +46,15 @@ ft_put_the_line_third	./srcs/file_bresename.c	/^void			ft_put_the_line_third(t_m
 ft_quit	./srcs/file_quit.c	/^void			ft_quit(t_my_win *s_win, int status)$/;"	f
 ft_quit_window	./srcs/file_quit.c	/^void			ft_quit_window(t_my_win *s_win, int index)$/;"	f
 ft_ray_casting	./srcs/file_ray_casting.c	/^void			ft_ray_casting(t_my_win *s_win, int move)$/;"	f
-ft_ray_casting_calcul	./srcs/file_ray_casting.c	/^void			ft_ray_casting_calcul(t_my_ray_casting *s_ray,$/;"	f
-ft_ray_out_of_screen	./srcs/file_ft_ray_casting.c	/^int				ft_ray_out_of_screen(t_my_win *s_win, t_myputtheline s_line)$/;"	f
+ft_ray_casting_calcul	./srcs/file_ray_casting.c	/^void			ft_ray_casting_calcul(t_my_ray_casting *s_ray, t_my_win *s_win)$/;"	f
+ft_ray_out_of_screen	./srcs/file_ft_ray_casting.c	/^int				ft_ray_out_of_screen(t_my_win *s_win, t_my_ray_casting *s_ray)$/;"	f
 ft_read_the_map	./srcs/file_read_map.c	/^void			ft_read_the_map(t_my_win *s_win)$/;"	f
 ft_save_the_map	./srcs/file_ft_editor_seconde.c	/^void			ft_save_the_map(t_my_win *s_win)$/;"	f
 ft_show_error_and_quit	./srcs/file_quit.c	/^void			ft_show_error_and_quit(t_my_win *s_win, const char *my_message)$/;"	f
 ft_square_follow_pointer	./srcs/file_ft_editor.c	/^void			ft_square_follow_pointer(t_my_win *s_win)$/;"	f
-ft_test_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_colision(t_my_win *s_win, t_myputtheline s_line)$/;"	f
+ft_test_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_colision(t_my_win *s_win, t_my_ray_casting *s_ray)$/;"	f
 ft_test_move_square_colision	./srcs/file_move_square.c	/^void			ft_test_move_square_colision(t_my_win *s_win, int move)$/;"	f
-ft_test_ray_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_ray_colision(t_my_win *s_win, t_myputtheline s_line)$/;"	f
+ft_test_ray_colision	./srcs/file_ft_ray_casting.c	/^int				ft_test_ray_colision(t_my_win *s_win, t_my_ray_casting *s_ray)$/;"	f
 ft_turn_vector	./srcs/file_load_the_map.c	/^t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)$/;"	f
 ft_update_event_editor	./srcs/file_map_editor.c	/^void			ft_update_event_editor(t_my_win *s_win)$/;"	f
 ft_update_event_map	./srcs/file_load_the_map.c	/^void			ft_update_event_map(t_my_win *s_win)$/;"	f

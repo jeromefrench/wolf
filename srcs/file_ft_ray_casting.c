@@ -6,45 +6,45 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 10:56:24 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/11 12:55:10 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 12:12:51 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int				ft_ray_out_of_screen(t_my_win *s_win, t_myputtheline s_line)
+int				ft_ray_out_of_screen(t_my_win *s_win, t_my_ray_casting *s_ray)
 {
 	int		colision;
 
-	colision = 0;
-	if (s_line.deux.a + s_win->game.player_pos.x > (s_win->win_size.width -
-1) || s_line.deux.a + s_win->game.player_pos.x < 0)
-		colision = 1;
-	if (s_line.deux.b + s_win->game.player_pos.y > (s_win->win_size.height -
-1) || s_line.deux.b + s_win->game.player_pos.y < 0)
-		colision = 1;
+	colision = FALSE;
+	if (s_ray->colision.x + s_win->game.player_pos.x > (s_win->win_size.width -
+1) || s_ray->colision.x + s_win->game.player_pos.x < 0)
+		colision = TRUE;
+	if (s_ray->colision.y + s_win->game.player_pos.y > (s_win->win_size.height -
+1) || s_ray->colision.y + s_win->game.player_pos.y < 0)
+		colision = TRUE;
 	return (colision);
 }
 
-int				ft_test_ray_colision(t_my_win *s_win, t_myputtheline s_line)
+int				ft_test_ray_colision(t_my_win *s_win, t_my_ray_casting *s_ray)
 {
 	int		colision;
 
-	if (s_win->map[(int)((s_line.deux.b + s_win->game.player_pos.y) / 20)]
-[(int)((s_line.deux.a + s_win->game.player_pos.x) / 20)] == 1)
+	if (s_win->map[(int)((s_ray->colision.y + s_win->game.player_pos.y) / 20)]
+[(int)((s_ray->colision.x + s_win->game.player_pos.x) / 20)] == 1)
 		colision = TRUE;
 	else
-		colision = 0;
+		colision = FALSE;
 	return (colision);
 }
 
-int				ft_test_colision(t_my_win *s_win, t_myputtheline s_line)
+int				ft_test_colision(t_my_win *s_win, t_my_ray_casting *s_ray)
 {
-	if (ft_test_ray_colision(s_win, s_line))
-		return (1);
-	if (ft_ray_out_of_screen(s_win, s_line))
-		return (1);
-	return (0);
+	if (ft_test_ray_colision(s_win, s_ray))
+		return (TRUE);
+	if (ft_ray_out_of_screen(s_win, s_ray))
+		return (TRUE);
+	return (FALSE);
 }
 
 int				ft_init_angle(int move)

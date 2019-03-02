@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 19:10:14 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 12:13:43 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,26 @@ typedef enum			e_window
 	map_3d
 }						t_my_window;
 
+typedef struct			s_my_point_d
+{
+	double				x;
+	double				y;
+}						t_my_point_d;
+
 typedef struct			s_my_ray_casting
 {
 	double				distance;
 	double				x;
 	double				y;
-	int					colision;
+	int					colision_detected;
 	double				step;
-	double				i;
+	double				angle_ouverture_variable;
 	double				angle_ouverture;
-	double				ray_angle;
 	double				angle_calcul;
-	int					j;
+	int					cmp;
+	t_my_point_d		colision;
 }						t_my_ray_casting;
+
 
 typedef struct			s_my_point
 {
@@ -133,6 +140,7 @@ typedef struct			s_my_game
 	t_my_point			player_pos;
 	t_my_rectangle		rect;
 	double				ray_angle;
+	double				ray_angle_rad;
 }						t_my_game;
 
 typedef struct			s_my_menu
@@ -236,7 +244,7 @@ void					ft_draw_map_3d(t_my_win *s_win);
 /*
 **ray casting
 */
-int						ft_test_colision(t_my_win *s_win, t_myputtheline s_line);
+int				ft_test_colision(t_my_win *s_win, t_my_ray_casting *s_ray);
 int						ft_init_angle(int move);
 
 #endif
