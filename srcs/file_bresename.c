@@ -6,14 +6,16 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 10:23:15 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 13:50:41 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:12:07 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			ft_put_the_line_third(t_my_win *s_win, t_myputtheline *s_line)
+void			ft_draw_line(t_my_win *s_win, t_myputtheline *s_line)
 {
+	s_line->deux.a = s_win->game.colision.x;
+	s_line->deux.b = s_win->game.colision.y;
 	s_line->ex = abs((int)s_line->un.a - (int)s_line->deux.a);
 	s_line->ey = abs((int)s_line->un.b - (int)s_line->deux.b);
 	s_line->dx = 2 * s_line->ex;

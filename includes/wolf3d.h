@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 12:56:30 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:23:35 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_image.h"
-# include <stdio.h>
 # include "../libraries/libft/libft.h"
 # include <errno.h>
 # include <SDL_ttf.h>
@@ -170,6 +169,7 @@ typedef struct			s_my_win
 	t_my_point			mouse_position;
 	double				colision[641];
 	t_my_window			win_index;
+	double				dis_project_plane;
 }						t_my_win;
 
 /*
@@ -231,7 +231,7 @@ void					ft_init_square_pos(t_my_win *s_win);
 /*
 **bresename
 */
-void					ft_put_the_line_third(t_my_win *s_win, t_myputtheline *s_line);
+void					ft_draw_line(t_my_win *s_win, t_myputtheline *s_line);
 void					ft_case_one(t_my_win *s_win, t_myputtheline *s_line);
 void					ft_case_two(t_my_win *s_win, t_myputtheline *s_line);
 void					ft_case_three(t_my_win *s_win, t_myputtheline *s_line);

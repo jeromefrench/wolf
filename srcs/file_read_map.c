@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:23:38 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/11 11:15:32 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:23:15 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ void			ft_read_the_map(t_my_win *s_win)
 		while (x < s_win->win_size.width / 20)
 		{
 			s_win->map[y][x] = ft_my_atoi(line[x]);
-			printf("%d ", s_win->map[y][x]);
 			x++;
 		}
-		printf("\n");
 		y++;
 	}
 	close(s_win->fd);

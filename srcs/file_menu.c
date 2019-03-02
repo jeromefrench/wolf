@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/11 11:22:16 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:22:51 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void			ft_event_loop_menu(t_my_win *s_win)
 	{
 		ft_update_event_menu(s_win);
 		if (s_win->menu.input.quit)
-			printf("the =%d\n", s_win->menu.input.quit);
-		if (s_win->menu.input.quit)
 			ft_quit(s_win, SUCESS);
 		else if (s_win->menu.input.key[SDL_SCANCODE_ESCAPE])
 			ft_quit(s_win, SUCESS);
@@ -87,7 +85,7 @@ void			ft_put_text(t_my_win *s_win, char *str, int place, int index)
 	TTF_Init();
 	text.font = TTF_OpenFont("./media/films.icedeart.ttf", 35);
 	if (!text.font)
-		printf("TTF_OpenFont: %s\n", TTF_GetError());
+		ft_putstr("error\n");
 	text.surface = TTF_RenderText_Solid(text.font, str, text.color);
 	text.texture = SDL_CreateTextureFromSurface(s_win->renderer[index],
 text.surface);
