@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 14:28:32 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 15:18:39 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:59:00 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ void			ft_move_square(int move, t_my_win *s_win)
 	ft_ray_casting(s_win, move);
 	ft_draw_map(s_win, s_win->win_index);
 	SDL_RenderPresent(s_win->renderer[s_win->win_index]);
-	s_win->game.input.key[SDL_SCANCODE_W] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_S] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_A] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_D] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_LEFT] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_RIGHT] = FALSE;
+	s_win->input.key[SDL_SCANCODE_W] = FALSE;
+	s_win->input.key[SDL_SCANCODE_S] = FALSE;
+	s_win->input.key[SDL_SCANCODE_A] = FALSE;
+	s_win->input.key[SDL_SCANCODE_D] = FALSE;
+	s_win->input.key[SDL_SCANCODE_LEFT] = FALSE;
+	s_win->input.key[SDL_SCANCODE_RIGHT] = FALSE;
 	ft_draw_map_3d(s_win);
 }
 

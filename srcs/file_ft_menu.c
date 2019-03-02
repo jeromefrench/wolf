@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 19:06:56 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 15:53:45 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:57:55 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void			ft_move_the_arrow_down(t_my_win *s_win)
 {
 	s_win->menu.arrow_h += 80;
-	s_win->menu.input.key[SDL_SCANCODE_DOWN] = 0;
+	s_win->input.key[SDL_SCANCODE_DOWN] = 0;
 	ft_draw_menu(s_win);
 }
 
 void			ft_move_the_arrow_up(t_my_win *s_win)
 {
 	s_win->menu.arrow_h -= 80;
-	s_win->menu.input.key[SDL_SCANCODE_UP] = 0;
+	s_win->input.key[SDL_SCANCODE_UP] = 0;
 	ft_draw_menu(s_win);
 }
 
@@ -30,7 +30,7 @@ void			ft_launch_map_editor(t_my_win *s_win)
 {
 	s_win->win_index = menu;
 	ft_quit_window(s_win, s_win->win_index);
-	s_win->menu.input.quit = 1;
+	s_win->input.quit = 1;
 	ft_map_editor(s_win);
 }
 

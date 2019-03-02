@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 15:23:35 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:56:17 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ typedef struct			s_my_put_smth
 
 typedef struct			s_my_game
 {
-	t_my_input			input;
 	t_my_point			player_pos;
 	t_my_rectangle		rect;
 	double				ray_angle;
@@ -146,7 +145,6 @@ typedef struct			s_my_game
 
 typedef struct			s_my_menu
 {
-	t_my_input			input;
 	int					arrow_h;
 }						t_my_menu;
 
@@ -170,6 +168,7 @@ typedef struct			s_my_win
 	double				colision[641];
 	t_my_window			win_index;
 	double				dis_project_plane;
+	t_my_input			input;
 }						t_my_win;
 
 /*
@@ -182,6 +181,7 @@ void					ft_get_mouse_position(t_my_win *s_win);
 void					ft_put_text(t_my_win *s_win, char *str, int place, int index);
 void					ft_load_bmp(t_my_win *s_win, int index);
 void					ft_draw_rectangle(t_my_rectangle s_rectangle, t_my_win *s_win, int index);
+void					ft_init_event(t_my_win *s_win);
 
 /*
 **gestion des erreurs

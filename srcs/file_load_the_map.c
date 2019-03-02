@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 18:43:12 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 15:58:41 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			ft_launch_map(t_my_win *s_win)
 {
 	s_win->win_index = menu;
 	ft_quit_window(s_win, s_win->win_index);
-	s_win->menu.input.quit = 1;
+	s_win->input.quit = 1;
 	ft_launch_map_2d(s_win);
 	ft_launch_map_3d(s_win);
 	ft_event_loop_map(s_win);
@@ -54,16 +54,22 @@ t_xyz_point		ft_turn_vector(t_xyz_point vector, double angle)
 	return (vector);
 }
 
-void			ft_init_event_map(t_my_win *s_win)
+void			ft_init_event(t_my_win *s_win)
 {
-	s_win->game.input.quit = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_ESCAPE] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_W] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_S] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_A] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_D] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_LEFT] = FALSE;
-	s_win->game.input.key[SDL_SCANCODE_RIGHT] = FALSE;
+	s_win->input.quit = FALSE;
+	s_win->input.key[SDL_SCANCODE_ESCAPE] = FALSE;
+	s_win->input.key[SDL_SCANCODE_W] = FALSE;
+	s_win->input.key[SDL_SCANCODE_S] = FALSE;
+	s_win->input.key[SDL_SCANCODE_A] = FALSE;
+	s_win->input.key[SDL_SCANCODE_D] = FALSE;
+	s_win->input.key[SDL_SCANCODE_C] = FALSE;
+	s_win->input.key[SDL_SCANCODE_LEFT] = FALSE;
+	s_win->input.key[SDL_SCANCODE_RIGHT] = FALSE;
+	s_win->input.key[SDL_SCANCODE_DOWN] = FALSE;
+	s_win->input.key[SDL_SCANCODE_UP] = FALSE;
+	s_win->input.key[SDL_SCANCODE_RETURN] = FALSE;
+	s_win->input.mouse_move = FALSE;
+	s_win->input.mouse_clic = FALSE;
 }
 
 void			ft_update_event_map(t_my_win *s_win)
@@ -73,38 +79,38 @@ void			ft_update_event_map(t_my_win *s_win)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.window.event == SDL_WINDOWEVENT_CLOSE)
-			s_win->game.input.quit = TRUE;
+			s_win->input.quit = TRUE;
 		else if (event.type == SDL_KEYDOWN)
-			s_win->game.input.key[event.key.keysym.scancode] = TRUE;
+			s_win->input.key[event.key.keysym.scancode] = TRUE;
 		else if (event.type == SDL_MOUSEMOTION)
-			s_win->game.input.mouse_move = TRUE;
+			s_win->input.mouse_move = TRUE;
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
-			s_win->game.input.mouse_clic = TRUE;
+			s_win->input.mouse_clic = TRUE;
 		SDL_Delay(1);
 	}
 }
 
 void			ft_event_loop_map(t_my_win *s_win)
 {
-	ft_init_event_map(s_win);
-	while (!s_win->game.input.quit)
+	ft_init_event(s_win);
+	while (!s_win->input.quit)
 	{
 		ft_update_event_map(s_win);
-		if (s_win->game.input.quit)
+		if (s_win->input.quit)
 			ft_quit(s_win, SUCESS);
-		else if (s_win->game.input.key[SDL_SCANCODE_ESCAPE])
-			s_win->game.input.quit = TRUE;
-		else if (s_win->game.input.key[SDL_SCANCODE_W])
+		else if (s_win->input.key[SDL_SCANCODE_ESCAPE])
+			s_win->input.quit = TRUE;
+		else if (s_win->input.key[SDL_SCANCODE_W])
 			ft_move_square(UP, s_win);
-		else if (s_win->game.input.key[SDL_SCANCODE_S])
+		else if (s_win->input.key[SDL_SCANCODE_S])
 			ft_move_square(DOWN, s_win);
-		else if (s_win->game.input.key[SDL_SCANCODE_A])
+		else if (s_win->input.key[SDL_SCANCODE_A])
 			ft_move_square(LEFT, s_win);
-		else if (s_win->game.input.key[SDL_SCANCODE_D])
+		else if (s_win->input.key[SDL_SCANCODE_D])
 			ft_move_square(RIGHT, s_win);
-		else if (s_win->game.input.key[SDL_SCANCODE_LEFT])
+		else if (s_win->input.key[SDL_SCANCODE_LEFT])
 			ft_move_square(TRIGO, s_win);
-		else if (s_win->game.input.key[SDL_SCANCODE_RIGHT])
+		else if (s_win->input.key[SDL_SCANCODE_RIGHT])
 			ft_move_square(ANTITRIGO, s_win);
 	}
 	ft_quit_window(s_win, s_win->win_index = map_3d);

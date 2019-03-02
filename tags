@@ -25,9 +25,7 @@ ft_event_loop_menu	./srcs/file_menu.c	/^void			ft_event_loop_menu(t_my_win *s_wi
 ft_free_the_map	./srcs/file_ft_editor.c	/^void			ft_free_the_map(t_my_win *s_win)$/;"	f
 ft_get_mouse_position	./srcs/file_mouse_position.c	/^void			ft_get_mouse_position(t_my_win *s_win)$/;"	f
 ft_init_angle	./srcs/file_ft_ray_casting.c	/^int				ft_init_angle(int move)$/;"	f
-ft_init_event_editor	./srcs/file_map_editor.c	/^void			ft_init_event_editor(t_my_win *s_win)$/;"	f
-ft_init_event_map	./srcs/file_load_the_map.c	/^void			ft_init_event_map(t_my_win *s_win)$/;"	f
-ft_init_event_menu	./srcs/file_menu.c	/^void			ft_init_event_menu(t_my_win *s_win)$/;"	f
+ft_init_event	./srcs/file_load_the_map.c	/^void			ft_init_event(t_my_win *s_win)$/;"	f
 ft_init_map	./srcs/file_map_editor.c	/^int				**ft_init_map(t_my_win *s_win)$/;"	f
 ft_init_ray_casting	./srcs/file_ray_casting.c	/^void			ft_init_ray_casting(t_my_win *s_win, int move,$/;"	f
 ft_init_square_pos	./srcs/file_move_square.c	/^void			ft_init_square_pos(t_my_win *s_win)$/;"	f

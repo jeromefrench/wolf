@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:39:44 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 15:22:51 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 16:01:26 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@ void			ft_display_menu(t_my_win *s_win)
 	ft_event_loop_menu(s_win);
 }
 
-void			ft_init_event_menu(t_my_win *s_win)
-{
-	s_win->menu.input.quit = FALSE;
-	s_win->menu.input.key[SDL_SCANCODE_DOWN] = FALSE;
-	s_win->menu.input.key[SDL_SCANCODE_UP] = FALSE;
-	s_win->menu.input.key[SDL_SCANCODE_RETURN] = FALSE;
-	s_win->menu.input.key[SDL_SCANCODE_ESCAPE] = FALSE;
-	s_win->menu.input.mouse_move = FALSE;
-	s_win->menu.input.mouse_clic = FALSE;
-}
-
 void			ft_update_event_menu(t_my_win *s_win)
 {
 	SDL_Event event;
@@ -40,34 +29,30 @@ void			ft_update_event_menu(t_my_win *s_win)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
-			s_win->menu.input.quit = SDL_TRUE;
+			s_win->input.quit = TRUE;
 		else if (event.type == SDL_KEYDOWN)
-			s_win->menu.input.key[event.key.keysym.scancode] = SDL_TRUE;
+			s_win->input.key[event.key.keysym.scancode] = TRUE;
 		SDL_Delay(3);
 	}
 }
 
 void			ft_event_loop_menu(t_my_win *s_win)
 {
-	ft_init_event_menu(s_win);
-	while (!s_win->menu.input.quit)
+	ft_init_event(s_win);
+	while (!s_win->input.quit)
 	{
 		ft_update_event_menu(s_win);
-		if (s_win->menu.input.quit)
+		if (s_win->input.quit)
 			ft_quit(s_win, SUCESS);
-		else if (s_win->menu.input.key[SDL_SCANCODE_ESCAPE])
+		else if (s_win->input.key[SDL_SCANCODE_ESCAPE])
 			ft_quit(s_win, SUCESS);
-		else if (s_win->menu.input.key[SDL_SCANCODE_DOWN] &&
-s_win->menu.arrow_h <= 120)
+		else if (s_win->input.key[SDL_SCANCODE_DOWN] && s_win->menu.arrow_h <= 120)
 			ft_move_the_arrow_down(s_win);
-		else if (s_win->menu.input.key[SDL_SCANCODE_UP] &&
-s_win->menu.arrow_h >= 200)
+		else if (s_win->input.key[SDL_SCANCODE_UP] && s_win->menu.arrow_h >= 200)
 			ft_move_the_arrow_up(s_win);
-		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] &&
-s_win->menu.arrow_h == 120)
+		else if (s_win->input.key[SDL_SCANCODE_RETURN] && s_win->menu.arrow_h == 120)
 			ft_launch_map_editor(s_win);
-		else if (s_win->menu.input.key[SDL_SCANCODE_RETURN] &&
-s_win->menu.arrow_h == 200)
+		else if (s_win->input.key[SDL_SCANCODE_RETURN] && s_win->menu.arrow_h == 200)
 			ft_launch_map(s_win);
 	}
 }
