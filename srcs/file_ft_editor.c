@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 12:44:08 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/10 16:29:37 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 17:58:25 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			ft_put_square_on_map(t_my_win *s_win, int index)
 	ft_clear_window(s_win, index);
 	ft_draw_map(s_win, index);
 	SDL_RenderPresent(s_win->renderer[index]);
-	s_win->editor.input.mouse_clic = 0;
+	s_win->input.mouse_clic = 0;
 }
 
 void			ft_square_follow_pointer(t_my_win *s_win)
@@ -37,7 +37,7 @@ void			ft_square_follow_pointer(t_my_win *s_win)
 	ft_draw_rectangle(s_rectangle, s_win, s_win->win_index);
 	ft_put_text(s_win, "press S to save", 450, s_win->win_index);
 	SDL_RenderPresent(s_win->renderer[s_win->win_index]);
-	s_win->editor.input.mouse_move = 0;
+	s_win->input.mouse_move = 0;
 }
 
 void			ft_draw_map(t_my_win *s_win, int index)

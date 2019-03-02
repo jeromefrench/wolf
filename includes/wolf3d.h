@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 15:56:17 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 17:57:12 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # include <SDL_ttf.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 typedef enum			e_window
 {
@@ -148,16 +149,10 @@ typedef struct			s_my_menu
 	int					arrow_h;
 }						t_my_menu;
 
-typedef struct			s_my_editor
-{
-	t_my_input			input;
-}						t_my_editor;
-
 typedef struct			s_my_win
 {
 	t_my_menu			menu;
 	t_my_game			game;
-	t_my_editor			editor;
 	SDL_Window			*window[2];
 	SDL_Renderer		*renderer[2];
 	SDL_Event			event;
@@ -165,7 +160,7 @@ typedef struct			s_my_win
 	int					**map;
 	int					fd;
 	t_my_point			mouse_position;
-	double				colision[641];
+	double				colision[641]; //a changer
 	t_my_window			win_index;
 	double				dis_project_plane;
 	t_my_input			input;

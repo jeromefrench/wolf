@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 11:14:56 by jchardin          #+#    #+#             */
-/*   Updated: 2019/02/11 11:08:17 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 17:58:33 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void			ft_save_the_map(t_my_win *s_win)
 	}
 	close(s_win->fd);
 	ft_free_the_map(s_win);
-	s_win->editor.input.quit = 1;
+	s_win->input.quit = 1;
 }

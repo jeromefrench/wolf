@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 15:47:01 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 17:58:06 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void			ft_update_event_editor(t_my_win *s_win)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
-			s_win->editor.input.quit = SDL_TRUE;
+			s_win->input.quit = SDL_TRUE;
 		else if (event.type == SDL_KEYDOWN)
-			s_win->editor.input.key[event.key.keysym.scancode] = SDL_TRUE;
+			s_win->input.key[event.key.keysym.scancode] = SDL_TRUE;
 		else if (event.type == SDL_MOUSEMOTION)
-			s_win->editor.input.mouse_move = 1;
+			s_win->input.mouse_move = 1;
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
-			s_win->editor.input.mouse_clic = 1;
+			s_win->input.mouse_clic = 1;
 		SDL_Delay(3);
 	}
 }
@@ -34,13 +34,13 @@ void			ft_event_loop_editor(t_my_win *s_win)
 {
 	s_win->win_index = map_editor;
 	ft_init_event(s_win);
-	while (!s_win->editor.input.quit)
+	while (!s_win->input.quit)
 	{
 		ft_update_event_editor(s_win);
-		if (s_win->editor.input.quit)
+		if (s_win->input.quit)
 			ft_quit(s_win, SUCESS);
 		else if (s_win->input.key[SDL_SCANCODE_ESCAPE])
-			s_win->editor.input.quit = 1;
+			s_win->input.quit = 1;
 		else if (s_win->input.mouse_clic)
 			ft_put_square_on_map(s_win, s_win->win_index);
 		else if (s_win->input.mouse_move)
