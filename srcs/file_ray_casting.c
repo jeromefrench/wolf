@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:09:13 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 17:53:04 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:33:02 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 		{
 			ft_ray_casting_calcul(&s_ray, s_win);
 			if ((s_ray.colision_detected = ft_test_colision(s_win)) == FALSE)
-				s_ray.distance += 1;
+				s_ray.distance += 0.1;
 		}
 		s_win->colision[s_ray.cmp] = s_ray.y;
 		s_ray.cmp++;
-		printf("=%d\n",s_ray.cmp);
+		//printf("=%d\n",s_ray.cmp);
+		//printf("=%f\n",s_win->colision[s_ray.cmp]);
 
 		SDL_SetRenderDrawColor(s_win->renderer[s_win->win_index], 0, 0, 0, 0);
 		ft_draw_line(s_win, &s_line);

@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:54:55 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 15:07:35 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:17:19 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_draw_map_3d(t_my_win *s_win)
 	while (x < s_win->win_size.width)
 	{
 		projec_wall_height = 20 / s_win->colision[x] * s_win->dis_project_plane;
+		printf("size of the wall=%f et distance =%f\n", projec_wall_height, s_win->colision[x]);
 		y1 = (int)((s_win->win_size.height / 2) - (projec_wall_height / 2));
 		y2 = (int)((s_win->win_size.height / 2) + (projec_wall_height / 2));
 		SDL_SetRenderDrawColor(s_win->renderer[s_win->win_index], 0, 255, 0, 0);

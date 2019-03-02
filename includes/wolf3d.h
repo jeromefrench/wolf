@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 17:57:12 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:01:45 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,6 @@ typedef struct			s_my_point_d
 	double				y;
 }						t_my_point_d;
 
-typedef struct			s_my_ray_casting
-{
-	double				distance;
-	double				x;
-	double				y;
-	int					colision_detected;
-	double				step;
-	double				angle_ouverture_variable;
-	double				angle_ouverture;
-	double				angle_calcul;
-	double				angle_calcul_rad;
-	int					cmp;
-	t_my_point_d		colision;
-}						t_my_ray_casting;
-
-
 typedef struct			s_my_point
 {
 	int					x;
@@ -89,6 +73,21 @@ typedef struct			s_xyz_point
 	double				a;
 	double				b;
 }						t_xyz_point;
+
+typedef struct			s_my_ray_casting
+{
+	double				distance;
+	double				x;
+	double				y;
+	int					colision_detected;
+	double				step;
+	double				angle_ouverture_variable;
+	double				angle_ouverture;
+	double				angle_calcul;
+	double				angle_calcul_rad;
+	int					cmp;
+	t_my_point_d		colision;
+}						t_my_ray_casting;
 
 typedef struct			s_myputtheline
 {
