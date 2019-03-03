@@ -39,6 +39,7 @@ ft_move_square	./srcs/file_move_square.c	/^void			ft_move_square(int move, t_my_
 ft_move_the_arrow_down	./srcs/file_ft_menu.c	/^void			ft_move_the_arrow_down(t_my_win *s_win)$/;"	f
 ft_move_the_arrow_up	./srcs/file_ft_menu.c	/^void			ft_move_the_arrow_up(t_my_win *s_win)$/;"	f
 ft_my_atoi	./srcs/file_read_map.c	/^int				ft_my_atoi(char c)$/;"	f
+ft_pointer_moving_player	./srcs/file_load_the_map.c	/^void		ft_pointer_moving_player(t_my_win *s_win)$/;"	f
 ft_put_square_on_map	./srcs/file_ft_editor.c	/^void			ft_put_square_on_map(t_my_win *s_win, int index)$/;"	f
 ft_put_text	./srcs/file_menu.c	/^void			ft_put_text(t_my_win *s_win, char *str, int place, int index)$/;"	f
 ft_quit	./srcs/file_quit.c	/^void			ft_quit(t_my_win *s_win, int status)$/;"	f

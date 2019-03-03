@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 15:58:41 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/03 10:29:59 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,27 @@ void			ft_event_loop_map(t_my_win *s_win)
 			ft_move_square(TRIGO, s_win);
 		else if (s_win->input.key[SDL_SCANCODE_RIGHT])
 			ft_move_square(ANTITRIGO, s_win);
+		else if (s_win->input.mouse_move)
+			ft_pointer_moving_player(s_win);
+
 	}
 	ft_quit_window(s_win, s_win->win_index = map_3d);
 	ft_quit_window(s_win, s_win->win_index = map_2d);
 	ft_display_menu(s_win);
+}
+
+
+void		ft_pointer_moving_player(t_my_win *s_win)
+{
+			ft_get_mouse_position(s_win);
+			if (s_win->mouse_position.x > s_win->last_mouse_position.x)
+			{
+				ft_move_square(TRIGO, s_win);
+				s_win->last_mouse_position.x = s_win->mouse_position.x;
+			}
+			else if (s_win->mouse_position.x < s_win->last_mouse_position.x)
+			{
+				ft_move_square(ANTITRIGO, s_win);
+				s_win->last_mouse_position.x = s_win->mouse_position.x;
+			}
 }

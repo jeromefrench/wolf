@@ -6,7 +6,7 @@ wolf.dSYM
 .DS_Store
 *.swp
 libraries/
-wolf3d
+./wolf3d
 
 
 

@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 13:44:51 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 17:58:06 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/03 10:11:20 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void			ft_update_event_editor(t_my_win *s_win)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
-			s_win->input.quit = SDL_TRUE;
+			s_win->input.quit = TRUE;
 		else if (event.type == SDL_KEYDOWN)
-			s_win->input.key[event.key.keysym.scancode] = SDL_TRUE;
+			s_win->input.key[event.key.keysym.scancode] = TRUE;
 		else if (event.type == SDL_MOUSEMOTION)
-			s_win->input.mouse_move = 1;
+			s_win->input.mouse_move = TRUE;
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
-			s_win->input.mouse_clic = 1;
+			s_win->input.mouse_clic = TRUE;
 		SDL_Delay(3);
 	}
 }

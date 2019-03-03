@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/02 18:01:45 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/03 10:24:36 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,6 @@ typedef struct			s_xyz_point
 	double				b;
 }						t_xyz_point;
 
-typedef struct			s_my_ray_casting
-{
-	double				distance;
-	double				x;
-	double				y;
-	int					colision_detected;
-	double				step;
-	double				angle_ouverture_variable;
-	double				angle_ouverture;
-	double				angle_calcul;
-	double				angle_calcul_rad;
-	int					cmp;
-	t_my_point_d		colision;
-}						t_my_ray_casting;
-
 typedef struct			s_myputtheline
 {
 	int					above;
@@ -108,6 +93,21 @@ typedef struct			s_myputtheline
 	float				le_z1;
 	float				le_z2;
 }						t_myputtheline;
+
+typedef struct			s_my_ray_casting
+{
+	double				distance;
+	double				x;
+	double				y;
+	int					colision_detected;
+	double				step;
+	double				angle_ouverture_variable;
+	double				angle_ouverture;
+	double				angle_calcul;
+	double				angle_calcul_rad;
+	int					cmp;
+	t_my_point_d		colision;
+}						t_my_ray_casting;
 
 typedef struct			s_my_input
 {
@@ -159,6 +159,7 @@ typedef struct			s_my_win
 	int					**map;
 	int					fd;
 	t_my_point			mouse_position;
+	t_my_point			last_mouse_position;
 	double				colision[641]; //a changer
 	t_my_window			win_index;
 	double				dis_project_plane;
@@ -243,4 +244,5 @@ void					ft_draw_map_3d(t_my_win *s_win);
 int						ft_test_colision(t_my_win *s_win);
 int						ft_init_angle(int move);
 
+void					ft_pointer_moving_player(t_my_win *s_win);
 #endif
