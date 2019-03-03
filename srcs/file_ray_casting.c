@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 12:09:13 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/03 16:42:51 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/03 16:52:05 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void			ft_init_dda(t_my_win *s_win, t_my_dda *dda_horizontal, t_my_dda *dda_vert
 	dda_vertical->delta.y = tan(alpha) * dda_vertical->delta.x;
 }
 
-void			ft_vertical_intercept()
+void			ft_vertical_intercept(int *cmp)
 {
+
+
 }
 
 void			ft_ray_casting(t_my_win *s_win, int move)
@@ -70,6 +72,7 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 	t_myputtheline		s_line;
 	t_my_dda			dda_horizontal;
 	t_my_dda			dda_vertical;
+	int 				cmp;
 
 	ft_init_ray_casting(s_win, move, &s_ray, &s_line);
 	while (s_ray.angle_ouverture_variable < s_ray.angle_ouverture)
@@ -78,12 +81,13 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 		s_ray.colision_detected = FALSE;
 		s_ray.angle_calcul = (180 - s_ray.angle_ouverture + s_ray.angle_ouverture_variable) / 2;
 		s_ray.angle_calcul_rad = s_ray.angle_calcul * M_PI / 180;
+		cmp = 0;
 		ft_init_dda(s_win, &dda_horizontal, &dda_vertical, &s_ray);
 		while (s_ray.colision_detected == FALSE)
 		{
 			if (dda_vertical.distance_offset < dda_horizontal.distance_offset)
 			{
-				ft_vertical_intercept();
+				ft_vertical_intercept(&cmp);
 				ft_ray_casting_calcul(&s_ray, s_win);
 				if ((s_ray.colision_detected = ft_test_colision(s_win)) == FALSE)
 				{
@@ -91,6 +95,7 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 					ft_ray_casting_calcul(&s_ray, s_win);
 					s_ray.colision_detected = ft_test_colision(s_win);
 				}
+				cmp++;
 			}
 			else
 			{
@@ -102,6 +107,7 @@ void			ft_ray_casting(t_my_win *s_win, int move)
 					ft_ray_casting_calcul(&s_ray, s_win);
 					s_ray.colision_detected = ft_test_colision(s_win);
 				}
+				cmp++;
 			}
 		}
 		s_win->colision[s_ray.cmp] = s_ray.y;
