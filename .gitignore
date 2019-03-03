@@ -7,6 +7,8 @@ wolf.dSYM
 *.swp
 libraries/
 ./wolf3d
+wolf3d
+
 
 
 

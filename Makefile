@@ -6,7 +6,7 @@
 #    By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/29 11:46:21 by jchardin          #+#    #+#              #
-#    Updated: 2019/03/03 10:06:21 by jchardin         ###   ########.fr        #
+#    Updated: 2019/03/03 16:03:24 by jchardin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,7 @@ line:clear
 
 tag:
 	ctags -R ./srcs
+	ctags -R ./includes/
 
 
 .PHONY: tag

@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 10:37:57 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/03 10:29:59 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/03 10:35:03 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ void			ft_event_loop_map(t_my_win *s_win)
 	ft_quit_window(s_win, s_win->win_index = map_2d);
 	ft_display_menu(s_win);
 }
-
 
 void		ft_pointer_moving_player(t_my_win *s_win)
 {

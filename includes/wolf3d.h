@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 13:23:01 by jchardin          #+#    #+#             */
-/*   Updated: 2019/03/03 10:24:36 by jchardin         ###   ########.fr       */
+/*   Updated: 2019/03/03 16:09:59 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,13 @@ typedef struct			s_myputtheline
 	float				le_z2;
 }						t_myputtheline;
 
+typedef struct			s_my_dda
+{
+	t_my_point_d		offset;
+	t_my_point_d		delta;
+	double				distance_offset;
+}						t_my_dda;
+
 typedef struct			s_my_ray_casting
 {
 	double				distance;
@@ -164,6 +171,7 @@ typedef struct			s_my_win
 	t_my_window			win_index;
 	double				dis_project_plane;
 	t_my_input			input;
+	int					division;
 }						t_my_win;
 
 /*
